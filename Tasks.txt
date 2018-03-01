@@ -1,0 +1,57 @@
+Each task here is about 1-2 hours of work, by my estimation. For journal stuff...
+
+***Login & Registration***
+
+   -Validate course selection - make sure new user cannot select 'all'
+   -Login automatically once registration is complete - shouldn't have to login again
+
+
+***List of Modules - Home Page***
+
+   -Improve layout
+   -Decide on sidebar - yes/no?
+   -(Add more information to list of modules)?
+
+
+***List of Topics Page***
+
+   -Fix bug that prevents correct user being selected when creating new topic
+   -Add more information to list of topics ie. creator, datecreated
+   -Change create topic form to Andrew's version
+   -Improve layout
+
+
+***Topic Page***(Suggestions)
+
+   -Show all comments currently created
+   -All replys should be displayed so it's clear they are replys, who is replying to
+   -Working form for adding new comment, appears for adding reply or brand new comment
+   -Working form for reports, appears when user clicks 'report' on comment
+   -Link to meetings
+
+
+***Meetings***(Suggestions)
+
+   -Show all meetings relevant to topic
+   -Working form to add new meeting
+   -(ability to join or leave meeting)only if not using 'first come, first served'
+
+
+***Settings***
+
+   -Display details of current user
+   -Allow current user to change their details
+
+
+***Admin***
+
+   -Clean up login
+   -Add/Edit/Remove Course
+   -Add/Edit/Remove Module - designate multiple courses at once if necessary
+   -Edit/Remove any user
+   -Report manager - check all reports, link to original comment
+   -Need some ability for admin to be considered a special user on main site {
+    -Delete comments/topics
+    -Post moderator stuff
+   }
+
