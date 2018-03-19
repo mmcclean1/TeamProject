@@ -1,0 +1,11 @@
+Hi lads see for the admin stuff, im gonna work this week on the admin being able to add and remove topics!
+im also gonna have the main page for the admin just showing all students who are registerd as the main page when admin logs in.
+So that leaves us with:
+
+Comments page:disappove, approve comments
+Admins:add admins, remove admins.
+
+Any other categories that you guys want to add feel free, i have few basline categories on the side bar already. Becauase you guys choose to work on older version all css might need be implemented which could take some time. i will send you guys out the latest version can you guys put your own individual work into the essential pages and send out a latest sql that you are using.Use the latest version when adding contend to the admin pages. I just put in the empty pages for you guys to work on, if any other ideas
+add away. 
+
+cheers.
