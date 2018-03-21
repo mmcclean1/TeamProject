@@ -69,6 +69,9 @@
 					<li><a href="manageCourses.php">
 						<span class="glyphicon glyphicon-user"></span>
 						&nbsp;Manage Courses</a></li>
+					<li><a href="manageModules.php">
+						<span class="glyphicon glyphicon-user"></span>
+						&nbsp;Manage Modules</a></li>
 					<li><a href="Comments.php">
 						<span class="glyphicon glyphicon-comment"></span>
 						&nbsp;Comments

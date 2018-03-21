@@ -1,23 +1,20 @@
 //Matthew McClean - L00137316
 //LYIT Team Project 2018
 //BSc 5
-window.onload=function()
+window.onload = function()
 {
-	document.getElementById('newTopic').onclick=function(){
+	document.getElementById('newCourse').onclick=function(){
 		createForm();
 	}
 }
 
 function createForm()
 {
-	var target = document.getElementById('div');
-	var title = document.getElementById('title');
+	var target = document.getElementById('newCourseDiv');
 	if(target.style.display === "none"){
 		target.style.display = "block";
 	}
-	else
-	{
+	else{
 		target.style.display = "none";
-		title.value='';
 	}
 }
