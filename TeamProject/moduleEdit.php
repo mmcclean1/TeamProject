@@ -2,17 +2,14 @@
 
 <?php require 'config/config.php';?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 
 		<!--INCLUDE LIBRATIES FOR STYLING BOOTSTRAP AND JQUERY-->
-		<title>Manage Modules</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src='assets/js/manageModules.js'></script>
 		<link rel="stylesheet" href="css/adminstyles.css">
 		<style>
 			th{
@@ -24,6 +21,7 @@
 		</style>
 
 		<meta charset="UTF-8">
+		<title>Edit Course</title>
 	</head>
 	<div style="height: 10px; background: #27aae1;"></div>
 	<nav class="navbar navbar-inverse" role="navigation">
@@ -69,14 +67,11 @@
 					<li><a href="manageCourses.php">
 						<span class="glyphicon glyphicon-user"></span>
 						&nbsp;Manage Courses</a></li>
-					<li><a href="manageModules.php">
-						<span class="glyphicon glyphicon-user"></span>
-						&nbsp;Manage Modules</a></li>
 					<li><a href="Comments.php">
 						<span class="glyphicon glyphicon-comment"></span>
-						&nbsp;Comments</a></li>
-					<?php
-					$ConnectingDB;
+						&nbsp;Comments
+						<?php
+						$ConnectingDB;
 						//							$QueryTotal="SELECT FROM member";
 						$QueryTotal="SELECT * FROM comment WHERE comment_status='OFF'";
 						$ExecuteTotal=mysqli_query($con,$QueryTotal);
@@ -88,65 +83,47 @@
 						<span class="label pull-right label-warning">
 							<?php echo $Total;?>
 						</span>
+
 						<?php } ?>
-						</a>	
+						</a></li>
+
 					<li><a href="Logout.php">
 						<span class="glyphicon glyphicon-log-out"></span>
 						&nbsp;Logout</a></li>	
+
 					</ul>
 					</div> <!-- Ending of Side area -->
 			<div class="col-sm-10"> <!--Main Area-->
+				<h1>Edit Module</h1>
+				<?php
+					//Get Module No
+					$ModuleNo = $_GET['ModuleNo'];
 
-				<!--Matthew McClean - L00137316 -->
-				<!--Team Project 2018-->
-				<!--BSc 5 -->
-				<h1>Manage Modules</h1>
-				<button id='newModule'>Add New Module</button>
-				
-					<div id='newModuleDiv' style=display:none>
-						<br><br>
-						<form method='POST' action='moduleHandler.php'>
-							<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>
-								<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Create Course</strong> </td></tr>
-								<tr><td><strong>Module Name</strong><input name='ModuleName' type='text' size='20' REQUIRED /><strong> </td></tr>
-								<tr><td><strong>Lecturer</strong><input name='Lecturer' type='text' size='20' REQUIRED /><strong> </td></tr>
-								<tr><td><strong>Year</strong><input name='Year' type='text' size='10' REQUIRED /></td></tr>
-								<tr><td><strong>Semester</strong><input name='Semester' type='text' size='10' REQUIRED /></td></tr>
-								<tr><td><input id='submit' type='submit' name='Submit'></input></td></tr>
-							</table>
-						</form>
-					</div>
-				<br><br>
-				<table border=1>
-					<tr><th>Module No</th><th>Module Name</th><th>Lecturer</th><th>Year</th><th>Semester</th></tr>
-					<?php
-						//Connect to database
-						$connection = mysqli_connect("localhost","root","");
-						mysqli_select_db($connection,"studentsupport");
+					//Connect to database
+					$connection = mysqli_connect("localhost","root","");
+					mysqli_select_db($connection,"studentsupport");
 
-						//Get all module information from database
-						$moduleResult = mysqli_query($connection,"SELECT * FROM module");
-
-						//Print modules to table
-						while($row=mysqli_fetch_array($moduleResult))
-						{
-							print('<tr><td>'.$row['ModuleNo'].'</td><td><a href=moduleEdit.php?ModuleNo='.$row['ModuleNo'].'>'.$row['ModuleName'].'</a></td><td>'.$row['Lecturer'].'</td>');
-							print('<td>'.$row['Year'].'</td><td>'.$row['Semester'].'</td><td><a href=deleteModule.php?ModuleNo='.$row['ModuleNo'].'>Delete</a></td></tr>');
-						}
-					?>
-				</table>
-			</div> <!-- Ending of Main Area-->
-		</div> <!-- Ending of Row-->
-	</div> <!-- Ending of Container-->
-	<div id="Footer">
-
-		<?php
-		echo "<p>Copyright &copy; " . date("Y") . " Logos.com</p>";
-
-		?>
-	</div>
-	<div style="height: 10px; background: #27AAE1;"></div> 
+					//Generate table
+					print('<form method=POST action=editModuleHandler.php?ModuleNo='.$ModuleNo.'><table width=400 border=1 cellpadding=3 cellspacing=1 bgcolor=#FFFFFF>');
+						print('<tr><td colspan=3 align=left bgcolor=#CBEAF8><strong>Edit Module</strong> </td></tr>');
+						print('<tr><td><strong>Module Name</strong><input name=ModuleName type=text size=20 REQUIRED /><strong> </td></tr>');
+						print('<tr><td><strong>Lecturer</strong><input name=Lecturer type=text size=20 REQUIRED /><strong> </td></tr>');
+						print('<tr><td><strong>Year</strong><input name=Year type=text size=10 REQUIRED /></td></tr>');
+						print('<tr><td><strong>Semester</strong><input name=Semester type=text size=10 REQUIRED /></td></tr>');
+						print('<tr><td><input type=submit name=Submit></input><input type=button name=Cancel value=Cancel onclick=history.back()></button></td></tr>');
+					print('</table></form>');
+					mysqli_close($connection);
+				?>
+			</div> <!-- Ending of Row-->
+		</div> <!-- Ending of Container-->
+		<div id="Footer">
+			<?php
+				echo "<p>Copyright &copy; " . date("Y") . " Logos.com</p>";
+			?>
+		</div>
+	<div style="height: 10px; background: #27AAE1;"></div>
 	<body>
+
 
 	</body>
 </html>
