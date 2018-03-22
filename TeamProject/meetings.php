@@ -33,57 +33,72 @@ include("includes/header.php");
 
 			<table width="400" border="2" align="center" >
 				<tr>
-					<form id="forum3" name="forum3" method="post" action=".php">
+					<form id="forum3" name="forum3" method="post" action="includes/form_handlers/meetingshandler.php">
 						<td>
 							<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 								<tr>
 									<td colspan="3" bgcolor="#62C6FA"><strong>Create Meeting</strong> </td>
-								</tr>
-								<tr>
-									<td><strong>Name</strong></td>
-									<td>:</td>
-									<td><input name="name" type="text" id="topic" size="50" /></td>
-								</tr>
-								<tr>
-									<td><strong>Email</strong></td>
-									<td>:</td>
-									<td><input name="email" type="text" id="email" size="50" /></td>
+								</tr><tr> 
+									<td valign="top"><strong>Details:</strong></td>
+									<td valign="top">
+									
+											  <input type="Detail" name="details" placeholder="Details" required /> </td>
+									</tr>
+																	<tr>
+									<td><label for="date" class="label-date">Date:&nbsp;&nbsp;</label></td>
+									<td><input type="date" id="date" class="floatLabel" name="date" value="<?php echo date('Y-m-d'); ?>"></td>
 								</tr>
 								<tr> 
-									<td valign="top"><strong>Detail</strong></td>
-									<td valign="top">:</td>
-									<td><textarea name="detail" cols="50" rows="5" id="detail"></textarea></td>
-								</tr>
-								<tr>
-									<td><label for="time" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Date:</label></td>
-									<td><input type="date" id="time" class="floatLabel" name="time" value="<?php echo date('Y-m-d'); ?>"></td>
-								</tr>
-
-
-								<tr>
-									<label for="Room">Room:</label>
-									<i class="fa fa-sort"></i>
-									<select class="floatLabel">
-										<option value="room"></option>
-										<option value="room" selected>With 3 people</option>
-										<option value="room" selected>With 4 people</option>
-										<option value="room" selected>With 5 people</option>
-										<option value="room" selected>With 6 people</option>
-										<option value="room" selected>With 8 people</option>
-									</select>
-								</tr> 
+									<td valign="top"><strong>Time:</strong></td>
+									<td valign="top">
+									
+											  <input type="time" name="time" placeholder="time" required /> </td>
+									</tr>
+									 <tr>
+									 	<td>
+										      <label for="room">Room:</label>
+										     
+										      <select id="room" name="room" class="floatlabel">
+										        <option value="room"></option>
+										        <option id="room"name="Curve" selected>Curve</option>
+										        <option id="room"name="Library room 1" selected>Library Room 1</option>
+												<option id="room"name="Library room 2" selected>Library Room 2</option>
+												<option id="room"name="Library room 3" selected>Library Room 3</option>
+												<option id="room"name="Library room 4" selected>Library Room 4</option>
+												
+										        </td>
+										        
+										        
+										      </select>
+										     </tr> 
 								<td><button type="submit" value="Submit" align="right" class="col-1-4">Book Room</button></td>
 
 							</table>
 						</td>
 					</form>
 
-				</tr>
+				</tr>		
+			<?php
+										
+											print '<hr>';
+											  $connection = mysqli_connect("localhost","root","");
+											  mysqli_select_db($connection,"studentsupport");
+											  $meetings=mysqli_query($connection,"select * from meeting");
+											  print("<table border=1>");
+											  print '<th>'."MemberNo".'</th>'.'<th>'."CreatorNo".'</th>'.'<th>'."Date".'</th>'.'<th>'."Time".'</th>'.'<th>Details'.'</th>'.'<th>'.'Room'.'</th>';
+											  while($row=mysqli_fetch_array($meetings))
+											  {
+												print '<tr>';
+												print '<td>'. $row['MeetingNo'].'</td>'.'<td>'.$row['CreatorNo'].'</td>'.'<td>'. $row['Date'] .'</td>'.'<td>'. $row['time'] .'</td>'.'<td>'. $row['details'] .'</td>'.'<td>'. $row['room'] .'</td>';
+												print '</tr>';
+												}
+
+			  mysqli_close($connection);
+				?>
 			</table>
-
-
-		</div>
-
+			</div>
+			
+</div>
 		<footer><?php include("includes/footer.php");?></footer>
 
 	</body>
