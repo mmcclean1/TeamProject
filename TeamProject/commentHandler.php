@@ -1,7 +1,5 @@
 <?php
-	//Matthew McClean - L00137316
-	//LYIT Team Project 2018
-	//BSc 5
+//l00085571___andrew
 	include("includes/header.php");
 
 	//Get passed in TopicNo
@@ -15,9 +13,10 @@
 	if($comment != "")
 	{
 		//Get Details, date, creatorNo
-		$comment_id = $_POST['CommentID'];
+		//$comment_id = $_POST['CommentID'];
 		$dateCreated=date("Y-m-d");
 		$id = $_SESSION['id'];
+		$TopicNo = $_SESSION['TopicNo']
 		//Insert Into Database
 		$query = mysqli_query($connection, "INSERT INTO comment(comment,DateCreated,CreatorNo,TopicNo) VALUES('$comment', '$dateCreated', '$id', '$TopicNo')");
 	}
@@ -26,8 +25,8 @@
 	$done = true;
 	if ($done)
 {
-    header("Location: createTopic.php?TopicNo=".$TopicNo);
+    header("Location: createComment.php?Comment_id=".$Comment_id);
     exit;
 }
-//L00137316
+
 ?>
