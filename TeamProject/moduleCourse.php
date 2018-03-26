@@ -97,47 +97,60 @@
 					</div> <!-- Ending of Side area -->
 			<div class="col-sm-10"> <!--Main Area-->
 
+
 				<!--Matthew McClean - L00137316 -->
 				<!--Team Project 2018-->
 				<!--BSc 5 -->
-				<h1>Manage Modules</h1>
-				<button id='newModule'>Add New Module</button>
-				
-					<div id='newModuleDiv' style=display:none>
-						<br><br>
-						<form method='POST' action='moduleHandler.php'>
-							<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>
-								<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Create Course</strong> </td></tr>
-								<tr><td><strong>Module Name</strong><input name='ModuleName' type='text' size='20' REQUIRED /><strong> </td></tr>
-								<tr><td><strong>Lecturer</strong><input name='Lecturer' type='text' size='20' REQUIRED /><strong> </td></tr>
-								<tr><td><strong>Year</strong><input name='Year' type='text' size='10' REQUIRED /></td></tr>
-								<tr><td><strong>Semester</strong><input name='Semester' type='text' size='10' REQUIRED /></td></tr>
-								<tr><td><input id='submit' type='submit' name='Submit'></input></td></tr>
-							</table>
-						</form>
-					</div>
-				<br><br>
-				<table border=1>
-					<tr><th>Module No</th><th>Module Name</th><th>Lecturer</th><th>Year</th><th>Semester</th></tr>
-					<?php
-						//Connect to database
-						$connection = mysqli_connect("localhost","root","");
-						mysqli_select_db($connection,"studentsupport");
+				<?php
+					$ModuleNo = $_GET['ModuleNo'];
 
-						//Get all module information from database
-						$moduleResult = mysqli_query($connection,"SELECT * FROM module");
+					//Connect to database
+					$connection = mysqli_connect("localhost","root","");
+					mysqli_select_db($connection,"studentsupport");
 
-						//Print modules to table
-						while($row=mysqli_fetch_array($moduleResult))
+					//Get Module Details
+					$moduleResult = mysqli_query($connection,"SELECT * FROM module WHERE ModuleNo='$ModuleNo'");
+
+					//Get Course Details
+					$courseResult = mysqli_query($connection, "SELECT * FROM course");
+
+					//Print header
+					while($row=mysqli_fetch_array($moduleResult))
+						print('<h1>Module/Course details: '.$row['ModuleName'].'</h1>');
+
+					//Add new course to list
+					print('<form method=POST action=addCourseModule.php?ModuleNo='.$ModuleNo.'>');
+						print('<select name=CourseNo>');
+							print('<option value=0 DISABLED SELECTED>---</option>');
+							while($row1=mysqli_fetch_array($courseResult))
+								print('<option value='.$row1['CourseNo'].'>'.$row1['CourseName'].'</option>');
+						print('</select>');
+						print('<input type=submit value=Add></input>');
+					print('</form>');
+
+					print('Displayed is the list of all courses that have this module');
+
+					//Get Course/Module details
+					$courseModuleResult = mysqli_query($connection, "SELECT * FROM coursemodule WHERE ModuleNo='$ModuleNo'");
+
+					//Generate table of all courses associated with the selected module
+					print('<table border=1');
+						print('<tr><th>CourseNo</th><th>CourseName</th></tr>');
+						while($row=mysqli_fetch_array($courseModuleResult))
 						{
-							print('<tr><td>'.$row['ModuleNo'].'</td><td><a href=moduleEdit.php?ModuleNo='.$row['ModuleNo'].'>'.$row['ModuleName'].'</a></td><td>'.$row['Lecturer'].'</td>');
-							print('<td>'.$row['Year'].'</td><td>'.$row['Semester'].'</td><td>');
-							print('<a href=deleteModule.php?ModuleNo='.$row['ModuleNo'].'>Delete</a></td>');
-							print('<td><a href=moduleCourse.php?ModuleNo='.$row['ModuleNo'].'>Edit/View Course Relations</a></td></tr>');
+							$CourseNo = $row['CourseNo'];
+							print('<tr><td>'.$CourseNo.'</td>');
+							//Get course details filtered by CourseNo
+							$courseResultFilter = mysqli_query($connection, "SELECT * FROM course WHERE CourseNo='$CourseNo'");
+							while($row2=mysqli_fetch_array($courseResultFilter))
+								print('<td>'.$row2['CourseName'].'</td>');
+							print('<td><a href=removeCourseModule.php?ModuleNo='.$ModuleNo.'&CourseNo='.$CourseNo.'>Remove</a></td></tr>');
 						}
-						mysqli_close($connection);
-					?>
-				</table>
+					print('</table>');
+					mysqli_close($connection);
+				?>
+
+
 			</div> <!-- Ending of Main Area-->
 		</div> <!-- Ending of Row-->
 	</div> <!-- Ending of Container-->
