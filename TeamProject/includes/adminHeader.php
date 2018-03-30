@@ -9,7 +9,7 @@ if (isset($_SESSION['adminId'])) {
 }
 
 else {
-	header("Location: adminLogin.php");
+	header("Location: admin/adminLogin.php");
 }
 
 ?>

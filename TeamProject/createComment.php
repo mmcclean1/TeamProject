@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("includes/header.php");
 
 ?>
@@ -16,14 +16,9 @@ include("includes/header.php");
 
 	</style>
 
-/*
-<!--Matthew McClean - L00137316-->
-<!--LYIT Team Project 2018-->
-<!--BSc 5-->
-*/
 
 
-<script type="text/javascript" src="assets/js/newTopic.js"></script>
+<script type="text/javascript" src="assets/js/newComment.js"></script>
 
 
 <!--INCLUDE SIDEBAR-->
@@ -36,48 +31,49 @@ include("includes/header.php");
 	<a id="back" href="index.php"><i class="far fa-arrow-alt-circle-left fa-2x" style="color:blue"></i></a>
 	<?php
 	//Get passed in ModuleNo
-	$moduleNo=$_GET['ModuleNo'];
+	$TopicNo=$_GET['TopicNo'];
 
 	//Connect to database
 	$connection = mysqli_connect("localhost","root","");
 	mysqli_select_db($connection,"studentsupport");
 
 	//Get Module Name
-	$moduleResult=mysqli_query($connection,"SELECT ModuleName FROM module WHERE ModuleNo='$moduleNo'");
-	while($row=mysqli_fetch_array($moduleResult))
-	{print("<title>".$row['ModuleName']."</title><h1>".$row['ModuleName']."</h1>");}
+	$TopicResult=mysqli_query($connection,"SELECT TopicName FROM topic WHERE TopicNo='$TopicNo'");
+	while($row=mysqli_fetch_array($TopicResult))
+	{print("<title>".$row['TopicName']."</title><h1>".$row['TopicName']."</h1>");}
 
 
 	//Create new topic
-	print("<button id='newTopic'>Add New Topic</button>");
+	print("<button id='newComment'>Add Comment</button>");
 	print("<br>"."<br>"."<br>");
-	print("<div id='div' style=display:none><form method=POST action=topicHandler.php?ModNo=".$moduleNo.">");
+	print("<div id='div' style=display:none><form method=POST action=module.php?TopicNo=".$TopicNo.">");
 	print("<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>");
-	print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Create Topic</strong> </td></tr>");
-	print("<tr><td><strong>Topic</strong><input name='TopicName' type='text' size=50' REQUIRED/><strong> </td></tr>");
+	print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Create Comment</strong> </td></tr>");
+	print("<tr><td><strong>Comment Summary</strong><input name='CommentName' type='text' size=50' /><strong> </td></tr>");
 	print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='90' rows='20' id='detail'></textarea><br><br><button type='submit' name='topicSubmit' >Add Topic</button> ");
-	print("<input type='file' name='fileToUpload'><br><br><input type='reset' name='Submit2' value='Clear'/><br><br><input id='cancel' type=button value='Cancel Operation' onclick='history.back()' name='cancel'></button><td></tr>");
+	print("<input type='file' name='fileToUpload'><br><br><input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
 	print("</table></form></div>");
 	?>
-	
+
 	<div id ="modulesDiv">
 		<div class="col-md-8 col-md-offset-2">
 			<table class="table table-striped">
 				<thead>
 					<tr class="bg-success">
-						<th>ModulesNo</th>
-						<th>Topic</th>
+						<th>Comment_ID</th>
+						<th>Comment</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
 
 					//Get topics associated with module
-					$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
+					$result=mysqli_query($connection,"SELECT * FROM comment WHERE TopicNo='TopicNo'");
 					while($row=mysqli_fetch_array($result))
 					{
-						print("<tr><td>".$row['TopicNo']."</td>");
-						print("<td><a href=topic.php?TopicNo=".$row['TopicNo'].">".$row['TopicName']."</a></td></tr>");
+						print("<tr><td>".$row['Comment_id']."</td>");
+						print("<td>".$row['Comment']."</td></tr>");
+						//print("<td><a href=topic.php?TopicNo=".$row['TopicNo'].">".$row['TopicName']."</a></td></tr>");
 					}
 					//Close connection
 					mysqli_close($connection);
