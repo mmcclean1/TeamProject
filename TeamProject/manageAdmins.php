@@ -25,7 +25,8 @@
 		$adminResult = mysqli_query($con, "SELECT * FROM admin");
 		while($row=mysqli_fetch_array($adminResult))
 		{
-			print('<tr><td>'.$row['AdminNo'].'</td><td><a href=editAdmin.php?AdminNo'.$row['AdminNo'].'>'.$row['AdminName'].'</a></td></tr>');
+			print('<tr><td>'.$row['AdminNo'].'</td><td><a href=editAdmin.php?AdminNo='.$row['AdminNo'].'>'.$row['AdminName'].'</a></td>');
+			print('<td><a href=deleteAdmin.php?AdminNo='.$row['AdminNo'].'>Delete</a></td></tr>');
 		}
 	?>
 </table>
