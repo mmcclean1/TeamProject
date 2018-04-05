@@ -30,7 +30,7 @@ include("includes/header.php");
 
 	<a id="back" href="index.php"><i class="far fa-arrow-alt-circle-left fa-2x" style="color:blue"></i></a>
 	<?php
-	//Get passed in ModuleNo
+	//Get passed in TopicNo
 	$TopicNo=$_GET['TopicNo'];
 
 	//Connect to database
@@ -43,32 +43,30 @@ include("includes/header.php");
 	{print("<title>".$row['TopicName']."</title><h1>".$row['TopicName']."</h1>");}
 
 
-	//Create new topic
+	//Create new comment
 	print("<button id='newComment'>Add Comment</button>");
 	print("<br>"."<br>"."<br>");
-	print("<div id='div' style=display:none><form method=POST action=module.php?TopicNo=".$TopicNo.">");
+	print("<div id='div' style=display:none><form method=POST action=commentHandler.php?TopicNo=".$TopicNo.">");
 	print("<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>");
 	print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Create Comment</strong> </td></tr>");
 	print("<tr><td><strong>Comment Summary</strong><input name='CommentName' type='text' size=50' /><strong> </td></tr>");
-	print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='90' rows='20' id='detail'></textarea><br><br><button type='submit' name='topicSubmit' >Add Topic</button> ");
+	print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='90' rows='20' id='detail'></textarea><br><br><button type='submit' name='commentSubmit' >Add Comment</button> ");
 	print("<input type='file' name='fileToUpload'><br><br><input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
 	print("</table></form></div>");
-	?>
 
-	<div id ="modulesDiv">
-		<div class="col-md-8 col-md-offset-2">
-			<table class="table table-striped">
-				<thead>
-					<tr class="bg-success">
-						<th>Comment_ID</th>
-						<th>Comment</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
+	print('<div id =modulesDiv>');
+		print('<div class=col-md-8 col-md-offset-2>');
+			print('<table class=table table-striped>');
+				print('<thead>');
+					print('<tr class=bg-success>');
+						print('<th>Comment_ID</th>');
+						print('<th>Comment</th>');
+					print('</tr>');
+				print('</thead>');
+				print('<tbody>');
 
 					//Get topics associated with module
-					$result=mysqli_query($connection,"SELECT * FROM comment WHERE TopicNo='TopicNo'");
+					$result=mysqli_query($connection,"SELECT * FROM comment WHERE TopicNo='$TopicNo'");
 					while($row=mysqli_fetch_array($result))
 					{
 						print("<tr><td>".$row['Comment_id']."</td>");
