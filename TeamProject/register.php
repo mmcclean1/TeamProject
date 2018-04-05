@@ -132,20 +132,13 @@ require 'includes/form_handlers/login_handler.php';
 					<?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
 					else if(in_array("Your password can only contain english characters or numbers<br>", $error_array)) echo "Your password can only contain english characters or numbers<br>";
 					else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) echo "Your password must be betwen 5 and 30 characters<br>"; ?>
-
-						<div class="image">
-							<!--PROFILE IMAGE-->
-							<b class="imageTwo">Image:</b>
-							<input type="file" name="profile_pic"/></div>
-<!--					<input type="file" name="profile_pic"/>-->
-					<br>
 					
 						<!--SELECT COURSE FROM DROPDOWN-->
 						<!--						<b class="findCourse">Find Course:</b>-->
 						<b class="findCourse">Find Course:</b>
 						<div class="course">
 							<select name ='courseNo'>	
-								<option >All</option>
+								<option value=0>All</option>
 
 								<?php
 								//RUN QUERY TO GET COURSE NUMBER 
@@ -155,7 +148,7 @@ require 'includes/form_handlers/login_handler.php';
 									echo "<option value=".$row["CourseNo"].">".$row["CourseName"]."</option>";
 
 								}
-
+								if(in_array("Must select a valid course<br>", $error_array)) echo "Must select a valid course<br>";
 								?>
 
 							</select><br><br>
