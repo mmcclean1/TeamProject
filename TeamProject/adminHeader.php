@@ -1,59 +1,27 @@
-<?php  
-require 'config/config.php';
 
-
-if (isset($_SESSION['adminId'])) {
-	$userLoggedIn = $_SESSION['adminId'];
-	$user_details_query = mysqli_query($con, "SELECT * FROM admin WHERE AdminNo='$userLoggedIn'");
-	$user = mysqli_fetch_array($user_details_query);
-}
-
-else {
-	header("Location: adminLogin.php");
-}
-
-?>
-
-<html>
-<head>
-	<title>Logos - Administration</title>
-
-	<!-- Javascript -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-	<!-- CSS -->
-<!--	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
-	<!--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">-->
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	
-	
-		<!--ADD FONT AMESOME-->
-		<link rel="stylesheet" href="css/fontawesome-all.min.css">	
-	
-		
-</head>
-<body>
-
-	<div class="top_bar"> 
-
-		<div class="logo">
-			<!--LOGO-->
-			<img src="assets/images/backgrounds/logo.jpg" class="logos" alt="logo" width="200" height="95">
-			
-<!--			<a href="index.php">Discussion Board!</a>-->
-			
-		</div>
-
-		<nav>
-			<a href="adminHome.php">
-					<i class="fa fa-home fa-lg"></i></a>
-
-			<a href="includes/handlers/adminLogout.php">
-						<i class="fas fa-sign-out-alt"></i>
+<!--NAVBAR-->
+		<div style="height: 10px; background: #27aae1;"></div>
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<!--NAVBAR-->
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="Blog.php">
+						<!--SITE LOGO-->
+						<img style="margin-top: -16px;" src="assets/images/backgrounds/logo.jpg" width=200; height="52">
 					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="collapse">
+					<ul class="nav navbar-nav">
+						<!--			<li class="active"><a href="Blog.php" target="_blank">Admin</a></li>-->
+						<li><a href="#">Admin</a></li>
+					</ul>
+				</div>
+			</div>
 		</nav>
 
-	</div>
-
-
-	<div class="wrapper">
