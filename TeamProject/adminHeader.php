@@ -1,101 +1,59 @@
-<?php require_once("Includes/Sessions.php"); ?>
+<?php  
+require 'config/config.php';
 
-<?php require 'config/config.php';?>
 
+if (isset($_SESSION['adminId'])) {
+	$userLoggedIn = $_SESSION['adminId'];
+	$user_details_query = mysqli_query($con, "SELECT * FROM admin WHERE AdminNo='$userLoggedIn'");
+	$user = mysqli_fetch_array($user_details_query);
+}
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
+else {
+	header("Location: adminLogin.php");
+}
 
-		<!--INCLUDE LIBRATIES FOR STYLING BOOTSTRAP AND JQUERY-->
-		<title>Admin Dashboard</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<script src="js/jquery-3.2.1.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="css/adminstyles.css">
-		<style>
-			th{
-				color:black;
-				background-color: #ede9ed;
+?>
 
-			}
+<html>
+<head>
+	<title>Logos - Administration</title>
 
-		</style>
+	<!-- Javascript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-		<meta charset="UTF-8">
-		<title>Document</title>
-	</head>
-	<div style="height: 10px; background: #27aae1;"></div>
-	<nav class="navbar navbar-inverse" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<!--NAVBAR-->
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="Blog.php">
-					<!--SITE LOGO-->
-					<img style="margin-top: -16px;" src="assets/images/backgrounds/logo.jpg" width=200; height="52">
-				</a>
-			</div>
-			<div class="collapse navbar-collapse" id="collapse">
-				<ul class="nav navbar-nav">
-					<!--			<li class="active"><a href="Blog.php" target="_blank">Admin</a></li>-->
-					<li><a href="#">Admin</a></li>
-				</ul>
-			</div>
+	<!-- CSS -->
+<!--	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
+	<!--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">-->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	
+	
+		<!--ADD FONT AMESOME-->
+		<link rel="stylesheet" href="css/fontawesome-all.min.css">	
+	
+		
+</head>
+<body>
+
+	<div class="top_bar"> 
+
+		<div class="logo">
+			<!--LOGO-->
+			<img src="assets/images/backgrounds/logo.jpg" class="logos" alt="logo" width="200" height="95">
+			
+<!--			<a href="index.php">Discussion Board!</a>-->
+			
 		</div>
-	</nav>
-	<div class="Line" style="height: 10px; background: #27aae1;"></div>
-	<div class="container-fluid">
-		<div class="row">
 
-			<div class="col-sm-2">
-				<br><br>
-				<ul id="Side_Menu" class="nav nav-pills nav-stacked">
-					<li class="active">
-						<a href="adminHome.php">
-							<span class="glyphicon glyphicon-th"></span>
-							&nbsp;Dashboard</a></li>
-					<li><a href="Categories.php">
-						<span class="glyphicon glyphicon-tags"></span>
-						&nbsp;Categories</a></li>
-					<li><a href="manageAdmins.php">
-						<span class="glyphicon glyphicon-user"></span>
-						&nbsp;Manage Admins</a></li>
-					<li><a href="manageCourses.php">
-						<span class="glyphicon glyphicon-user"></span>
-						&nbsp;Manage Courses</a></li>
-					<li><a href="manageModules.php">
-						<span class="glyphicon glyphicon-user"></span>
-						&nbsp;Manage Modules</a></li>
-					<li><a href="Comments.php">
-						<span class="glyphicon glyphicon-comment"></span>
-						&nbsp;Comments
-						<?php
-						$ConnectingDB;
-						//							$QueryTotal="SELECT FROM member";
-						$QueryTotal="SELECT * FROM comment WHERE comment_status='OFF'";
-						$ExecuteTotal=mysqli_query($con,$QueryTotal);
-						$RowsTotal=mysqli_fetch_array($ExecuteTotal);
-						$Total=array_shift($RowsTotal);
+		<nav>
+			<a href="adminHome.php">
+					<i class="fa fa-home fa-lg"></i></a>
 
-						if($Total>0){
-						?>
-						<span class="label pull-right label-warning">
-							<?php echo $Total;?>
-						</span>
+			<a href="includes/handlers/adminLogout.php">
+						<i class="fas fa-sign-out-alt"></i>
+					</a>
+		</nav>
 
-						<?php } ?>
-						</a>	
+	</div>
 
-					<li><a href="Logout.php">
-						<span class="glyphicon glyphicon-log-out"></span>
-						&nbsp;Logout</a></li>	
 
-				</ul>
-			</div> <!-- Ending of Side area -->
-			<div class="col-sm-10"> <!--Main Area-->
+	<div class="wrapper">
