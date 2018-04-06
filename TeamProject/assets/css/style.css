@@ -13,40 +13,36 @@
 
 /*BODY BACKGROUND COLOR*/
 body {
-	background-color: #E6EAE8;
 	margin:0px;
 	padding:0px;
+	background-color: white !important;
 
 }
 
 /*TOP BAR NAVIVATION*/
 .topnav {
-	height: 60px;
 	width: 100%;
-	/*	background-color: #34495e;*/
-	background-color:#34495e;
-	/*		border-bottom: 0.25em solid #83D6FE;*/
-	/*	display: inline-flex;*/
+	background-color: black;
+/*	border-bottom: 0.25em solid #945460;*/
 	display: inline-block;
 	position: fixed;
 	z-index: 10;
-
-
+	 list-style-type: none;
 }
 
-/*TOP BAR NAVIVATION*/
+/*TOP BAR NAVIVATION
 .menu{
-	width: 100%;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	background-color: black;
-	overflow: hidden;
-
+width: 100%;
+list-style-type: none;
+margin: 0;
+padding: 0;
+background-color: black;
+overflow: hidden;
 }
 /*TOP BAR NAVIVATION*/
 .menu li{
 	float: right;
+	text-decoration: none;
 
 }
 /*TOP BAR NAVIVATION*/
@@ -62,6 +58,7 @@ body {
 .menu li:hover{
 	background-color: darkgreen;
 	height: 90px;
+	text-decoration: none;
 
 }
 
@@ -72,7 +69,6 @@ background: #75b570;
 height: 100%;
 }
 */
-
 
 /*TEXT SYTLING IN NAV BAR*/
 .logo a{
@@ -92,7 +88,9 @@ height: 100%;
 	position: relative;
 	padding: 0 10px;
 	width: 100%;
+	background-color: white;
 }
+
 
 /*STYLE CONTENT AREA*/
 
@@ -102,12 +100,26 @@ select.courseNo{
 
 }
 
-/*//CHANGE OVAL PROFILE PIC ATTRIBUTES*/
+/*PROFILE PIC*/
+#pic img{
+	margin-left: 65px;
+	z-index: -1;
+	border-radius: 5px;
+
+}
+/*USERNAME*/
+#username, p{
+	text-align: center;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+/*/SIDEBAR ATTRIBUTES*/
 .sidbar_left {
 	top: -10px;
-	width: 20%;
-	max-width: 200px;
-	min-width: 200px;
+	width: 35%;
+	max-width: 250px;
+	min-width: 250px;
 	height: 900px;
 	float: left;
 	position: relative;
@@ -117,17 +129,16 @@ select.courseNo{
 	margin-right: 20px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;	
-
 }
 
 /*INDEX MAIN CONTENT AREA*/
 .index_main_column {
 	/*	margin-top: 10px;*/
-/*	background-color: #d3f1b2;*/
-/*	background-color: #e8cfcf;*/
-	background-color: #dbdbd4;
+	/*	background-color: #d3f1b2;*/
+	background-color: white;
+	/*	background-color: #dbdbd4;*/
 	padding: 10px;
-	margin-left: 210px;
+	margin-left: 260px;
 	border: 1px solid #D3D3D3;
 	/*	border-radius: 5px;*/
 	box-shadow: 2px 2px 1px #D3D3D3;
@@ -137,8 +148,8 @@ select.courseNo{
 	z-index: -1;
 	border-radius: 5px;
 	/*	display: inline-block;*/
-
 }
+
 /*	VERTICAL TEXT*/
 .topics{
 	word-wrap: break-word;
@@ -153,13 +164,13 @@ select.courseNo{
 	margin:0;
 	line-height:100%;
 	font-size:2rem;
-	
+
 }
 
 #mapArea{
 	border-radius: 5px;
 	margin-right: 10px;
-	margin-left: 210px;
+	margin-left: 260px;
 	background-color: #dbdbd4;
 	width: 86%;
 }
@@ -168,7 +179,7 @@ select.courseNo{
 /*MAP MAIN CONTENT*/
 .map_main_column {
 	padding: 10px;
-	margin-left: 210px;
+	margin-left: 260px;
 	height: auto;
 	background-image: url("../images/backgrounds/water.jpg");
 	/*	min-width: 675px;*/
@@ -176,8 +187,6 @@ select.courseNo{
 	z-index: -1;
 	border-radius: 5px;
 }
-
-
 
 /*BUTTON FOR MAP*/
 #btnPath{
@@ -192,13 +201,25 @@ select.courseNo{
 	cursor: pointer;
 }
 
+#quotes,p{
+	margin-top: 15%;
+	text-align: center;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+/*
+#footerTwo{
+width: 110%;
+}
+*/
 /*FOOTER*/
 footer{
-	background-color: #131111;
-	width: 125%;
+	width: auto;
 	clear: both;
 	display: inline-block;
-	margin-left: -250px;
+	margin-left: -120px;
+	margin-right: -20px;
 	line-height:1.4em;
 	/*	color: lavender;*/
 	color: gold;
@@ -214,8 +235,8 @@ footer{
 *CHANGE VALUES HERE FOR THE WIDTH AND HEIGHT OF TILES*/
 
 #container {
-	top:30%;
-	height:30%;
+	top:40%;
+	height:5%;
 	width: 100%;
 	margin:auto;
 	position: absolute;
@@ -248,7 +269,7 @@ footer{
 	position:absolute;
 	top:0%;
 	left:66.67%;
-	background:#FFFF66;
+	background: magenta;
 	transition:all ease .35s;
 }
 #ml{
