@@ -1,0 +1,11 @@
+Hi lads i have upated some pages, i havent touched anyboy elses code. If you guys could use the attached 
+sql and  register with your student number and name on our webstite. This means in the amdmin page we will be 
+able to see who is registered and with there random picture. Its the exact same sql as you guys where 
+working no changes where made, the only only change is i deleted members with no random pictures, which were showing up in the admin page. So basically yea just execute this sql version and we will be all on the same boat cheers.
+
+I Have got rid of the icons for the side bar and used a slide in ainmation for our menu. And i used matthews 
+quote idea on the sidbar i like that idea. i have also used bootstrap to sharpen the appearence of tables.
+
+feel free to add your own content or ideas to any additional links you see on the cheers.
+
+see there too Andrew, how do we access your comments page?
