@@ -172,6 +172,11 @@ select.courseNo{
 /* The main content */
 
 /* The left sidebar */
+#openNav{
+	background-color: #35393e;
+	text-align: center;
+	color:  lavender;
+}
 
 .sidebar-left .sidebar-links {
 	margin: 20px auto;
@@ -184,7 +189,7 @@ select.courseNo{
 	padding: 20px 0;
 	background-color: #35393e;
 	text-align: center;
-	color:  #b3bcc5;
+	color:  lavender;
 	font-size: 20px;
 	font-weight: bold;
 	border-left-width: 2px;
