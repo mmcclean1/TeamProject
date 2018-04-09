@@ -1,7 +1,5 @@
 
 <!--JOHN LEE HEANEY-->
-
-
 <!--COULD CHANGE THE NAME OF THIS CLASS TO SIDE BAR-->
 <div class="sidbar_left">
 
@@ -53,11 +51,7 @@
 			echo $quotes[$random][0]."<br> - ".$quotes[$random][1];
 			?></font></p>
 	</div>
-
-	<!--COULD LIST HERE ALL OTHER TOPICS AND SELECT FROM SIDE PANEL RANDOM PICTURES IS WORKING -->
-	<!--NEED TO FIGURE OUT WHEN USER UPLOADS IMAGES FROM REG FORM HOW WE USE THOSE PICTURES-->
 	<div id="container">
-
 		<!DOCTYPE html>
 		<html>
 			<head>
@@ -70,39 +64,28 @@
 				</style>
 			</head>
 			<body>
-			
-				
-					<!--WITHOUT ICONS-->
+
+				<!--WITHOUT ICONS-->
 				<aside class="sidebar-left">
 					<div id="mySidenav" class="sidenav">
 						<!--CLOSE BUTTON-->
 						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 						<div class="sidebar-links">
 							<a class="link-blue" a href="meetings.php">Meetings</a>
-							<a class="link-red" href="#">Map</a>
-							<a class="link-yellow selected" href="#">Settings</a>
+							<a class="link-red" href="mapFind.php">Map</a>
+							<a class="link-yellow selected" href="settings.php">Settings</a>
 							<a class="link-green" href="#">Projects</a>
 						</div>
 					</div>
 				</aside>
-				
-			<div id="openNav">
-				<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
+
+				<script src="assets/js/sidebarHandler.js"></script>
+				<div id="openNav">
+					<!--OPEN NAVIGATION-->
+					<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
 				</div>
-					<!--JAVASCRIPT-->
-				<script>
-					function openNav() {
-						document.getElementById("mySidenav").style.width = "250px";
-					}
-
-					function closeNav() {
-						document.getElementById("mySidenav").style.width = "0";
-					}
-				</script>
-
 			</body>
 		</html>
-
 	</div>
 
 </div>
