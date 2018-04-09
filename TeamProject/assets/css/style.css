@@ -23,11 +23,11 @@ body {
 .topnav {
 	width: 100%;
 	background-color: black;
-/*	border-bottom: 0.25em solid #945460;*/
+	/*	border-bottom: 0.25em solid #945460;*/
 	display: inline-block;
 	position: fixed;
 	z-index: 10;
-	 list-style-type: none;
+	list-style-type: none;
 }
 
 /*TOP BAR NAVIVATION
@@ -87,7 +87,7 @@ height: 100%;
 	top: 100px;
 	position: relative;
 	padding: 0 10px;
-	width: 100%;
+	width: 98%;
 	background-color: white;
 }
 
@@ -144,7 +144,7 @@ select.courseNo{
 	box-shadow: 2px 2px 1px #D3D3D3;
 	height: auto;
 	height: 890px;
-	width: 86%;
+	width: 85%;
 	z-index: -1;
 	border-radius: 5px;
 	/*	display: inline-block;*/
@@ -167,14 +167,87 @@ select.courseNo{
 
 }
 
+
+/*BOOOTTSTRAPPP EXAMPLEEEEEE  SIDDEBBARRRR ****************************/
+/* The main content */
+
+/* The left sidebar */
+
+.sidebar-left .sidebar-links {
+	margin: 20px auto;
+}
+
+.sidebar-left .sidebar-links a {
+	display: block;
+	text-decoration: none;
+	margin: 0 auto 5px auto;
+	padding: 20px 0;
+	background-color: #35393e;
+	text-align: center;
+	color:  #b3bcc5;
+	font-size: 20px;
+	font-weight: bold;
+	border-left-width: 2px;
+	border-left-style: solid;
+	font-family: 'Bellota-LightItalic';
+}
+
+.sidebar-left .sidebar-links a i.fa {
+	display: block;
+	font-size: 35px;
+	margin-bottom: 5px;
+}
+
+
+/* Link Colors AND FONT ICONS */
+
+.sidebar-left .sidebar-links a.link-blue {
+	border-color: #487db2;
+}
+
+
+.sidebar-left .sidebar-links a.link-blue i.fa {
+	color: #487db2;
+}
+
+.sidebar-left .sidebar-links a.link-red {
+	border-color: #da4545;
+}
+.sidebar-left .sidebar-links a.link-red i.fa {
+	color: #da4545;
+}
+
+.sidebar-left .sidebar-links a.link-yellow {
+	border-color: #d0d237;
+}
+.sidebar-left .sidebar-links a.link-yellow i.fa {
+	color: #d0d237;
+}
+
+.sidebar-left .sidebar-links a.link-green {
+	border-color: #86be2e;
+}
+.sidebar-left .sidebar-links a.link-green i.fa {
+	color: #86be2e;
+}
+
+
+/*	Removing margins and paddings from the body, so that
+the sidebar takes the full height of the page */
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+
 #mapArea{
 	border-radius: 5px;
 	margin-right: 10px;
 	margin-left: 260px;
 	background-color: #dbdbd4;
-	width: 86%;
+	width: 85%;
 }
-
 
 /*MAP MAIN CONTENT*/
 .map_main_column {
@@ -183,7 +256,7 @@ select.courseNo{
 	height: auto;
 	background-image: url("../images/backgrounds/water.jpg");
 	/*	min-width: 675px;*/
-	width: 86%;
+	width: 85%;
 	z-index: -1;
 	border-radius: 5px;
 }
@@ -201,11 +274,52 @@ select.courseNo{
 	cursor: pointer;
 }
 
+/*QUOTES SIDEBAR*/
 #quotes,p{
 	margin-top: 15%;
 	text-align: center;
 	font-size: 14px;
 	text-decoration: none;
+}
+
+
+/*SETTINGS PAGE*/
+#settings_input {
+	align-content:  flex-start;
+	border: 1px solid #ccc;
+	height: 20px;
+	padding: 4px 6px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+/*SETTINGS PAGE*/
+.settings_submit {
+	border: none;
+	padding: 7px 12px;
+	border-radius: 5px;
+	color: #fff;
+}
+
+.danger {
+	background-color: #e74c3c;
+}
+.warning {
+	background-color: #f0ad4e;
+}
+.default {
+	background-color: #bdc3c7;
+}
+.success {
+	background-color: #2ecc71;
+}
+.info {
+	background-color: #3498db;
+}
+.deep_blue {
+	background-color: #0043f0;
 }
 
 /*
@@ -243,153 +357,6 @@ footer{
 	background:#687F8B;
 
 }
-#tl{
-	height:33.34%;
-	width:33.34%;
-	position:absolute;
-	top:0%;
-	left:0%;
-	background:#FF5050;
-	box-shadow:5px 7px 0px 0px #662020;
-
-}
-#tc{
-	height:33.34%;
-	width:33.34%;
-	position:absolute;
-	top:0%;
-	left:33.34%;
-	box-shadow:5px 7px 0px 0px #663D29;
-	background:#FF9966;
-	transition:all ease .35s;
-}
-#tr{
-	height:33.34%;
-	width:33.34%;
-	position:absolute;
-	top:0%;
-	left:66.67%;
-	background: magenta;
-	transition:all ease .35s;
-}
-#ml{
-	height:33.34%;
-	width:33.34%;
-	position:absolute;  
-	top:33.34%;
-	left:0%;
-	background:#99FF66;
-	box-shadow:5px 7px 0px 0px #3D6629;
-	transition:all ease .35s;
-}
-#mc{
-	height:33.34%;
-	width:33.34%;
-	position:absolute;  
-	top:33.34%;
-	left:33.34%;
-	background:#00FF99;
-	box-shadow:5px 7px 0px 0px #00663D;
-	transition:all ease .35s;
-}
-#mr{
-	height:33.34%;
-	width:33.34%;
-	position:absolute;  
-	top:33.34%;
-	left:66.67%;
-	background:#0099FF;
-	transition:all ease .35s;
-}
-#bl{
-	height:33.34%;
-	width:33.34%;
-	position:absolute;  
-	top:66.67%;
-	left:0%;
-	background:#6666FF;
-	transition:all ease .35s;
-}
-#bc{
-	height:33.34%;
-	width:33.34%;
-	position:absolute;  
-	top:66.67%;
-	left:33.34%;
-	background:#9966FF;
-	transition:all ease .35s;
-}
-#br{
-	height:33.34%;
-	width:33.34%;
-	position:absolute;  
-	top:66.67%;
-	left:66.67%;
-	background:#9900FF;
-	transition:all ease .35s;
-}
-
-.topics {
-	font-family: 'Open Sans',Arial,Helvetica,sans-serif;
-	color:#FFFFFF;
-	line-height: 55px;
-	font-weight:bold;
-	text-align:center;
-	position:relative;
-	font-size:20px;
-	top:40%;
-	margin:0px;
-}
-#tl:hover {
-	top:-1.56%;
-	left:-1.11%;
-	transition:all ease .35s;
-}
-#tc:hover {
-	top:-1.56%;
-	left:32.22%;
-	transition:all ease .35s;
-}
-#tr:hover {
-	top:-1.56%;
-	left:65.56%;
-	box-shadow:5px 7px 0px 0px #666629;
-	transition:all ease .35s;
-}
-#ml:hover {
-	top:31.78%;
-	left:-1.11%;
-	transition:all ease .35s;
-}
-#mc:hover {
-	top:31.78%;
-	left:32.22%;
-	transition:all ease .35s;
-}
-#mr:hover {
-	top:31.78%;
-	left:65.56%;
-	box-shadow:5px 7px 0px 0px #003D66;
-	transition:all ease .35s
-}
-#bl:hover {
-	top:65.11%;
-	left:-1.11%;
-	box-shadow:5px 7px 0px 0px #292966;
-	transition:all ease .35s;
-}
-#bc:hover {
-	top:65.11%;
-	left:32.22%;
-	box-shadow:5px 7px 0px 0px #3D2966;
-	transition:all ease .35s;
-}
-#br:hover {
-	top:65.11%;
-	left:65.56%;
-	box-shadow:5px 7px 0px 0px #3D0066;
-	transition:all ease .35s;
-}
 
 /*CENTER ICONS*/
 .center{
@@ -425,7 +392,120 @@ footer{
 }
 
 
-/*SIDEBAR PROFILE PIC*/
+/*SIDEBAR ICONS AND STYLING*/
+
+/* Making the sidebar responsive */
+@media (max-width: 900px) {
+
+	.main-content{
+		max-width: none;
+		padding: 40px 20px;
+		margin: 0 0 40px;
+	}
+
+	.sidebar-left {
+		width: auto;
+		height: auto;
+		position: inherit;
+		padding: 20px 0 0;
+	}
+
+	.sidebar-left .sidebar-links {
+		text-align: center;
+		margin: 20px auto 0;
+	}
+
+	.sidebar-left .sidebar-links a {
+		display: inline-block;
+		width: 100px;
+		margin: 0;
+		padding: 14px 0;
+		border-left: none;
+		border-top-width: 2px;
+		border-top-style: solid;
+	}
+
+}
+
+/* Mobile phone layout */
+
+@media (max-width: 450px) {
+
+	.sidebar-left {
+		padding: 20px 0;
+	}
+
+	.sidebar-left .sidebar-links {
+		text-align: center;
+		margin: 20px auto 0;
+	}
+
+	.sidebar-left .sidebar-links a {
+		display: block;
+		max-width: 240px;
+		width: auto;
+		vertical-align: middle;
+		text-align: left;
+		margin: 0 auto 5px;
+		padding: 10px 25px;
+		border-top: none;
+		border-left-width: 2px;
+		border-left-style: solid;
+	}
+
+	.sidebar-left .sidebar-links a i.fa {
+		display: inline-block;
+		font-size: 20px;
+		width: 20px;
+		margin: 0 20px 0 0;
+		vertical-align: middle;
+	}
+
+}
+
+/*SIDEBAR STYLE AND ANIMATION*/
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 10%;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+	text-decoration: none !important;
+
+}
+
+.sidenav a:hover {
+	color: green;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 2%;
+	right: 25px;
+	font-size: 46px;
+	margin-left: 50px;
+	/*color: red;*/
+}
+
+/*SIDE BAR STYLE AND ANIMATION*/
+@media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+}
 
 
 
@@ -435,14 +515,13 @@ footer{
 
 /*PUT THE NAME OF YOUR PAGE HERE WITH STYLE LABELLING*/
 
-
-
-
-
-
-
 /*RESPONSIVE CODE GOES HERE********************************************************************/
 /*JOHN LEE HEANEY*/
+
+/*FONTAWESON ICONS*/
+/* Making the sidebar responsive */
+
+
 /*HEADER MENU AND ICON*/
 @media screen and (max-width: 600px) {
 	.menu li {
