@@ -206,6 +206,7 @@ require 'includes/form_handlers/login_handler.php';
 =======
 							<select name ='courseNo'>	
 								<option >All</option>
+<<<<<<< HEAD
 >>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 
 							<b class="findCourse">Find Course:</b>  <select name ='courseNo'>	
@@ -215,6 +216,8 @@ require 'includes/form_handlers/login_handler.php';
 							//RUN QUERY TO GET COURSE NUMBER 
 							$result = mysqli_query($con,"SELECT * from course");
 							while($row = mysqli_fetch_array($result))   {
+=======
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 
 								echo "<option value=".$row["CourseNo"].">".$row["CourseName"]."</option>";
 

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php include 'session.php';?>
 <?php include 'adminHeader.php';?>
 <?php include 'adminSidebar.php';?>
@@ -97,6 +98,12 @@
 
 <?php require 'config/config.php';?>
 
+=======
+<?php require_once("Includes/Sessions.php"); ?>
+
+<?php require 'config/config.php';?>
+
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 
 <!DOCTYPE html>
 <html lang="en">
@@ -267,6 +274,84 @@
 		<?php
 		echo "<p>Copyright &copy; " . date("Y") . " Logos.com</p>";
 
+<<<<<<< HEAD
+=======
+							<td><?php echo $SrNo; ?></td>
+							<td style="color: #5e5eff;"><?php
+							if(strlen($Title)>19){$Title=substr($Title,0,19).'..';}
+							echo $Title;
+								?></td>
+							<td><?php
+							if(strlen($DateTime)>12){$DateTime=substr($DateTime,0,12);}
+							echo $DateTime;
+								?></td>
+							<td><?php
+							if(strlen($Admin)>9){$Admin=substr($Admin,0,9);}
+							echo $Admin; ?></td>
+							<td><?php
+							if(strlen($Category)>10){$Category=substr($Category,0,10);}
+							echo $Category;
+								?></td>
+							<td><img src="Upload/<?php echo $Image; ?>" width="170px"; height="50px"></td>
+							<td>
+								<?php
+							$ConnectingDB;
+							//$QueryApproved="SELECT * FROM posts WHERE post_id='$Id' AND status='ON'";
+							$QueryApproved="SELECT COUNT(*) FROM comment WHERE comment_id='$Id' AND comment_status='ON'";
+							$ExecuteApproved=mysqli_query($con, $QueryApproved);
+							$RowsApproved=mysqli_fetch_array($ExecuteApproved);
+							$TotalApproved=array_shift($RowsApproved);
+							if($TotalApproved>0){
+								?>
+								<span class="label pull-right label-success">
+									<?php echo $TotalApproved;?>
+								</span>
+
+								<?php } ?>
+
+								<?php
+							$ConnectingDB;
+							$QueryUnApproved="SELECT COUNT(*) FROM comment WHERE comment_id='$Id' AND comment_status='OFF'";
+							$ExecuteUnApproved=mysqli_query($con,$QueryUnApproved);
+							$RowsUnApproved=mysqli_fetch_array($ExecuteUnApproved);
+							$TotalUnApproved=array_shift($RowsUnApproved);
+							if($TotalUnApproved>0){
+								?>
+								<span class="label  label-danger">
+									<?php echo $TotalUnApproved;?>
+								</span>
+
+								<?php } ?>
+
+
+							</td>
+							<td>
+								<a href="EditPost.php?Edit=<?php echo $Id; ?>">
+									<span class="btn btn-warning">Edit</span>
+								</a>
+								<a href="DeletePost.php?Delete=<?php echo $Id; ?>">
+									<span class="btn btn-danger">Delete</span>
+								</a>
+							</td>
+							<td>
+								<!--EXTRA COLUM IF WANT TO ADD BUTTONS TAKE YOU BACAK TO WEBSITE PAGE TO NAVIGATE-->
+								<a href="index.php?id=<?php echo $Id; ?>" target="_blank">
+									<span class="btn btn-primary"> Live Preview</span>
+								</a>
+							</td>
+						</tr>
+						<?php } ?>
+					</table>
+				</div>
+			</div> <!-- Ending of Main Area-->
+		</div> <!-- Ending of Row-->
+	</div> <!-- Ending of Container-->
+	<div id="Footer">
+
+		<?php
+		echo "<p>Copyright &copy; " . date("Y") . " Logos.com</p>";
+
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 		?>
 	</div>
 	<div style="height: 10px; background: #27AAE1;"></div> 
@@ -279,6 +364,9 @@
 	<body>
 
 
+<<<<<<< HEAD
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
+=======
 >>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 	</body>
 </html>

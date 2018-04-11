@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php include 'session.php';?>
 <?php include 'adminHeader.php';?>
 <?php include 'adminSidebar.php';?>
+=======
+<?php require_once("Includes/Sessions.php"); ?>
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 =======
 <?php require_once("Includes/Sessions.php"); ?>
 >>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
@@ -21,6 +25,7 @@
 		<script type="text/javascript" src='assets/js/manageModules.js'></script>
 		<link rel="stylesheet" href="css/adminstyles.css">
 		<style>
+<<<<<<< HEAD
 <<<<<<< HEAD
 				<style>
 			.wrapper {
@@ -56,10 +61,15 @@
 				background-color: grey;
 				color: white; 
 =======
+=======
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 			th{
 				color:black;
 				background-color: #ede9ed;
 
+<<<<<<< HEAD
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
+=======
 >>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 			}
 
@@ -67,6 +77,7 @@
 
 		<meta charset="UTF-8">
 	</head>
+<<<<<<< HEAD
 <<<<<<< HEAD
 	
 	<body>
@@ -85,6 +96,8 @@
 						//Connect to database
 						$connection = mysqli_connect("localhost:3307","root","");
 =======
+=======
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 	<div style="height: 10px; background: #27aae1;"></div>
 	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container">
@@ -182,6 +195,9 @@
 					<?php
 						//Connect to database
 						$connection = mysqli_connect("localhost","root","");
+<<<<<<< HEAD
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
+=======
 >>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 						mysqli_select_db($connection,"studentsupport");
 
@@ -191,6 +207,7 @@
 						//Print modules to table
 						while($row=mysqli_fetch_array($moduleResult))
 						{
+<<<<<<< HEAD
 <<<<<<< HEAD
 							print('<tr><td>'.$row['ModuleNo'].'</td><td>'.$row['ModuleName'].'</td><td>'.$row['Lecturer'].'</td>');
 							print('<td>'.$row['Year'].'</td><td>'.$row['Semester'].'</td><td><a onmouseover=displayInfo(this) value='.$row['ModuleNo'].'>Info</a></td></tr>');
@@ -211,6 +228,8 @@
 
 <?php include 'adminFooter.php';?>
 =======
+=======
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 							print('<tr><td>'.$row['ModuleNo'].'</td><td><a href=moduleEdit.php?ModuleNo='.$row['ModuleNo'].'>'.$row['ModuleName'].'</a></td><td>'.$row['Lecturer'].'</td>');
 							print('<td>'.$row['Year'].'</td><td>'.$row['Semester'].'</td><td>');
 							print('<a href=deleteModule.php?ModuleNo='.$row['ModuleNo'].'>Delete</a></td>');
@@ -231,6 +250,9 @@
 	</div>
 	<div style="height: 10px; background: #27AAE1;"></div> 
 	<body>
+<<<<<<< HEAD
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
+=======
 >>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 
 	</body>

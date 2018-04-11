@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php include 'session.php';?>
 <?php include 'adminHeader.php';?>
 <?php include 'adminSidebar.php';?>
+=======
+<?php require_once("Includes/Sessions.php"); ?>
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 =======
 <?php require_once("Includes/Sessions.php"); ?>
 >>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
@@ -22,6 +26,7 @@
 			th{
 				color:black;
 				background-color: #ede9ed;
+<<<<<<< HEAD
 <<<<<<< HEAD
 				border: 1px solid black;
 
@@ -121,6 +126,8 @@
 
 		<?php include 'adminFooter.php';?>
 =======
+=======
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 
 			}
 
@@ -241,6 +248,9 @@
 	<body>
 
 
+<<<<<<< HEAD
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
+=======
 >>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 	</body>
 </html>
@@ -248,6 +258,10 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 =======
 
 >>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
