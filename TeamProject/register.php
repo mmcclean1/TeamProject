@@ -142,10 +142,71 @@ require 'includes/form_handlers/login_handler.php';
 						<!--					<input type="file" name="profile_pic"/>-->
 						<br>
 
+<<<<<<< HEAD
+=======
+<!--		REGISTER FORM-->
+			<div id="second">
+			<!--NEED END BIT OF CODE TO UPLOAD PIC-->
+				<form action="register.php" method="POST" enctype="multipart/form-data">
+					<input type="text" name="reg_fname" placeholder="First Name" value="<?php 
+					if(isset($_SESSION['reg_fname'])) {
+						echo $_SESSION['reg_fname'];
+					} 
+					?>" required>
+					<br>
+					<?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) echo "Your first name must be between 2 and 25 characters<br>"; ?>
+					
+					<input type="text" name="reg_lname" placeholder="Last Name" value="<?php 
+					if(isset($_SESSION['reg_lname'])) {
+						echo $_SESSION['reg_lname'];
+					} 
+					?>" required>
+					<br>
+					<?php if(in_array("Your last name must be between 2 and 25 characters<br>", $error_array)) echo "Your last name must be between 2 and 25 characters<br>"; ?>
+
+					<input type="email" name="reg_email" placeholder="Email" value="<?php 
+					if(isset($_SESSION['reg_email'])) {
+						echo $_SESSION['reg_email'];
+					} 
+					?>" required>
+					<br>
+
+					<input type="email" name="reg_email2" placeholder="Confirm Email" value="<?php 
+					if(isset($_SESSION['reg_email2'])) {
+						echo $_SESSION['reg_email2'];
+					} 
+					?>" required>
+					<br>
+					<?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
+					else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>";
+					else if(in_array("Emails don't match<br>", $error_array)) echo "Emails don't match<br>"; ?>
+
+
+					<input type="password" name="reg_password" placeholder="Password" required>
+					<br>
+					<input type="password" name="reg_password2" placeholder="Confirm Password" required>
+					<br>
+					<?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
+					else if(in_array("Your password can only contain english characters or numbers<br>", $error_array)) echo "Your password can only contain english characters or numbers<br>";
+					else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) echo "Your password must be betwen 5 and 30 characters<br>"; ?>
+
+						<div class="image">
+							<!--PROFILE IMAGE-->
+							<b class="imageTwo">Image:</b>
+							<input type="file" name="profile_pic"/></div>
+<!--					<input type="file" name="profile_pic"/>-->
+					<br>
+					
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 						<!--SELECT COURSE FROM DROPDOWN-->
 
 
 						<div class="course">
+<<<<<<< HEAD
+=======
+							<select name ='courseNo'>	
+								<option >All</option>
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 
 							<b class="findCourse">Find Course:</b>  <select name ='courseNo'>	
 							<option >All</option>
@@ -157,9 +218,15 @@ require 'includes/form_handlers/login_handler.php';
 
 								echo "<option value=".$row["CourseNo"].">".$row["CourseName"]."</option>";
 
+<<<<<<< HEAD
 							}
 
 							?>
+=======
+								}
+
+								?>
+>>>>>>> parent of 3c3c1e2... Merge pull request #12 from mmcclean1/30/03/2018
 
 							</select><br><br>
 						</div>
