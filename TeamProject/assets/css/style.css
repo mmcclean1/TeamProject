@@ -1,0 +1,457 @@
+
+/*JOHN LEE HEANEY STYLE CODE FROM LINES 1-403*/
+
+/*STYLING FONTS FOR NAV BAR HEADING*/
+@font-face {
+	font-family: 'Bellota-LightItalic';
+	src: url('../fonts/Bellota-LightItalic.otf');
+}
+@font-face {
+	font-family: 'Bellota-BoldItalic';
+	src: url('../fonts/Bellota-BoldItalic.otf');
+}
+
+/*BODY BACKGROUND COLOR*/
+body {
+	background-color: #E6EAE8;
+	margin:0px;
+	padding:0px;
+
+}
+
+/*TOP BAR NAVIVATION*/
+.topnav {
+	height: 60px;
+	width: 100%;
+	/*	background-color: #34495e;*/
+	background-color:#34495e;
+	/*		border-bottom: 0.25em solid #83D6FE;*/
+	/*	display: inline-flex;*/
+	display: inline-block;
+	position: fixed;
+	z-index: 10;
+
+
+}
+
+/*TOP BAR NAVIVATION*/
+.menu{
+	width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: black;
+	overflow: hidden;
+
+}
+/*TOP BAR NAVIVATION*/
+.menu li{
+	float: right;
+
+}
+/*TOP BAR NAVIVATION*/
+.menu li a{
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 8px 8px;
+	text-decoration: none;  
+
+}
+/*TOP BAR NAVIVATION*/
+.menu li:hover{
+	background-color: darkgreen;
+	height: 90px;
+
+}
+
+/*KEEPTS HOME BUTTON HIGHLIGHTED*/
+/*
+.active{
+background: #75b570;
+height: 100%;
+}
+*/
+
+
+/*TEXT SYTLING IN NAV BAR*/
+.logo a{
+	font-family: 'Bellota-BoldItalic', sans-serif;
+	margin-left: 10px;
+	font-size: 25;
+	position: relative;
+	top: 9px;
+	text-shadow: #73B6E2 0.5px 0.5px 0px;
+	color: lavender;
+}
+
+/*STYLE THE WRAPPER OF PAGE*/
+.wrapper {
+	margin: 0 auto;
+	top: 100px;
+	position: relative;
+	padding: 0 10px;
+	width: 100%;
+}
+
+/*STYLE CONTENT AREA*/
+
+/*SELECT COURSE STYLING*/
+select.courseNo{
+	text-align: right;
+
+}
+
+/*//CHANGE OVAL PROFILE PIC ATTRIBUTES*/
+.sidbar_left {
+	top: -10px;
+	width: 20%;
+	max-width: 200px;
+	min-width: 200px;
+	height: 900px;
+	float: left;
+	position: relative;
+	background-color: #111d3e;
+	/*	border-right: 10px solid #83D6FE;*/
+	/*	color: #CBEAF8;*/
+	margin-right: 20px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;	
+
+}
+
+/*INDEX MAIN CONTENT AREA*/
+.index_main_column {
+	/*	margin-top: 10px;*/
+/*	background-color: #d3f1b2;*/
+/*	background-color: #e8cfcf;*/
+	background-color: #dbdbd4;
+	padding: 10px;
+	margin-left: 210px;
+	border: 1px solid #D3D3D3;
+	/*	border-radius: 5px;*/
+	box-shadow: 2px 2px 1px #D3D3D3;
+	height: auto;
+	height: 890px;
+	width: 86%;
+	z-index: -1;
+	border-radius: 5px;
+	/*	display: inline-block;*/
+
+}
+/*	VERTICAL TEXT*/
+.topics{
+	word-wrap: break-word;
+	width:0.1em;
+	cursor: vertical-text;
+	float:left;
+	shape-outside:inset(0.1em);
+	font-size: 10px;
+	font-family: monospace;
+	text-transform:uppercase;
+	padding:0;
+	margin:0;
+	line-height:100%;
+	font-size:2rem;
+	
+}
+
+#mapArea{
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-left: 210px;
+	background-color: #dbdbd4;
+	width: 86%;
+}
+
+
+/*MAP MAIN CONTENT*/
+.map_main_column {
+	padding: 10px;
+	margin-left: 210px;
+	height: auto;
+	background-image: url("../images/backgrounds/water.jpg");
+	/*	min-width: 675px;*/
+	width: 86%;
+	z-index: -1;
+	border-radius: 5px;
+}
+
+
+
+/*BUTTON FOR MAP*/
+#btnPath{
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+/*FOOTER*/
+footer{
+	background-color: #131111;
+	width: 125%;
+	clear: both;
+	display: inline-block;
+	margin-left: -250px;
+	line-height:1.4em;
+	/*	color: lavender;*/
+	color: gold;
+	/*	float: left;*/
+	text-align: center;
+	font-size: 20px;
+	padding: 3px;  
+	/*	border-radius: 5px;*/
+}
+
+/**NOTES:::<p style="clear:both"><br>Remember to clear floats after, or else will this p element also float next to the buttons.</p>**/
+/*****************************SIDE PANEL ICONS**************************************************
+*CHANGE VALUES HERE FOR THE WIDTH AND HEIGHT OF TILES*/
+
+#container {
+	top:30%;
+	height:30%;
+	width: 100%;
+	margin:auto;
+	position: absolute;
+	background:#687F8B;
+
+}
+#tl{
+	height:33.34%;
+	width:33.34%;
+	position:absolute;
+	top:0%;
+	left:0%;
+	background:#FF5050;
+	box-shadow:5px 7px 0px 0px #662020;
+
+}
+#tc{
+	height:33.34%;
+	width:33.34%;
+	position:absolute;
+	top:0%;
+	left:33.34%;
+	box-shadow:5px 7px 0px 0px #663D29;
+	background:#FF9966;
+	transition:all ease .35s;
+}
+#tr{
+	height:33.34%;
+	width:33.34%;
+	position:absolute;
+	top:0%;
+	left:66.67%;
+	background:#FFFF66;
+	transition:all ease .35s;
+}
+#ml{
+	height:33.34%;
+	width:33.34%;
+	position:absolute;  
+	top:33.34%;
+	left:0%;
+	background:#99FF66;
+	box-shadow:5px 7px 0px 0px #3D6629;
+	transition:all ease .35s;
+}
+#mc{
+	height:33.34%;
+	width:33.34%;
+	position:absolute;  
+	top:33.34%;
+	left:33.34%;
+	background:#00FF99;
+	box-shadow:5px 7px 0px 0px #00663D;
+	transition:all ease .35s;
+}
+#mr{
+	height:33.34%;
+	width:33.34%;
+	position:absolute;  
+	top:33.34%;
+	left:66.67%;
+	background:#0099FF;
+	transition:all ease .35s;
+}
+#bl{
+	height:33.34%;
+	width:33.34%;
+	position:absolute;  
+	top:66.67%;
+	left:0%;
+	background:#6666FF;
+	transition:all ease .35s;
+}
+#bc{
+	height:33.34%;
+	width:33.34%;
+	position:absolute;  
+	top:66.67%;
+	left:33.34%;
+	background:#9966FF;
+	transition:all ease .35s;
+}
+#br{
+	height:33.34%;
+	width:33.34%;
+	position:absolute;  
+	top:66.67%;
+	left:66.67%;
+	background:#9900FF;
+	transition:all ease .35s;
+}
+
+.topics {
+	font-family: 'Open Sans',Arial,Helvetica,sans-serif;
+	color:#FFFFFF;
+	line-height: 55px;
+	font-weight:bold;
+	text-align:center;
+	position:relative;
+	font-size:20px;
+	top:40%;
+	margin:0px;
+}
+#tl:hover {
+	top:-1.56%;
+	left:-1.11%;
+	transition:all ease .35s;
+}
+#tc:hover {
+	top:-1.56%;
+	left:32.22%;
+	transition:all ease .35s;
+}
+#tr:hover {
+	top:-1.56%;
+	left:65.56%;
+	box-shadow:5px 7px 0px 0px #666629;
+	transition:all ease .35s;
+}
+#ml:hover {
+	top:31.78%;
+	left:-1.11%;
+	transition:all ease .35s;
+}
+#mc:hover {
+	top:31.78%;
+	left:32.22%;
+	transition:all ease .35s;
+}
+#mr:hover {
+	top:31.78%;
+	left:65.56%;
+	box-shadow:5px 7px 0px 0px #003D66;
+	transition:all ease .35s
+}
+#bl:hover {
+	top:65.11%;
+	left:-1.11%;
+	box-shadow:5px 7px 0px 0px #292966;
+	transition:all ease .35s;
+}
+#bc:hover {
+	top:65.11%;
+	left:32.22%;
+	box-shadow:5px 7px 0px 0px #3D2966;
+	transition:all ease .35s;
+}
+#br:hover {
+	top:65.11%;
+	left:65.56%;
+	box-shadow:5px 7px 0px 0px #3D0066;
+	transition:all ease .35s;
+}
+
+/*CENTER ICONS*/
+.center{
+	text-align:center;
+	padding-top: 30px;
+	top:31.78%;
+	left:65.56%;
+}
+
+
+/*BUTTON FOR MAP*/
+#button {
+	padding: 5px 10px;
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	color: #fff;
+	background-color: #4CAF50;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 5px #999;
+}
+
+/*BUTTON FOR MAP*/
+#button:hover {background-color: #3e8e41}
+
+/*BUTTON FOR MAP*/
+#button:active {
+	background-color: #3e8e41;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+
+/*SIDEBAR PROFILE PIC*/
+
+
+
+
+
+
+
+/*PUT THE NAME OF YOUR PAGE HERE WITH STYLE LABELLING*/
+
+
+
+
+
+
+
+/*RESPONSIVE CODE GOES HERE********************************************************************/
+/*JOHN LEE HEANEY*/
+/*HEADER MENU AND ICON*/
+@media screen and (max-width: 600px) {
+	.menu li {
+		float: none;
+	}
+}
+
+/*ADJUST SETTINGS HERE FOR THE RESPONSIVENESS OF CLASSES AND IDS*/
+@media only screen and (max-width: 1024px){
+	body{margin:0;}
+	#wrapper{width: auto;}
+	#content{margin-left:0; width:auto;}
+	#leftnav {float:none; width:auto;}
+	#leftnav li{display:inline-block; padding:0.5em;}
+	#leftnav ul{text-align:center;}
+	#leftnav a{border-style:none;}
+	#content p{font-size:90%;}
+	#rightcol{float:none; background-color:#ffffff; width:auto;}
+}
+
+/*ADJUST SETTINGS HERE FOR THE RESPONSIVENESS OF CLASSES AND IDS*/
+/* for 700px or less */
+@media only screen and (max-width: 768px) {
+	table{font-size:90%;}
+	table{padding:0;}
+	#leftnav li{display:block;}
+	#leftnav a{display:block; padding:0.5em; border-bottom: 2px ridge #000000;}
+	#rightcol{width:auto;}
+}
+
+
+}
+
