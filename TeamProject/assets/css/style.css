@@ -46,9 +46,12 @@ overflow: hidden;
 
 }
 /*TOP BAR NAVIVATION*/
+
+
+
 .menu li a{
 	display: block;
-	color: white;
+	color:  lavenderblush;
 	text-align: center;
 	padding: 8px 8px;
 	text-decoration: none;  
@@ -74,11 +77,13 @@ height: 100%;
 .logo a{
 	font-family: 'Bellota-BoldItalic', sans-serif;
 	margin-left: 10px;
-	font-size: 25;
+	font-size: 30px;
 	position: relative;
 	top: 9px;
+	/*
 	text-shadow: #73B6E2 0.5px 0.5px 0px;
 	color: lavender;
+	*/
 }
 
 /*STYLE THE WRAPPER OF PAGE*/
@@ -94,20 +99,37 @@ height: 100%;
 /*GALLERY STYLING
 */
 #color1{
-	width: auto;
 	height:auto;
-	background-color: skyblue;
+	background-color: #c39ed2;
+	/*	background-color: mediumslateblue;*/
+	/*	background-color: skyblue;*/
+	margin-left: -11px;
+	margin-right: -12px;
 	color: black;
-	
+
+}
+
+#color2{
+
+
+	height:auto;
+	background-color: #c39ed2;
+	/*	background-color: mediumslateblue;*/
+	/*	background-color: skyblue;*/
+	margin-left: -11px;
+	margin-right: -12px;
+
+	color: black;
+
 }
 
 #color{
-	width: 100%;	
+	width: 112%;	
 }
 
 .paragraph{
 	width: auto;
-	margin-left: 300px;
+	margin-left: 150px;
 	margin-right: 300px;
 	font-weight: 900;
 	padding: 20px;
@@ -116,29 +138,39 @@ height: 100%;
 }
 
 #team img{
-Width: 100%;
-height: auto;
-	
+	Width: 100%;
+	height: auto;
+
 }
+
+/*CREATE STYLE INLINE STYLE TAGS TO TEST CSS*/
+#galleryCon{
+	display:inline-block;
+	position: absolute;		
+	left:270px;		 
+	bottom:330px;
+}
+
 #gallery {
 	position: absolute;
 	clear: both;
-	
+
+
 }
 #gallery ul {
 	margin-left: auto;
 	margin-right: auto;
 	list-style-type: none;
 	width: 500px;
-	
+
 }
 #gallery li {
 	display: inline;
 	float: left;
 	padding: 10px;
 	overflow: hidden;
-	
-	
+
+
 }
 #gallery img {
 	border-style: none;
@@ -158,7 +190,6 @@ height: auto;
 	top: 10px;
 	left: 850px;
 	text-align: center;
-	
 }
 
 /*CONTACT INFORMATIONS*/
@@ -168,55 +199,10 @@ height: auto;
 	font-size: 14px;
 	width: 400px;
 	font-weight: bolder;
-	 text-align: justify;
-	
-}
-
-@media only screen and (max-width: 1024px) {
-body { margin: 0; } 
-
-#content {
-	width: auto;
-	padding: 5px;
-}
-#container {width: auto; margin: 0;}
-
-#color{
-	width: 100%;
-	height:auto;
-	
-}
-
-.paragraph{
-	text-align: left;
-	width: 100%;
-	height:auto;
-	margin: 0;
-	padding: 0;
-	
-}
-
-.left {
-	
-	float: none;
-	width: 100%;	
-}
-
-
-#gallery{
-	display: inline;
-	height: auto;
-	width: auto;
-	
-}
-.team{
-	width: 100%;
-	height:auto;
-	
-}
-
+	text-align: justify;
 
 }
+
 #container #content #contact p {
 	text-align: left;
 }
@@ -247,29 +233,49 @@ select.courseNo{
 	text-decoration: none;
 }
 
+/*QUOTES SIDEBAR*/
+#quotes,p{
+	margin-top: 60%;
+	text-align: center;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+
+/* The left sidebar */
+#openNav{
+
+	background-color: #35393e;
+	text-align: center;
+	color:  lavenderblush;
+}
+
 /*/SIDEBAR ATTRIBUTES*/
 .sidbar_left {
 	top: -10px;
 	width: 35%;
 	max-width: 250px;
 	min-width: 250px;
-	min-height: 1200px;
-	
 	float: left;
-	position: relative;
 	background-color: #111d3e;
-	/*	border-right: 10px solid #83D6FE;*/
-	/*	color: #CBEAF8;*/
 	margin-right: 20px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;	
+	height: 100%;
+	position: fixed;
+	z-index: 1;
+	top: 10%;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	padding-top: 60px;
 }
 
 /*INDEX MAIN CONTENT AREA*/
 .index_main_column {
 	/*	margin-top: 10px;*/
 	/*	background-color: #d3f1b2;*
-	
+
 	background-color: white;
 	/*	background-color: #dbdbd4;*/
 	margin: 0px;
@@ -307,14 +313,6 @@ select.courseNo{
 /*BOOOTTSTRAPPP EXAMPLEEEEEE  SIDDEBBARRRR ****************************/
 /* The main content */
 
-/* The left sidebar */
-#openNav{
-	
-	background-color: #35393e;
-	text-align: center;
-	color:  lavender;
-}
-
 .sidebar-left .sidebar-links {
 	margin: 20px auto;
 }
@@ -330,7 +328,7 @@ select.courseNo{
 	font-weight: bold;
 	border-left-width: 6px;
 	border-left-style: solid;
-/*	TEXT ADDED IN TO CENTER ICONS*/
+	/*	TEXT ADDED IN TO CENTER ICONS*/
 	display: flex;
 	color:  lavender;
 	flex-direction: column;
@@ -355,7 +353,7 @@ select.courseNo{
 
 .sidebar-left .sidebar-links a.link-blue i.fa {
 	color: #487db2;
-	
+
 }
 
 .sidebar-left .sidebar-links a.link-red {
@@ -378,9 +376,6 @@ select.courseNo{
 .sidebar-left .sidebar-links a.link-green i.fa {
 	color: #86be2e;
 }
-
-
-
 
 /*	Removing margins and paddings from the body, so that
 the sidebar takes the full height of the page */
@@ -423,15 +418,6 @@ body {
 	margin: 4px 2px;
 	cursor: pointer;
 }
-
-/*QUOTES SIDEBAR*/
-#quotes,p{
-	margin-top: 15%;
-	text-align: center;
-	font-size: 16px;
-	text-decoration: none;
-}
-
 
 /*SETTINGS PAGE*/
 #settings_input {
@@ -497,14 +483,13 @@ footer{
 /**NOTES:::<p style="clear:both"><br>Remember to clear floats after, or else will this p element also float next to the buttons.</p>**/
 /*****************************SIDE PANEL ICONS**************************************************
 *CHANGE VALUES HERE FOR THE WIDTH AND HEIGHT OF TILES*/
-
+/*USE THE CONTAINER TO PUT BORDER LINE UNDER OPEN */
 #container {
-	top:30%;
-	height:4%;
+	top:40%;
+	height 8%;
 	width: 100%;
 	margin:auto;
 	position: absolute;
-	background:#687F8B;
 
 }
 
@@ -657,49 +642,57 @@ footer{
 	.sidenav a {font-size: 18px;}
 }
 
+/*MEDIA QUERIES FOR GALLERY*/
+@media only screen and (max-width: 1024px) {
+	body { margin: 0; } 
+
+	#content {
+		width: auto;
+		padding: 5px;
+	}
+	#container {width: auto; margin: 0;}
+
+	#color{
+		width: 100%;
+		height:auto;
+	}
+
+	.paragraph{
+		text-align: left;
+		width: 100%;
+		height:auto;
+		margin: 0;
+		padding: 0;
+
+	}
+
+	.left {
+
+		float: none;
+		width: 100%;	
+	}
 
 
+	#gallery{
+		display: inline;
+		height: auto;
+		width: auto;
+
+	}
+	.team{
+		width: 100%;
+		height:auto;
+
+	}
 
 
-
-
-/*PUT THE NAME OF YOUR PAGE HERE WITH STYLE LABELLING*/
-
-/*RESPONSIVE CODE GOES HERE********************************************************************/
-/*JOHN LEE HEANEY*/
-
-/*FONTAWESON ICONS*/
-/* Making the sidebar responsive */
-
+}
 
 /*HEADER MENU AND ICON*/
 @media screen and (max-width: 600px) {
 	.menu li {
 		float: none;
 	}
-}
-
-/*ADJUST SETTINGS HERE FOR THE RESPONSIVENESS OF CLASSES AND IDS*/
-@media only screen and (max-width: 1024px){
-	body{margin:0;}
-	#wrapper{width: auto;}
-	#content{margin-left:0; width:auto;}
-	#leftnav {float:none; width:auto;}
-	#leftnav li{display:inline-block; padding:0.5em;}
-	#leftnav ul{text-align:center;}
-	#leftnav a{border-style:none;}
-	#content p{font-size:90%;}
-	#rightcol{float:none; background-color:#ffffff; width:auto;}
-}
-
-/*ADJUST SETTINGS HERE FOR THE RESPONSIVENESS OF CLASSES AND IDS*/
-/* for 700px or less */
-@media only screen and (max-width: 768px) {
-	table{font-size:90%;}
-	table{padding:0;}
-	#leftnav li{display:block;}
-	#leftnav a{display:block; padding:0.5em; border-bottom: 2px ridge #000000;}
-	#rightcol{width:auto;}
 }
 
 
