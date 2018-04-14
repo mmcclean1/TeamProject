@@ -1,29 +1,48 @@
-
 <!--JOHN LEE HEANEY-->
-<?php 
-
-?>
 <!--COULD CHANGE THE NAME OF THIS CLASS TO SIDE BAR-->
 <div class="sidbar_left">
 
+	<!--DISPLAY PROFILE PIC-->
+	<div id="pic">
 
-<?php
-	
+		<?php 
 		$db = mysqli_connect("localhost","root","","studentsupport");	
-			$id = $_SESSION['id'];
-		$sql = "SELECT * FROM member WHERE id ='$id'";
+		$id = $_SESSION['id'];
 
+		$sql = "SELECT * FROM member WHERE id ='$id'";
 		$result = mysqli_query($db, $sql);
 		while ($row = mysqli_fetch_array($result))
 		{
 			echo "<br>";
 			echo "<img src='".$row['profile_pic']."'>";
 		}
-		
 		?>
-		
+	</div>
+	<!--DISPLAY USERNAME UNDER PIC-->
+	<div id="username">
+		<p id=username><font color="white">
+
+			<?php
+			
+			if (isset($_SESSION['username'])) {
+
+				$userLoggedIn = $_SESSION['username'];
+				$user_details_query = mysqli_query($con, "SELECT * FROM member WHERE username='$userLoggedIn'");
+				$user = mysqli_fetch_array($user_details_query);
+
+				echo $user['first_name'] . " " . $user['last_name'];
+			}
+
+			else {
+				header("Location: register.php");
+			}
+
+			?></font></p>
+	</div>
+
+	<!--Random quote generator - just add to sidebar or where ever, css it up, and BAM! Random quotes. Can easily add more if needed -->
 	<div id='quotes'>
-		<?php
+		<p id=quotes><font color="magenta" ><?php
 			$quotes = array(
 				array("The Way Get Started Is To Quit Talking And Begin Doing.","Walt Disney"),
 				array("The Pessimist Sees Difficulty In Every Opportunity. The Optimist Sees Opportunity In Every Difficulty.","Winston Churchill"),
@@ -40,8 +59,56 @@
 			);
 			$random = rand(0,11);
 			echo $quotes[$random][0]."<br> - ".$quotes[$random][1];
-		?>
+			?></font></p>
 	</div>
+	<div id="container">
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<style>
+					body {
+						font-family: "Lato", sans-serif;
+					}
 
+				</style>
+			</head>
+			<body>
+
+
+				<!--WITHOUT ICONS-->
+				<aside class="sidebar-left">
+					<div id="mySidenav" class="sidenav">
+						<!--CLOSE BUTTON-->
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+						<div class="sidebar-links">
+
+
+							<a class="link-red" href="mapFind.php"><i class="fas fa-map-marker-alt fa-1x" style="color:gold"></i> Map</a>
+
+							<a class="link-blue" a href="meetings.php"><i class="far fa-user fa-1x" style="color:gold"></i> Meetings</a>
+
+							<a class="link-red" href="report.php"> Report</a>
+
+
+							<a class="link-yellow selected" href="settings.php"><i class="fas fa-cog fa-spin fa-x" style="color:yellow"></i> Settings</a>
+
+
+
+							<a class="link-green" href="createComment.php">Comments</a>
+
+						</div>
+					</div>
+				</aside>
+
+				<script src="assets/js/sidebarHandler.js"></script>
+				<div id="openNav">
+					<!--OPEN NAVIGATION-->
+					<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
+				</div>
+			</body>
+		</html>
+	</div>
 
 </div>

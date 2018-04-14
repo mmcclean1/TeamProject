@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("includes/header.php");
 
 ?>
@@ -7,6 +7,8 @@ include("includes/header.php");
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/adminstyles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 <style>
 
 	.wrapper {
@@ -54,19 +56,20 @@ include("includes/header.php");
 	print("<div id='div' style=display:none><form method=POST action=topicHandler.php?ModNo=".$moduleNo.">");
 	print("<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>");
 	print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Create Topic</strong> </td></tr>");
-	print("<tr><td><strong>Topic</strong><input name='TopicName' type='text' size=50' REQUIRED/><strong> </td></tr>");
+	print("<tr><td><strong>Topic</strong><input name='TopicName' type='text' size=50' /><strong> </td></tr>");
 	print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='90' rows='20' id='detail'></textarea><br><br><button type='submit' name='topicSubmit' >Add Topic</button> ");
-	print("<input type='file' name='fileToUpload'><br><br><input type='reset' name='Submit2' value='Clear'/><br><br><input id='cancel' type=button value='Cancel Operation' onclick='history.back()' name='cancel'></button><td></tr>");
+	print("<input type='file' name='fileToUpload'><br><br><input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
 	print("</table></form></div>");
 	?>
-	
+
 	<div id ="modulesDiv">
-		<div class="col-md-8 col-md-offset-2">
-			<table class="table table-striped">
-				<thead>
+			<div class="col-md-12 col-md-offset-0">
+
+			<table class="table table-striped table-bordered">
+				<thead class="thead-inverse">
 					<tr class="bg-success">
-						<th>ModulesNo</th>
-						<th>Topic</th>
+						<th>DATE</th>
+						<th>Topic Title</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -76,8 +79,9 @@ include("includes/header.php");
 					$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
 					while($row=mysqli_fetch_array($result))
 					{
-						print("<tr><td>".$row['TopicNo']."</td>");
-						print("<td><a href=topic.php?TopicNo=".$row['TopicNo'].">".$row['TopicName']."</a></td></tr>");
+						print("<tr><td>".$row['DateCreated']."</td>");
+						print("<td><a href=createComment.php?DateCreated=".$row['DateCreated'].">".$row['TopicName']."</a></td></tr>");
+					//	print("<tr><td>".$row['ModuleNo']."</td>");
 					}
 					//Close connection
 					mysqli_close($connection);
@@ -85,6 +89,7 @@ include("includes/header.php");
 				</tbody>
 			</table>
 		</div>
+	</div>
 	</div>
 
 	<footer><?php include("includes/footer.php");?></footer>

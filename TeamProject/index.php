@@ -151,6 +151,8 @@ include("includes/header.php");
 							?>
 					</tbody>
 				</table>
+			</div>
+			
 		</div>
 
 	<footer><?php include("includes/footer.php");?>

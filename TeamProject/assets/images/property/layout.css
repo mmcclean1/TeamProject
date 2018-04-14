@@ -1,0 +1,223 @@
+body {    
+  	font-family: Arial, Helvetica, Verdana, Sans-serif;
+  	font-size: 12px; 
+ 	color: #000000; 
+ 	background: #ffffff;
+} 
+
+h1{
+	color: #ffffff;
+	
+}
+
+.p1{
+	text-align: justify;
+	margin-left: 400px;
+	margin-right: 400px;
+}
+
+
+html, body {   
+   margin: 0; 
+   padding: 0;
+} 
+	 
+		 
+#contact { 
+background:#db6d16;
+color: #ffffff; 
+
+
+}  
+
+
+#container {
+	width: 80%; 
+	margin: auto; 
+}  
+
+.left{
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 0px;
+	
+}
+
+#gallery {
+	position: relative;
+	
+}
+#gallery ul {
+	list-style-type: none;
+	width: 300px;
+}
+#gallery li {
+	display: inline;
+	padding: 10px;
+}
+#gallery img {
+	border-style: none;
+}
+#gallery a {
+	text-decoration: none;
+	font-style: italic;
+	color: #000000;
+}
+#gallery span {
+	display: none;
+}
+#gallery a:hover span {
+	display: block;
+	position: absolute;
+	top: 10px;
+	left: 300px;
+	text-align: center;
+}	
+
+		    
+#main-nav {  
+ 	width: 100%;
+ 	float: right;
+	text-align: right;  
+ 	background:#db6d16; 
+ 	
+ 	
+} 
+	
+#main-nav a { 
+ 	color: #FFFFFF; 
+ 	text-decoration: none; 
+ 	font-size: 18px; 
+	display: inline-block;
+ 	padding: 25px; 
+} 
+
+
+#main-nav a:hover { 
+ 	color: #db6d16; 
+ 	background-color: #FFFFFF;
+ } 
+	
+#header{
+	height: 200px;
+}
+
+
+.left { 
+float: left;
+
+}
+  
+    
+#content { 
+    margin-right: 280px; 
+	line-height: 18px;  
+}
+	 
+#content .padding {
+	padding: 25px; 
+} 
+		
+ #footer {  
+	clear: both; 
+ 	font-size: 12px;
+	border-top: 1px solid #db6d16;
+	padding: 13px 25px;
+	line-height:20px;
+	text-align: left;
+	
+} 
+
+#social{
+	float: right;
+	display: inline;
+	
+}
+
+	
+***********************************************************************************
+MEDIA QUERIES
+*************************************************************************************/
+/* for 980px or less */
+@media screen and (max-width: 980px) {
+	
+	#container {
+	width: 90%;
+	}
+	
+	#main-nav {
+	float: none;
+	width: auto;
+	
+	}
+	
+ #gallery li {
+	display: inline-block;
+	padding 0.5em;
+}
+	#gallery a {
+	display: block;
+	border-bottom: 2px ridge #00005d;
+	}
+	
+
+	
+#content {
+	width: 100%;
+	padding: 1% 4%;
+			}
+	
+	
+}
+
+/* for 700px or less */
+@media screen and (max-width: 600px) {
+
+	#main-nav {
+	width: auto;
+	float: none;
+	padding: 0;
+	}
+	
+	#gallery ul, li{
+	padding: 0;	
+	}
+	
+	#gallery li {
+	display: block;
+	}
+	
+}
+	
+`
+
+}
+
+/* for 480px or less */
+@media screen and (max-width: 480px) {
+
+	#header {
+		height: auto;
+	}
+	
+
+	
+	
+	
+	
+
+}
+
+
+
+		
+
+
+		
+		
+		
+		
+		
+		
+		
