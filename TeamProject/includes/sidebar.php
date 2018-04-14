@@ -6,7 +6,7 @@
 	<div id="pic">
 
 		<?php 
-		$db = mysqli_connect("localhost","root","","studentsupport");	
+		$db = mysqli_connect("localhost:3307","root","","studentsupport");	
 		$id = $_SESSION['id'];
 
 		$sql = "SELECT * FROM member WHERE id ='$id'";
@@ -20,7 +20,7 @@
 	</div>
 	<!--DISPLAY USERNAME UNDER PIC-->
 	<div id="username">
-		<p id=username><font color="white">
+		<p id=username><font color="gold">
 
 			<?php
 			
@@ -42,7 +42,7 @@
 
 	<!--Random quote generator - just add to sidebar or where ever, css it up, and BAM! Random quotes. Can easily add more if needed -->
 	<div id='quotes'>
-		<p id=quotes><font color="magenta" ><?php
+		<p id=quotes><font color="lightgreen" ><?php
 			$quotes = array(
 				array("The Way Get Started Is To Quit Talking And Begin Doing.","Walt Disney"),
 				array("The Pessimist Sees Difficulty In Every Opportunity. The Optimist Sees Opportunity In Every Difficulty.","Winston Churchill"),
@@ -85,18 +85,14 @@
 						<div class="sidebar-links">
 
 
-							<a class="link-red" href="mapFind.php"><i class="fas fa-map-marker-alt fa-1x" style="color:gold"></i> Map</a>
+							<a class="link-red" href="mapFind.php"><i class="fas fa-map-marker-alt fa-2x" style="color:#da4545;"></i> Map</a>
 
-							<a class="link-blue" a href="meetings.php"><i class="far fa-user fa-1x" style="color:gold"></i> Meetings</a>
+							<a class="link-blue" a href="meetings.php"><i class="far fa-user fa-2x" style="color:#487db2;"></i> Meetings</a>
 
-							<a class="link-red" href="report.php"> Report</a>
-
-
-							<a class="link-yellow selected" href="settings.php"><i class="fas fa-cog fa-spin fa-x" style="color:yellow"></i> Settings</a>
+							<a class="link-green" href="report.php"><i class="fas fa-book fa-2x "style="color:#d0d237;"></i> Report</a>
 
 
-
-							<a class="link-green" href="createComment.php">Comments</a>
+							<a class="link-yellow selected" href="settings.php"><i class="fas fa-cog fa-spin fa-2x" style="color:#86be2e;"></i> Settings</a>
 
 						</div>
 					</div>

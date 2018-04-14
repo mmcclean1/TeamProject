@@ -41,6 +41,7 @@ require 'config/config.php';
 			<!--NAVIGATION FOR TOP BAR-->
 			<div class="topnav">
 				<div class="menu">
+				
 					<li><a href="includes/handlers/logout.php">Logout
 						<i class="fas fa-sign-out-alt"></i></a></li>
 					<li><a href="">News</a></li>
