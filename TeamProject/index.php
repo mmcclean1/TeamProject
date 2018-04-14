@@ -2,11 +2,6 @@
 <?php 
 include("includes/header.php");
 
-//if(isset($_POST['post'])){
-//	$post = new Post($con, $userLoggedIn);
-//	$post->submitPost($_POST['post_text'], 'none');
-//}
-
 ?>
 
 <!DOCTYPE html>
@@ -14,12 +9,10 @@ include("includes/header.php");
 	<head>
 
 		<meta charset="UTF-8">
+		
 		<!--ADD BOOTSTRAP FOR BETTER STYLING AND LAYOUT-->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<script src="js/jquery-3.2.1.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="css/adminstyles.css">
-
+		
 		<!--LINK FOR RESPONSIVENESS-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Document</title>
@@ -30,32 +23,37 @@ include("includes/header.php");
 				margin-left: 0px;
 				padding-left: 0px;
 			}
-			/*TABLE LAYOUT*/
-			/*    The border-collapse property sets whether the table borders are collapsed into a single border or detached as in standard HTML.*/
+			
 			table,tr,td {
 				margin-left: 0px;
 				border:solid thin #34495e;
 				width:30%;
 				height: 15%;
 				border-collapse: collapse;
-
 			}
-
 
 			tr {
 				width: 90%;
 			}
 
-
 			/*set color for every even(ever second row) row*/
 			tr:nth-child(even) {
-				background-color: #63b0de; 
+/*				background-color: #945460;*/
+				background-color:  #7ebac7;
 				color:white
+			}
+			hr{
+				height: 1px;
+				/*	color: #123455;*/
+				background-color: #123455;
+				border: none;
 			}
 
 			th{
 				font-size: 25px;
-				font-family: fantasy;
+				font-family: sans-serif;
+				background-color: #35393e;
+				color: white; 
 			}
 
 		</style>
@@ -70,7 +68,7 @@ include("includes/header.php");
 
 		<!--MAIN CONTENT COLUMN-->
 		<div class="index_main_column column" >
-
+				
 			<?php
 			//Matthew McClean - L00137316
 			//LYIT Team Project 2018
@@ -79,7 +77,7 @@ include("includes/header.php");
 			$user = $_SESSION['id'];
 
 			//Connect to database
-			$connection = mysqli_connect("localhost","root","");
+			$connection = mysqli_connect("localhost:3307","root","");
 			mysqli_select_db($connection,"studentsupport");
 
 			//Get CourseNo of user
@@ -94,7 +92,11 @@ include("includes/header.php");
 			$courseResult=mysqli_query($connection,"SELECT * FROM course WHERE CourseNo='$courseNo'");
 			while($row=mysqli_fetch_array($courseResult))
 			{
-				print("<h1>".$row['CourseName']."</h1>");
+				
+					
+				print("<div id='color1' style='text-align:center'><h1>".$row['CourseName']."</h1>");
+				print("</div>");
+				
 
 
 				//Create drop-down menu to filter year, semester
@@ -116,6 +118,7 @@ include("includes/header.php");
 			print("</select> ");
 
 			//Filter button
+			
 			print("<input type=submit value=Filter id=filter>");
 			print("<br>"."<br>"."<br>");
 
@@ -125,7 +128,9 @@ include("includes/header.php");
 			print("</select>");
 
 			?>
-
+	
+				
+<!--					<p  align="left">Choose module from table.</p>-->
 
 				<div id='modulesDiv' class="col-md-8 col-md-offset-2">
 					<table class="table table-striped">

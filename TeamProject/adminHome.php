@@ -15,7 +15,10 @@
 		<title>Document</title>
 		<!--INCLUDE LIBRATIES FOR STYLING BOOTSTRAP AND JQUERY-->
 		<title>Admin</title>
+		
+		<!--BOOTSTRAP-->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- MANUAL STYLING FOR ADMIN STYLES-->
 		<link rel="stylesheet" href="css/adminstyles.css">
 		<style>
 			.FieldInfo{
