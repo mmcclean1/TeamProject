@@ -9,10 +9,10 @@ include("includes/header.php");
 	<head>
 
 		<meta charset="UTF-8">
-		
+
 		<!--ADD BOOTSTRAP FOR BETTER STYLING AND LAYOUT-->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-		
+
 		<!--LINK FOR RESPONSIVENESS-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Document</title>
@@ -23,7 +23,7 @@ include("includes/header.php");
 				margin-left: 0px;
 				padding-left: 0px;
 			}
-			
+
 			table,tr,td {
 				margin-left: 0px;
 				border:solid thin #34495e;
@@ -38,7 +38,7 @@ include("includes/header.php");
 
 			/*set color for every even(ever second row) row*/
 			tr:nth-child(even) {
-/*				background-color: #945460;*/
+				/*				background-color: #945460;*/
 				background-color:  #7ebac7;
 				color:white
 			}
@@ -68,7 +68,10 @@ include("includes/header.php");
 
 		<!--MAIN CONTENT COLUMN-->
 		<div class="index_main_column column" >
-				
+			
+			
+
+
 			<?php
 			//Matthew McClean - L00137316
 			//LYIT Team Project 2018
@@ -92,11 +95,11 @@ include("includes/header.php");
 			$courseResult=mysqli_query($connection,"SELECT * FROM course WHERE CourseNo='$courseNo'");
 			while($row=mysqli_fetch_array($courseResult))
 			{
-				
-					
+
+
 				print("<div id='color1' style='text-align:center'><h1>".$row['CourseName']."</h1>");
 				print("</div>");
-				
+
 
 
 				//Create drop-down menu to filter year, semester
@@ -119,8 +122,12 @@ include("includes/header.php");
 
 			//Filter button
 			
-			print("<input type=submit value=Filter id=filter>");
-			print("<br>"."<br>"."<br>");
+			
+		print("<button type='submit' value=Filter id=filter class='btn btn-primary'>Filter</button>");
+			
+			
+			
+			print("<br>"."<br>"."<br>"."<br>"."<br>");
 
 			//Dummy select for courseNo
 			print("<select name=course id=course DISABLED style=display:none>");
@@ -128,42 +135,60 @@ include("includes/header.php");
 			print("</select>");
 
 			?>
-	
-				
-<!--					<p  align="left">Choose module from table.</p>-->
 
-				<div id='modulesDiv' class="col-md-8 col-md-offset-2">
-					<table class="table table-striped">
-						<thead>
-							<tr class="text-success">
-								<th>Modules</th>
-								<th>Lectures</th>
-								<th>Year</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
 
-							$result = mysqli_query($connection,"SELECT * FROM module INNER JOIN coursemodule ON coursemodule.ModuleNo=module.ModuleNo WHERE coursemodule.CourseNo='$courseNo'");
+			<!--					<p  align="left">Choose module from table.</p>-->
 
-							while($row=mysqli_fetch_array($result))
-							{
-								print("<tr><td><a href=module.php?ModuleNo=".$row['ModuleNo'].">".$row['ModuleName']."</a></td>");
-								print("<td>".$row['Lecturer']."</td>");
-								print("<td>".$row['Year']."</td></tr>");
+			<div id='modulesDiv' class="col-md-8 col-md-offset-2">
+				<table class="table table-striped">
+					<thead>
+						<tr class="text-success">
+							<th>Modules</th>
+							<th>Lectures</th>
+							<th>Year</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
 
-							}
-							?>
+						$result = mysqli_query($connection,"SELECT * FROM module INNER JOIN coursemodule ON coursemodule.ModuleNo=module.ModuleNo WHERE coursemodule.CourseNo='$courseNo'");
+
+						while($row=mysqli_fetch_array($result))
+						{
+							print("<tr><td><a href=module.php?ModuleNo=".$row['ModuleNo'].">".$row['ModuleName']."</a></td>");
+							print("<td>".$row['Lecturer']."</td>");
+							print("<td>".$row['Year']."</td></tr>");
+
+						}
+						?>
 					</tbody>
 				</table>
 			</div>
-			
+
+
+
+			<!-- EMPTY DIV TO PUT SPACE BETWEEN TABLE AND TEXT-->
+			<div style="padding:210px;">
+			</div>
+
+
+			<!--HEADING TWO-->
+			<div id="color2">
+				<h1  align="center"></h1></div>
+
+
+			<!-- ADD TEXT HERE-->
+			<div style="padding:60px;">
+				<p></p>
+				<p></p>
+			</div>	
+
 		</div>
 
-	<footer><?php include("includes/footer.php");?>
+		<footer><?php include("includes/footer.php");?>
 
-		<p>	<li class="active" style="list-style-type:none"><a href="adminLogin.php" target="_blank">Admin</a></li></p>
-	</footer>
+			<p>	<li class="active" style="list-style-type:none"><a href="adminLogin.php" target="_blank">Admin</a></li></p>
+		</footer>
 
 
 	</body>

@@ -1,4 +1,7 @@
-
+<!--
+JOHN LEE HEANEY
+BSC COMPUTING YEAR 3
+-->
 <?php 
 include("includes/header.php");
 
@@ -9,9 +12,11 @@ include("includes/header.php");
 	<head>
 
 		<meta charset="UTF-8">
+		
 		<!--ADD BOOTSTRAP FOR BETTER STYLING AND LAYOUT-->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/adminstyles.css">
+		
+		
 		<!--LINK FOR RESPONSIVENESS-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Document</title>
@@ -22,44 +27,7 @@ include("includes/header.php");
 				margin-left: 0px;
 				padding-left: 0px;
 			}
-
-			/*TABLE LAYOUT*/
-			/*    The border-collapse property sets whether the table borders are collapsed into a single border or detached as in standard HTML.*/
-			table,tr,td {
-				margin-left: 0px;
-				border:solid thin #34495e;
-				width:30%;
-				height: 15%;
-				border-collapse: collapse;
-			}
-
-			tr {
-				width: 90%;
-			}
-
-			/*set color for every even(ever second row) row*/
-			tr:nth-child(even) {
-				/*				background-color: #945460;*/
-				background-color:  #7ebac7;
-				color:white
-			}
-			hr{
-				height: 1px;
-				/*				color: #123455;*/
-				background-color: #123455;
-				border: none;
-			}
-
-			th{
-				font-size: 25px;
-				font-family: sans-serif;
-				background-color: #35393e;
-				color: white; 
-			}
-
 		</style>
-
-		<script type="text/javascript" src="assets/js/moduleFilter.js"></script>
 
 	</head>
 	<body>
@@ -70,34 +38,38 @@ include("includes/header.php");
 		<!--MAIN CONTENT COLUMN-->
 		<div class ="index_main_column column" >
 
-			<div id="content"><!-- InstanceBeginEditable name="content" -->
+			<div id="content">
 				<div id="color1">
 					<h1  align="center">About Us</h1></div>
 
 				<div id="color">        
-					<p class="paragraph">Launched in January 2015, First Class Real Estate is the simple way to search for property.  We aim to provide all potential buyers, sellers, landlords and tenants with an exceptional property search service. Our reputation for uncompromising professionalismin everything we do is earned by serving our clients and earning their trust.<br><br>
+					<p class="paragraph">Letterkenny Institute of Technology (LYIT) fosters one of the most progressive learning environments in Ireland.
 
-						First Class Real Estate is a real estate consultancy with prime commercial, residential and site offering operating throughout County Donegal. Our office is situated on the Pierce road, Letterkenny just opposite McDonalds fast food resturant.<br><br>
+						Our reach is both local and international; attracting a diverse student body of more than 4,000 students from Ireland and 31 countries across the globe. They choose LYIT because of our unique ethos that harnesses academic excellence with career-focused practical experience. It’s an approach that positions our students for future success in line with their aspirations.<br><br>
 
-						Advising clients ranging from individual private investors, clients and homeowners to major developers and investors. We put teamwork, innovation and our passion for property at the heart of everything we do, strieving to go that extra mile to exceed our clients expectations. </p></div>
+						We also foster close relationships with the wider local community. Our engagement and partnerships with indigenous and international businesses leaders strengthens our student’s prospects in tandem with the prosperity of the region’s economy.<br><br>
+
+						Our modern integrated campuses in Letterkenny and Killybegs aren’t just gateways to a bright future, but to one of the most breathtaking corners of the world - with Donegal named National Geographic’s ‘Coolest Place on the Planet 2017’.<br><br>
+
+						There’s just so much to discover. So take your time, and stay a while to explore our website and see why LYIT is the place to be. </p></div>
 
 				<div id="color1">
 					<h1 align="center">Our Students</h1></div>
 
 				<div id="team"><img src="assets/images/property/student.jpg"></div>
 
-				
-					<p class="c">Phone:(074) 853 6060<br>
-						Fax:(078) 853 6060<br>     
-						Email: <a href="mailto:info@First Class Real 	Estate.ie"> info@firstclassrealestate.ie</a><br> 
-						Pearse road, Letterkenny<br>
-						Co.Donegal<br>
-						Ireland</p> 
 
-			
-				</div>
-				</div>
-				<footer><?php include("includes/footer.php");?>
-				</footer>
-				</body>
-			</html>
+				<p class="c">Phone:(074) 853 6060<br>
+					Fax:(078) 853 6060<br>     
+					Email: <a href="mailto:info@studentsupport.ie"> info@studentsupport.ie</a><br> 
+					Pearse road, Letterkenny<br>
+					Co.Donegal<br>
+					Ireland</p> 
+
+
+			</div>
+		</div>
+		<footer><?php include("includes/footer.php");?>
+		</footer>
+	</body>
+</html>

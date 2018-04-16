@@ -23,6 +23,10 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 		<!--JQUERY-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+			<!--BOOTSTRAP-->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		
 
 		<!--OTHER LIBRARIES GO HERE-->
 
@@ -86,6 +90,7 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 		<!--MAIN CONTENT COLUMN-->
 		<div class="index_main_column column" >
 
+		
 
 			<?php
 			//Get passed in ModuleNo
@@ -108,11 +113,18 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 			<div>
 
 				<a id='back' href="index.php"><i class="far fa-arrow-alt-circle-left fa-3x" style="color:red"></i></a><br><br>
-				<?php print("<button id='newTopic'>Add New Topic</button>");?>
+				<?php print("&nbsp;&nbsp;<button type='button' id='newTopic' class='btn btn-primary'>Add new Topic</button>");
+				print("<br>"."<br>"."<br>");
+	
+	;?>
+						
+				
+		
 			</div>
 
 
-			<div id='modulesDiv' class="col-md-9 col-md-offset-1">
+			<div class="col-md-4 col-md-offset-1" >
+						
 				
 					<thead>
 					<tbody>
@@ -128,12 +140,17 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 								print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Topic</strong> </td></tr>");
 								print("<tr><td colspan='6'><strong>Topic</strong><input name='TopicName' type='text' size=105' color='black' /><strong> </td></tr>");
 
-								print("<tr><td valign='bottom'><strong>Detail</strong><textarea name='Details' cols='100' rows='6' id='detail'></textarea><br><br><button type='submit' name='topicSubmit' >Add Topic</button> ");
-								print("<br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
+								print("<tr><td valign='bottom'><strong>Detail</strong><textarea name='Details' cols='100' rows='6' id='detail'></textarea><br><br>
+								
+									<button type='submit name='topicSubmit' class='btn btn-primary'>Add Topic</button>");
+					
+								print("<br><br><button type='submit name='topicSubmit' class='btn btn-primary'>Cancel Operation</button><td></tr>");
 								print("</thead><tbody></table></form></div></div>");
 
 								print("<br>");
 								?>
+							
+		
 
 			<div id='modulesDiv' class="col-md-9 col-md-offset-1">
 				<table class="table table-striped">
@@ -162,8 +179,7 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 				</table>
 			</div>
 
-		</div>
-	
+<!-- EMPTY DIV TO PUT SPACE BETWEEN IMAGE AND TEXT-->
 		<footer><?php include("includes/footer.php");?>
 
 			</body>
