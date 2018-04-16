@@ -44,8 +44,8 @@ require 'config/config.php';
 				
 					<li><a href="includes/handlers/logout.php">Logout
 						<i class="fas fa-sign-out-alt"></i></a></li>
-					<li><a href="">News</a></li>
-					<li><a href="gallery.php">Gallery</a></li>
+					<li><a href="news.php">News</a></li>
+					<li><a href="gallery.php">Accomodation</a></li>
 					<li><a href="aboutUs.php">About Us</a></li>
 					<li><a href="index.php">Home</a></li>
 

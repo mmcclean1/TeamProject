@@ -32,9 +32,8 @@
 						</ul>
 					</div>
 					<div class="col-sm-2">
-						<h5>About us</h5>
+						<h5>Information</h5>
 						<ul>
-							<li><a href="#">Information</a></li>
 							<li><a href="#">Contact us</a></li>
 							<li><a href="#">Reviews</a></li>
 						</ul>
