@@ -13,19 +13,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Document</title>
-		<!--INCLUDE LIBRATIES FOR STYLING BOOTSTRAP AND JQUERY-->
+		
 		<title>Admin</title>
+		<!--INCLUDE LIBRATIES FOR STYLING BOOTSTRAP AND JQUERY-->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/adminstyles.css">
+		
 		<script type="text/javascript" src="assets/js/manageAdmin.js"></script>
 	
 		<style>
-			.FieldInfo{
-				color: rgb(251, 174, 44);
-				font-family: Bitter, Georgia, "Times New Roman",Times, serif;
-				font-size: 1.2em;
-			}
-		
+			
 			th{
 				color:black;
 				background-color: #ede9ed;
@@ -82,6 +79,11 @@
 			<!--MAIN AREA-->
 			<div class="col-sm-10">
 			<h1>&nbsp;Manage Admins</h1>
+					
+			<!--DISPLAY MESSAGE THAT ADMIN WAS DELETED SUCCESSFULLY-->
+					<?php echo Message();
+					echo SuccessMessage();
+					?>
 
 					<style>
 						#button{
@@ -90,7 +92,8 @@
 					</style>
 
 					<div id="button">
-						<button id='newAdmin'>Add new Admin</button>
+						
+						<button type='submit'  id=newAdmin class='btn btn-primary'>Add new Admin</button>
 					</div>
 
 
@@ -100,10 +103,13 @@
 							<form method='POST' action='adminHandler.php'><br><br>
 								<table class="table table-sm">
 									<thead>
-										<tr bgcolor="magenta"><td ><strong>Create Admin</strong></td></tr>
+										<tr bgcolor="white"><td ><strong>Create Admin</strong></td></tr>
 										<tr ><td bgcolor="white"><strong>Admin Name </strong><input name='AdminName' type='text' size='30' REQUIRED /></td></tr><strong> 
 										<tr><td ><strong>Password </strong><input name='Password' type='password' size='33' REQUIRED /></td></tr><strong> 
-										<tr><td bgcolor="white"><input type='submit' name='Submit'></input></td></tr> </thead>
+										<tr><td bgcolor="white"><button type='submit'  name='submit' class='btn btn-primary'>Submit</button></input></td>
+										
+										
+										</tr> </thead>
 								</table>
 							</form>
 						</div>

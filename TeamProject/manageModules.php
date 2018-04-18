@@ -85,12 +85,12 @@
 					</div>
 
 				<div class="col-md-8 col-md-offset-0" >
-					<table class="table table-bordered">
+					<table class="table table-sm">
 					
 					<tr><th>Module No</th><th>Module Name</th><th>Lecturer</th><th>Year</th><th>Semester</th><th>Information</th></tr>
 					<?php
 						//Connect to database
-						$connection = mysqli_connect("localhost","root","");
+						$connection = mysqli_connect("localhost:3307","root","");
 						mysqli_select_db($connection,"studentsupport");
 
 						//Get all module information from database
@@ -105,7 +105,6 @@
 						}
 					?>
 				</table>
-
 				</div>
 				<!--END TABLE-->
 			</div>

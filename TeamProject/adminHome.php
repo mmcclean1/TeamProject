@@ -68,6 +68,7 @@
 			<!--MAIN AREA-->
 			<div class="col-sm-10">
 					<h1>Admin Homepage</h1>
+					
 
 					<!--PRINT SUCCESS MESSAGE CALL METHODS-->
 					<div><?php echo Message();

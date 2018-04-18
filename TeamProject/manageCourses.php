@@ -78,8 +78,15 @@
 				<!--BSc 5 -->
 				<script type="text/javascript" src="assets/js/courseHandler.js"></script>
 				<h1>Manage Courses</h1>
-				<button id='newCourse'>Add New Course</button><br><br>
-
+		
+		<!--PRINT MESSAGE TO SAY COURSE WAS DELETED-->
+					<?php echo Message();
+					echo SuccessMessage();
+					?>
+					
+					<div id="button">
+					<button type='submit'  id=newCourse class='btn btn-primary'>Add new Course</button><br><br>
+					</div>
 				<div id='newCourseDiv' style=display:none>
 						<br><br>
 
@@ -91,11 +98,11 @@
 										<tr><td ><strong>Create Course</strong> </td></tr>
 										<tr><td><strong>Course Name </strong><input name='CourseName' type='text' size='29' REQUIRED /></td></tr><strong> 
 										<tr><td><strong>Length of Course </strong><input name='Length' type='text' size='25' REQUIRED /></td></tr>
-										<tr><td><input type='submit' name='Submit'></input></td></tr></thead>
+										<tr><td><button type='submit'  name='submit' class='btn btn-primary'>Submit</button></td></tr></thead>
 								</table>
 							</form>
 					</div>
-					<br><br><br><br><br><br><br><br><br><br><br><br>
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 				</div>
 				
 		
@@ -114,9 +121,7 @@
 
 		<!--END MAIN AREA-->
 		</div>
-		</div>
 
-			</div>
 			<!--END TABLE-->
 		</div>
 		<!--END MAIN AREA-->
