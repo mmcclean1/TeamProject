@@ -24,40 +24,7 @@ include("includes/header.php");
 				padding-left: 0px;
 			}
 
-			table,tr,td {
-				margin-left: 0px;
-				border:solid thin #34495e;
-				width:30%;
-				height: 15%;
-				border-collapse: collapse;
-			}
-
-			tr {
-				width: 90%;
-			}
-
-			/*set color for every even(ever second row) row*/
-			tr:nth-child(even) {
-				/*				background-color: #945460;*/
-				background-color:  #7ebac7;
-				color:white
-			}
-			hr{
-				height: 1px;
-				/*	color: #123455;*/
-				background-color: #123455;
-				border: none;
-			}
-
-			th{
-				font-size: 25px;
-				font-family: sans-serif;
-				background-color: #35393e;
-				color: white; 
-			}
-
 		</style>
-
 		<script type="text/javascript" src="assets/js/moduleFilter.js"></script>
 
 	</head>
@@ -69,9 +36,6 @@ include("includes/header.php");
 		<!--MAIN CONTENT COLUMN-->
 		<div class="index_main_column column" >
 			
-			
-
-
 			<?php
 			//Matthew McClean - L00137316
 			//LYIT Team Project 2018
@@ -80,7 +44,7 @@ include("includes/header.php");
 			$user = $_SESSION['id'];
 
 			//Connect to database
-			$connection = mysqli_connect("localhost","root","");
+			$connection = mysqli_connect("localhost:3307","root","");
 			mysqli_select_db($connection,"studentsupport");
 
 			//Get CourseNo of user

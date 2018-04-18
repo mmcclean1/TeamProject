@@ -77,12 +77,12 @@ include("includes/header.php");
 
 
 			<!--HEADING TWO-->
-			<div id="color2">
+			<div id="color1">
 				<h1  align="center">Information</h1></div>
-
-
-			<div style="padding:20px;">      
-					<p class="paragraph">Letterkenny Institute of Technology (LYIT) fosters one of the most progressive learning environments in Ireland.
+<div style="padding:20px;"> 
+				<div id="color">        
+					<p class="paragraph">
+						Letterkenny Institute of Technology (LYIT) fosters one of the most progressive learning environments in Ireland.
 
 						Our reach is both local and international; attracting a diverse student body of more than 4,000 students from Ireland and 31 countries across the globe. They choose LYIT because of our unique ethos that harnesses academic excellence with career-focused practical experience. It’s an approach that positions our students for future success in line with their aspirations.<br><br>
 
@@ -90,13 +90,19 @@ include("includes/header.php");
 
 						Our modern integrated campuses in Letterkenny and Killybegs aren’t just gateways to a bright future, but to one of the most breathtaking corners of the world - with Donegal named National Geographic’s ‘Coolest Place on the Planet 2017’.<br><br>
 
-						There’s just so much to discover. So take your time, and stay a while to explore our website and see why LYIT is the place to be. </p>
-</div>
-
-					<div id="color2">
-				<h1  align="center">Why Us?</h1></div>
-				
-				<div style="padding:20px;"> 
+						There’s just so much to discover. So take your time, and stay a while to explore our website and see why LYIT is the place to be.
+					</p>
+				</div>
+			</div>
+		
+		
+	
+		    
+		
+	<div id="color1">
+				<h1  align="center">Why us</h1></div>
+<div style="padding:20px;"> 
+				<div id="color">        
 					<p class="paragraph">
 						All the houses are in Letterkenny Centre and within walking distance of all amenities.
 						We offer single, double and twin rooms with or without private bathrooms.
@@ -113,6 +119,7 @@ include("includes/header.php");
 						No agency fees. </p>
 
 				</div>	
+				</div>
 
 				<div style="padding:110px;">
 				</div>

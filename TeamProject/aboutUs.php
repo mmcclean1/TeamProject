@@ -47,9 +47,8 @@ include("includes/header.php");
 
 						Our reach is both local and international; attracting a diverse student body of more than 4,000 students from Ireland and 31 countries across the globe. They choose LYIT because of our unique ethos that harnesses academic excellence with career-focused practical experience. It’s an approach that positions our students for future success in line with their aspirations.<br><br>
 
-						We also foster close relationships with the wider local community. Our engagement and partnerships with indigenous and international businesses leaders strengthens our student’s prospects in tandem with the prosperity of the region’s economy.<br><br>
-
-						Our modern integrated campuses in Letterkenny and Killybegs aren’t just gateways to a bright future, but to one of the most breathtaking corners of the world - with Donegal named National Geographic’s ‘Coolest Place on the Planet 2017’.<br><br>
+						We also foster close relationships with the wider local community. Our engagement and partnerships with indigenous and international businesses leaders strengthens our student’s prospects in tandem with the prosperity of the region’s economy.
+						Our modern integrated campuses in Letterkenny and Killybegs aren’t just gateways to a bright future, but to one of the most breathtaking corners of the world - with Donegal named National Geographic’s ‘Coolest Place on the Planet 2017’.
 
 						There’s just so much to discover. So take your time, and stay a while to explore our website and see why LYIT is the place to be. </p></div>
 

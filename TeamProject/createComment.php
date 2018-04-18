@@ -10,43 +10,42 @@ include("includes/header.php");
 
 <!-- !--STYLES THE PROFILE BAR JOHN LEE HEANEY STYLES-->
 <style>
-	.wrapper {
-		margin-left: 0px;
-		padding-left: 0px;
-	}
-	table,tr,td {
-		margin-left: 0px;
-		border:solid thin #34495e;
-		width:30%;
-		height: 15%;
-		border-collapse: collapse;
-	}
-
-	tr {
-		width: 90%;
-	}
-
-	/*set color for every even(ever second row) row*/
-	tr:nth-child(even) {
-		/*				background-color: #945460;*/
-		background-color:  #7ebac7;
-		color:white
-	}
-	hr{
-		height: 1px;
-		/*	color: #123455;*/
-		background-color: #123455;
-		border: none;
-	}
-
-	th{
-		font-size: 25px;
-		font-family: sans-serif;
-		background-color: #35393e;
-		color: white; 
-	}
-
-</style>
+			.wrapper {
+				margin-left: 0px;
+				padding-left: 0px;
+			}
+			table,tr,td {
+				margin-left: 0px;
+				border:solid thin #34495e;
+				width:30%;
+				height: 15%;
+				border-collapse: collapse;
+			}
+			table, th, td {
+				border: 1px solid black;
+			}
+			tr {
+				width: 90%;
+			}
+			/*set color for every even(ever second row) row*/
+			tr:nth-child(even) {
+				/*				background-color: #945460;*/
+				background-color:  #7ebac7;
+				color:black;
+			}
+			hr{
+				height: 1px;
+				/*	color: #123455;*/
+				background-color: #123455;
+				border: none;
+			}
+			th{
+				font-size: 25px;
+				font-family: sans-serif;
+/*				background-color: #35393e;*/
+				color: white; 
+			}
+		</style>
 
 <script type="text/javascript" src="assets/js/newComment.js"></script>
 <script type="text/javascript" src="assets/js/reply.js"></script>
@@ -70,7 +69,7 @@ include("includes/header.php");
 	$TopicNo=$_GET['TopicNo'];
 	
 	//Connect to database
-	$connection = mysqli_connect("localhost","root","");
+	$connection = mysqli_connect("localhost:3307","root","");
 	mysqli_select_db($connection,"studentsupport");
 
 	//Get Topic Name & Details
@@ -80,24 +79,48 @@ include("includes/header.php");
 		print('<a id="back" href=module.php?ModuleNo='.$row['ModuleNo'].'><i class="far fa-arrow-alt-circle-left fa-3x" style="color:red"></i></a>');
 		print("<title>".$row['TopicName']."</title><h1>".$row['TopicName']."</h1>");
 		print($row['Details']);
+		print("<br>");
 	}
 
-	//Create new comment
-	print("<br>"."<br>"."<br>");
-	print("&nbsp;"."&nbsp;"."<button type='button' id='newComment' class='btn btn-primary'>Add Comment</button>");
-	print("<br>"."<br>"."<br>");
-	print("<div id='div' style=display:none><form method=POST action=commentHandler.php?TopicNo=".$TopicNo.">");
-	print("<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>");
-	print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Create Comment</strong> </td></tr>");
-	//print("<tr><td><strong>Comment Summary</strong><input name='CommentName' type='text' size=50' /><strong> </td></tr>");
-	print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='90' rows='20' id='detail'></textarea><br><br><button type='submit' name='commentSubmit' >Add Comment</button> ");
-	print("<input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
-	print("</table></form></div>");
-	
+
+	?>
+	<div class="col-md-6 col-md-offset-1" >
+		<thead>
+		<tbody>
+			<tr>
+				<td><?php 
+					//Create new comment
+
+					print("<br>");
+					print("<button type='button' id='newComment' class='btn btn-primary'>Add Comment</button>");
+					print("<br>"."<br>"."<br>");
+				print("<div id='div' style=display:none><form method=POST 
+					action=commentHandler.php?TopicNo=".$TopicNo.">");
+
+					print("<table class='table table-bordered'>");
+					print("<thead>");
+					print("<tbody>");
+					print("<tr>");
+
+					print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Comment </strong> </td></tr>");
+
+					//CommentName
+					print("<tr><td colspan='7'><strong>Comment Summary</strong><input name='CommentName' type='text' size=60' color='black' /><strong> </td></tr>");
+
+					print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='60' rows='6' id='detail'></textarea><br><br>
+					<button type='submit' name='commentSubmit' class='btn btn-primary's >Add Comment</button> ");
+
+					//					BUTTONS
+					print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button><br><br><button type='submit name='cancel' class='btn btn-primary'>Cancel Operation</button><td></tr>");
+					print("</thead><tbody></table></form></div></div>");
+
+					print("<br>");
+					?>
+	<?php
 	function commentTable($row) // Function to generate table of comments
 	{
 		//Connect to database
-		$connection = mysqli_connect("localhost","root","");
+		$connection = mysqli_connect("localhost:3307","root","");
 		mysqli_select_db($connection,"studentsupport");
 
 		//Get session id
@@ -106,7 +129,7 @@ include("includes/header.php");
 		//Get passed in TopicNo
 		$TopicNo=$_GET['TopicNo'];
 
-		print('<tr><td>'.$row['Likes'].':<br>');
+		print('<tr><td>'.$row['Likes'].':');
 
 		//Show like or unlike button depending on whether user has liked comment before
 		$CommentNo = $row['CommentNo'];
@@ -129,7 +152,7 @@ include("includes/header.php");
 		$namesResult=mysqli_query($connection,"SELECT * FROM member WHERE id='$CreatorNo'");
 		while($row2=mysqli_fetch_array($namesResult))
 		{
-			print('<td>'.$row2['first_name'].'<br>'.$row2['last_name'].'</td></tr>');
+			print('<td>'.$row2['first_name']."&nbsp;".$row2['last_name'].'</td></tr>');
 		}
 
 		//Extra actions
@@ -140,7 +163,9 @@ include("includes/header.php");
 			print('<td><a href=deleteComment.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'>Delete</a></td>');
 		}
 		else
-		{print('<td></td>');}
+		{
+			
+			print('<td></td>');}
 		print('<td></td></tr>');
 
 		//Show this table only when reply is clicked
@@ -154,6 +179,10 @@ include("includes/header.php");
 			print("</table></form>");
 		print('</td></tr>');
 
+		
+		
+	
+		
 		//Print out any replies to comment
 		$replyResult=mysqli_query($connection,"SELECT * FROM comment WHERE ReplyTo='$CommentNo' ORDER BY Likes AND DateCreated DESC");
 		if(mysqli_num_rows($replyResult)!=0)
@@ -181,7 +210,7 @@ include("includes/header.php");
 				print('<table class="table table-striped">
 					<thead>
 						<tr class="text-success">
-							<th></th>
+							<th>Likes</th>
 							<th>Comment</th>
 							<th>Date Created</th>
 							<th>Created By</th>
@@ -207,8 +236,8 @@ include("includes/header.php");
 			}
 		?>
 	</div>
-</div>
 
+</div>
 <footer><?php include("includes/footer.php");?></footer>
 </body>
 </html>
