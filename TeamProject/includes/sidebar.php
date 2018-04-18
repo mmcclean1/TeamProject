@@ -6,7 +6,7 @@
 	<div id="pic">
 
 		<?php 
-		$db = mysqli_connect("localhost:3307","root","","studentsupport");	
+		$db = mysqli_connect("localhost","root","","studentsupport");	
 		$id = $_SESSION['id'];
 
 		$sql = "SELECT * FROM member WHERE id ='$id'";
@@ -39,6 +39,11 @@
 
 			?></font></p>
 	</div>
+	<script src="assets/js/sidebarHandler.js"></script>
+				<div id="openNav">
+					<!--OPEN NAVIGATION-->
+					<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
+				</div>
 
 	<!--Random quote generator - just add to sidebar or where ever, css it up, and BAM! Random quotes. Can easily add more if needed -->
 	<div id='quotes'>
@@ -98,11 +103,7 @@
 					</div>
 				</aside>
 
-				<script src="assets/js/sidebarHandler.js"></script>
-				<div id="openNav">
-					<!--OPEN NAVIGATION-->
-					<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
-				</div>
+				
 			</body>
 		</html>
 	</div>
