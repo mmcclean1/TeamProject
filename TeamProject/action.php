@@ -9,7 +9,7 @@
         $subject = trim($_REQUEST['subject']);
         $report = trim($_REQUEST['report']);
         $MemNo = trim($_REQUEST['MemNo']);
-        $report_isert = "INSERT INTO `reports`(`MemNo`, `subject`, `report`) VALUES ('$MemNo','$subject','$report')";
+        $report_isert = "INSERT INTO `report`(`ReportNo`, `ReportType`, `ReportContent`,`Status`,`ContentNo`) VALUES ('$MemNo','$subject','$report')";
         $run = mysqli_query($con,$report_isert);
         if($report_isert){
             $_SESSION['report'] = "Report Submitted.";
