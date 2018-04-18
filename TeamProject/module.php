@@ -105,31 +105,21 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 			while($row=mysqli_fetch_array($moduleResult))
 			{print("<div id='color1' style='text-align:center'><title>".$row['ModuleName']."</title><h1>".$row['ModuleName']."</h1>");
 			 print("</div>");}
-
-			//Create new topic
-
-
 			?>
 			<div>
-
 				<a id='back' href="index.php"><i class="far fa-arrow-alt-circle-left fa-3x" style="color:red"></i></a><br><br>
 				<?php print("&nbsp;&nbsp;<button type='button' id='newTopic' class='btn btn-primary'>Add new Topic</button>");
 				print("<br>"."<br>"."<br>");
-	
-	;?>
-						
-				
+				;?>
 		
 			</div>
-
-
-			<div class="col-md-4 col-md-offset-1" >
-						
+			<div class="col-md-4 col-md-offset-1" >		
 				
 					<thead>
 					<tbody>
 						<tr>
-							<td><?php 
+							<td>
+								<?php 
 
 								print("<br>");
 								print("<div id='div' style=display:none><form method=POST action=topicHandler.php?ModNo=".$moduleNo.">");
@@ -153,20 +143,23 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 		
 
 			<div id='modulesDiv' class="col-md-9 col-md-offset-1">
-				<table class="table table-striped">
-					<thead>
-						<tr class="text-success">
-							<th>Topic Title</th>
-							<th>Details</th>
-							<th>Date Created</th>
-							<th>Created By</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-
-						//Get topics associated with module
-						$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
+				<?php
+					//Get topics associated with module
+					$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
+					if(mysqli_num_rows($result)>0)
+					{
+						print('<table class="table table-striped">
+							<thead>
+								<tr class="text-success">
+									<th>Topic Title</th>
+									<th>Details</th>
+									<th>Date Created</th>
+									<th>Created By</th>
+								</tr>
+							</thead>
+							<tbody>');
+						
+						
 						while($row=mysqli_fetch_array($result))
 						{
 							print("<tr><td><a href=createComment.php?TopicNo=".$row['TopicNo'].">".$row['TopicName']."</a></td>");
@@ -179,10 +172,15 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 						}
 						//Close connection
 						mysqli_close($connection);
-						?>
 
-					</tbody>
-				</table>
+						print('</tbody>
+							</table>');
+					}
+					else //Do this if there is nothing in the database for this module
+					{
+						print('There`s nothing here! Start the conversation by creating a topic.');
+					}
+				?>
 			</div>
 
 <!-- EMPTY DIV TO PUT SPACE BETWEEN IMAGE AND TEXT-->

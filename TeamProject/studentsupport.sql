@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2018 at 10:56 AM
+-- Generation Time: Apr 18, 2018 at 08:33 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -31,19 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `AdminNo` int(11) NOT NULL,
   `AdminName` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `user_lastname` varchar(255) NOT NULL,
-  `created_at` date NOT NULL,
-  `addedby` varchar(200) NOT NULL
+  `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`AdminNo`, `AdminName`, `Password`, `user_lastname`, `created_at`, `addedby`) VALUES
-(3, 'JimBobo', 'f5d1278e8109edd94e1e4197e04873b9', '', '0000-00-00', ''),
-(4, 'mmcclean', 'f5d1278e8109edd94e1e4197e04873b9', '', '0000-00-00', '');
+INSERT INTO `admin` (`AdminNo`, `AdminName`, `Password`) VALUES
+(3, 'JimBobo', 'f5d1278e8109edd94e1e4197e04873b9'),
+(4, 'mmcclean', 'f5d1278e8109edd94e1e4197e04873b9');
 
 -- --------------------------------------------------------
 
@@ -55,7 +52,7 @@ CREATE TABLE `comment` (
   `CommentNo` int(11) NOT NULL,
   `TopicNo` int(11) NOT NULL,
   `Comment` varchar(255) NOT NULL,
-  `DateCreated` date NOT NULL,
+  `DateCreated` datetime NOT NULL,
   `CreatorNo` int(11) NOT NULL,
   `ReplyTo` int(11) DEFAULT NULL,
   `Likes` int(11) NOT NULL DEFAULT '0'
@@ -66,10 +63,15 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`CommentNo`, `TopicNo`, `Comment`, `DateCreated`, `CreatorNo`, `ReplyTo`, `Likes`) VALUES
-(1, 49, 'Test', '2018-04-18', 84, NULL, 0),
-(2, 49, 'Test', '2018-04-18', 84, NULL, 0),
-(3, 49, 'Hello Andrew', '2018-04-18', 84, NULL, 0),
-(4, 49, '', '2018-04-18', 84, NULL, 0);
+(3, 49, 'Hello Andrew', '2018-04-18 00:00:00', 84, NULL, 3),
+(5, 49, 'Hello!', '2018-04-18 00:00:00', 86, NULL, 2),
+(7, 11, 'Test', '2018-04-18 00:00:00', 84, NULL, 0),
+(8, 11, 'Test2', '2018-04-18 00:00:00', 84, NULL, 0),
+(9, 49, 'Test', '2018-04-18 00:00:00', 84, NULL, 0),
+(11, 17, 'Hello Matthew', '2018-04-18 00:00:00', 84, NULL, 5),
+(12, 49, 'Test24', '2018-04-18 16:04:06', 84, NULL, 0),
+(14, 49, 'Test', '2018-04-18 18:04:32', 86, 3, 0),
+(16, 49, 'Test Reply', '2018-04-18 19:04:08', 86, 14, 0);
 
 -- --------------------------------------------------------
 
@@ -121,6 +123,29 @@ INSERT INTO `coursemodule` (`CourseNo`, `ModuleNo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `CommentNo` int(11) NOT NULL,
+  `MemberNo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`CommentNo`, `MemberNo`) VALUES
+(3, 84),
+(3, 86),
+(5, 84),
+(10, 84),
+(11, 84),
+(15, 86);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `meeting`
 --
 
@@ -138,7 +163,8 @@ CREATE TABLE `meeting` (
 --
 
 INSERT INTO `meeting` (`MeetingNo`, `CreatorNo`, `Date`, `time`, `room`, `details`) VALUES
-(1, 84, '2018-04-11', '09:20:00', 'Library Room 4', 'Team Project');
+(1, 84, '2018-04-11', '09:20:00', 'Library Room 4', 'Team Project'),
+(2, 86, '2018-04-19', '20:03:00', 'Library Room 1', 'Test');
 
 -- --------------------------------------------------------
 
@@ -229,7 +255,7 @@ CREATE TABLE `topic` (
   `TopicNo` int(11) NOT NULL,
   `TopicName` varchar(255) NOT NULL,
   `Details` varchar(255) DEFAULT NULL,
-  `DateCreated` date NOT NULL,
+  `DateCreated` datetime NOT NULL,
   `CreatorNo` int(11) NOT NULL,
   `ModuleNo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -239,38 +265,39 @@ CREATE TABLE `topic` (
 --
 
 INSERT INTO `topic` (`TopicNo`, `TopicName`, `Details`, `DateCreated`, `CreatorNo`, `ModuleNo`) VALUES
-(11, 'Test8', '', '2018-02-28', 0, 1),
-(13, 'Test9', '', '2018-02-28', 0, 1),
-(14, 'Test10', '', '2018-02-28', 0, 1),
-(16, 'tet11', '', '2018-02-28', 0, 1),
-(17, 'test12', '', '2018-02-28', 0, 1),
-(18, 'Test13', '', '2018-02-28', 0, 1),
-(19, 'Test14', '', '2018-02-28', 0, 1),
-(21, 'test15', '', '2018-02-28', 0, 1),
-(22, 'hi guys', '', '2018-03-01', 0, 2),
-(23, 'chant', '', '2018-03-02', 0, 1),
-(27, 'maths', '', '0000-00-00', 0, 0),
-(29, 'trig', '', '0000-00-00', 0, 0),
-(30, 'test', '', '2018-03-14', 0, 1),
-(31, 'test51', '', '2018-03-14', 51, 1),
-(32, 'TestA', 'faafafa', '2018-03-14', 51, 1),
-(33, 'TestA', 'faafafa', '2018-03-14', 51, 1),
-(34, 'TestA', 'faafafa', '2018-03-14', 51, 1),
-(35, 'TestB', 'afjkalfjaj', '2018-03-14', 51, 1),
-(36, 'TestC', 'Hello', '2018-03-14', 51, 1),
-(37, 'test', 'Hello', '2018-03-19', 51, 2),
-(38, 'hello', '', '2018-03-21', 51, 1),
-(39, 'test', '', '2018-03-21', 51, 1),
-(40, 'Hello', '', '2018-03-21', 51, 1),
-(41, 'How to make HTML work?', '', '2018-03-21', 51, 2),
-(42, 'New Topic', 'Afadadad', '2018-04-12', 84, 1),
-(43, 'Maths ', 'Greate job', '2018-04-12', 84, 1),
-(44, 'Test4194092887', '', '2018-04-12', 84, 1),
-(45, 'Test094-81408', '', '2018-04-12', 87, 1),
-(46, 'Test', 'TEs', '2018-04-12', 88, 1),
-(47, 'Hello World', 'Tester', '2018-04-12', 87, 1),
-(48, 'Test 3Million', 'Testy test', '2018-04-18', 84, 1),
-(49, 'Topic 87', 'A Topic', '2018-04-18', 84, 1);
+(11, 'Test8', '', '2018-02-28 00:00:00', 0, 1),
+(13, 'Test9', '', '2018-02-28 00:00:00', 0, 1),
+(14, 'Test10', '', '2018-02-28 00:00:00', 0, 1),
+(16, 'tet11', '', '2018-02-28 00:00:00', 0, 1),
+(17, 'test12', '', '2018-02-28 00:00:00', 0, 1),
+(18, 'Test13', '', '2018-02-28 00:00:00', 0, 1),
+(19, 'Test14', '', '2018-02-28 00:00:00', 0, 1),
+(21, 'test15', '', '2018-02-28 00:00:00', 0, 1),
+(22, 'hi guys', '', '2018-03-01 00:00:00', 0, 2),
+(23, 'chant', '', '2018-03-02 00:00:00', 0, 1),
+(27, 'maths', '', '0000-00-00 00:00:00', 0, 0),
+(29, 'trig', '', '0000-00-00 00:00:00', 0, 0),
+(30, 'test', '', '2018-03-14 00:00:00', 0, 1),
+(31, 'test51', '', '2018-03-14 00:00:00', 51, 1),
+(32, 'TestA', 'faafafa', '2018-03-14 00:00:00', 51, 1),
+(33, 'TestA', 'faafafa', '2018-03-14 00:00:00', 51, 1),
+(34, 'TestA', 'faafafa', '2018-03-14 00:00:00', 51, 1),
+(35, 'TestB', 'afjkalfjaj', '2018-03-14 00:00:00', 51, 1),
+(36, 'TestC', 'Hello', '2018-03-14 00:00:00', 51, 1),
+(37, 'test', 'Hello', '2018-03-19 00:00:00', 51, 2),
+(38, 'hello', '', '2018-03-21 00:00:00', 51, 1),
+(39, 'test', '', '2018-03-21 00:00:00', 51, 1),
+(40, 'Hello', '', '2018-03-21 00:00:00', 51, 1),
+(41, 'How to make HTML work?', '', '2018-03-21 00:00:00', 51, 2),
+(42, 'New Topic', 'Afadadad', '2018-04-12 00:00:00', 84, 1),
+(43, 'Maths ', 'Greate job', '2018-04-12 00:00:00', 84, 1),
+(44, 'Test4194092887', '', '2018-04-12 00:00:00', 84, 1),
+(45, 'Test094-81408', '', '2018-04-12 00:00:00', 87, 1),
+(46, 'Test', 'TEs', '2018-04-12 00:00:00', 88, 1),
+(47, 'Hello World', 'Tester', '2018-04-12 00:00:00', 87, 1),
+(48, 'Test 3Million', 'Testy test', '2018-04-18 00:00:00', 84, 1),
+(49, 'Topic 87', 'A Topic', '2018-04-18 00:00:00', 84, 1),
+(50, '%ladja', 'Hello', '2018-04-18 16:04:10', 84, 1);
 
 --
 -- Indexes for dumped tables
@@ -299,6 +326,12 @@ ALTER TABLE `course`
 --
 ALTER TABLE `coursemodule`
   ADD PRIMARY KEY (`CourseNo`,`ModuleNo`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`CommentNo`,`MemberNo`);
 
 --
 -- Indexes for table `meeting`
@@ -343,7 +376,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `CommentNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CommentNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `course`
 --
@@ -353,7 +386,7 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
-  MODIFY `MeetingNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `MeetingNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `member`
 --
@@ -373,7 +406,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `topic`
 --
 ALTER TABLE `topic`
-  MODIFY `TopicNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;COMMIT;
+  MODIFY `TopicNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
