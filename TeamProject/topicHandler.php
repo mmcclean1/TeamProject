@@ -11,16 +11,14 @@
 	$connection = mysqli_connect("localhost","root","");
 	mysqli_select_db($connection,"studentsupport");
 
+	//Get Title, Details, date, creatorNo
 	$title=$_POST['TopicName'];
-	if($title != "")
-	{
-		//Get Details, date, creatorNo
-		$details = $_POST['Details'];
-		$date=date("Y-m-d");
-		$id = $_SESSION['id'];
-		//Insert Into Database
-		$query = mysqli_query($connection, "INSERT INTO topic(TopicName,Details,DateCreated,CreatorNo,ModuleNo) VALUES('$title', '$details','$date', '$id', '$moduleNo')");
-	}
+	$details = $_POST['Details'];
+	$date=date("Y-m-d H:m:s");
+	$id = $_SESSION['id'];
+	
+	//Insert Into Database
+	$query = mysqli_query($connection, "INSERT INTO topic(TopicName,Details,DateCreated,CreatorNo,ModuleNo) VALUES('$title', '$details','$date', '$id', '$moduleNo')");
 
 	mysqli_close($connection);
 	$done = true;
