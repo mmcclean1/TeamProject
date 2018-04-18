@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2018 at 05:02 PM
+-- Generation Time: Apr 18, 2018 at 10:56 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`AdminNo`, `AdminName`, `Password`, `user_lastname`, `created_at`, `addedby`) VALUES
-(3, 'JimBobo', '7ddf32e17a6ac5ce04a8ecbf782ca509', '', '0000-00-00', ''),
+(3, 'JimBobo', 'f5d1278e8109edd94e1e4197e04873b9', '', '0000-00-00', ''),
 (4, 'mmcclean', 'f5d1278e8109edd94e1e4197e04873b9', '', '0000-00-00', '');
 
 -- --------------------------------------------------------
@@ -52,23 +52,24 @@ INSERT INTO `admin` (`AdminNo`, `AdminName`, `Password`, `user_lastname`, `creat
 --
 
 CREATE TABLE `comment` (
-  `Comment_id` int(11) NOT NULL,
+  `CommentNo` int(11) NOT NULL,
   `TopicNo` int(11) NOT NULL,
   `Comment` varchar(255) NOT NULL,
-  `dateCreated` date NOT NULL,
-  `creatorNo` int(11) NOT NULL,
-  `replyTo` int(11) DEFAULT NULL,
-  `likes` int(11) NOT NULL DEFAULT '0'
+  `DateCreated` date NOT NULL,
+  `CreatorNo` int(11) NOT NULL,
+  `ReplyTo` int(11) DEFAULT NULL,
+  `Likes` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`Comment_id`, `TopicNo`, `Comment`, `dateCreated`, `creatorNo`, `replyTo`, `likes`) VALUES
-(0, 0, '', '2018-04-12', 84, NULL, 0),
-(1, 0, 'hi everhone', '0000-00-00', 23, NULL, 0),
-(4, 0, 'hi everhone', '2018-02-15', 24, NULL, 0);
+INSERT INTO `comment` (`CommentNo`, `TopicNo`, `Comment`, `DateCreated`, `CreatorNo`, `ReplyTo`, `Likes`) VALUES
+(1, 49, 'Test', '2018-04-18', 84, NULL, 0),
+(2, 49, 'Test', '2018-04-18', 84, NULL, 0),
+(3, 49, 'Hello Andrew', '2018-04-18', 84, NULL, 0),
+(4, 49, '', '2018-04-18', 84, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -172,7 +173,9 @@ INSERT INTO `member` (`id`, `first_name`, `last_name`, `username`, `email`, `pas
 (83, 'John', 'Hean', 'john_hean', 'Heaney@hotm.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2018-03-07', 1, 'homer1.jpg'),
 (84, 'Matthew', 'Mcclean', 'matthew_mcclean_1', 'Mmcclean1@gmail.com', 'f5d1278e8109edd94e1e4197e04873b9', '2018-03-30', 3, 'assets/images/profile_pics/defaults/head_emerald.png'),
 (85, 'Matthew', 'Mcclean', 'matthew_mcclean_1_2', 'Mmcclean2@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', '2018-03-30', 2, 'assets/images/profile_pics/defaults/head_deep_blue.png'),
-(86, 'Matthew', 'Mcclean', 'matthew_mcclean_1_2_3', 'Mmcclean6@gmail.com', 'f5d1278e8109edd94e1e4197e04873b9', '2018-04-11', 1, 'assets/images/profile_pics/defaults/head_deep_blue.png');
+(86, 'Matthew', 'Mcclean', 'matthew_mcclean_1_2_3', 'Mmcclean6@gmail.com', 'f5d1278e8109edd94e1e4197e04873b9', '2018-04-11', 1, 'assets/images/profile_pics/defaults/head_deep_blue.png'),
+(87, 'Jim', 'Bob', 'jim_bob', 'Jimbob@gmail.com', 'f5d1278e8109edd94e1e4197e04873b9', '2018-04-12', 1, 'assets/images/profile_pics/defaults/head_emerald.png'),
+(88, 'Jimb', 'Ob', 'jimb_ob', 'Jimbob1@gmail.com', 'f5d1278e8109edd94e1e4197e04873b9', '2018-04-12', 1, 'assets/images/profile_pics/defaults/head_emerald.png');
 
 -- --------------------------------------------------------
 
@@ -261,7 +264,13 @@ INSERT INTO `topic` (`TopicNo`, `TopicName`, `Details`, `DateCreated`, `CreatorN
 (40, 'Hello', '', '2018-03-21', 51, 1),
 (41, 'How to make HTML work?', '', '2018-03-21', 51, 2),
 (42, 'New Topic', 'Afadadad', '2018-04-12', 84, 1),
-(43, 'Maths ', 'Greate job', '2018-04-12', 84, 1);
+(43, 'Maths ', 'Greate job', '2018-04-12', 84, 1),
+(44, 'Test4194092887', '', '2018-04-12', 84, 1),
+(45, 'Test094-81408', '', '2018-04-12', 87, 1),
+(46, 'Test', 'TEs', '2018-04-12', 88, 1),
+(47, 'Hello World', 'Tester', '2018-04-12', 87, 1),
+(48, 'Test 3Million', 'Testy test', '2018-04-18', 84, 1),
+(49, 'Topic 87', 'A Topic', '2018-04-18', 84, 1);
 
 --
 -- Indexes for dumped tables
@@ -277,7 +286,7 @@ ALTER TABLE `admin`
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
-  ADD PRIMARY KEY (`Comment_id`);
+  ADD PRIMARY KEY (`CommentNo`);
 
 --
 -- Indexes for table `course`
@@ -331,6 +340,11 @@ ALTER TABLE `topic`
 ALTER TABLE `admin`
   MODIFY `AdminNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `CommentNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
@@ -344,7 +358,7 @@ ALTER TABLE `meeting`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 --
 -- AUTO_INCREMENT for table `module`
 --
@@ -359,7 +373,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `topic`
 --
 ALTER TABLE `topic`
-  MODIFY `TopicNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;COMMIT;
+  MODIFY `TopicNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
