@@ -97,7 +97,7 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 			$moduleNo=$_GET['ModuleNo'];
 
 			//Connect to database
-			$connection = mysqli_connect("localhost:3307","root","");
+			$connection = mysqli_connect("localhost","root","");
 			mysqli_select_db($connection,"studentsupport");
 
 			//Get Module Name
@@ -156,8 +156,10 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 				<table class="table table-striped">
 					<thead>
 						<tr class="text-success">
-							<th>DATE</th>
 							<th>Topic Title</th>
+							<th>Details</th>
+							<th>Date Created</th>
+							<th>Created By</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -167,9 +169,13 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 						$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
 						while($row=mysqli_fetch_array($result))
 						{
-							print("<tr><td>".$row['DateCreated']."</td>");
-							print("<td><a href=createComment.php?DateCreated=".$row['DateCreated'].">".$row['TopicName']."</a></td></tr>");
-							//	print("<tr><td>".$row['ModuleNo']."</td>");
+							print("<tr><td><a href=createComment.php?TopicNo=".$row['TopicNo'].">".$row['TopicName']."</a></td>");
+							print("<td>".$row['Details']."</td>");
+							print("<td>".$row['DateCreated']."</td>");
+							$CreatorNo = $row['CreatorNo'];
+							$namesResult=mysqli_query($connection,"SELECT * FROM member WHERE id='$CreatorNo'");
+							while($row2=mysqli_fetch_array($namesResult))
+								{print('<td>'.$row2['first_name'].'<br>'.$row2['last_name'].'</td></tr>');}
 						}
 						//Close connection
 						mysqli_close($connection);
