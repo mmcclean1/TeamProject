@@ -58,24 +58,27 @@ include("includes/header.php");
 <!--MAIN CONTENT COLUMN-->
 <div class="index_main_column column" >
 
-
 	<div id="color1">
 		<h1  align="center">Comments</h1></div>
-	<a id="back" href="index.php"><i class="far fa-arrow-alt-circle-left fa-3x" style="color:red"></i></a>
+	
 	<?php
+	//Get session id
+	$id = $_SESSION['id'];
+
 	//Get passed in TopicNo
-	//	$TopicNo=$_GET['TopicNo'];
-	$TopicNo = "";
-	$TopicNo = isset($_GET['TopicNo']) ? $_GET['TopicNo'] : '';
+	$TopicNo=$_GET['TopicNo'];
 	
 	//Connect to database
-	$connection = mysqli_connect("localhost:3307","root","");
+	$connection = mysqli_connect("localhost","root","");
 	mysqli_select_db($connection,"studentsupport");
 
 	//Get Module Name
-	$TopicResult=mysqli_query($connection,"SELECT TopicName FROM topic WHERE TopicNo='$TopicNo'");
+	$TopicResult=mysqli_query($connection,"SELECT * FROM topic WHERE TopicNo='$TopicNo'");
 	while($row=mysqli_fetch_array($TopicResult))
-	{print("<title>".$row['TopicName']."</title><h1>".$row['TopicName']."</h1>");}
+	{
+		print('<a id="back" href=module.php?ModuleNo='.$row['ModuleNo'].'><i class="far fa-arrow-alt-circle-left fa-3x" style="color:red"></i></a>');
+		print("<title>".$row['TopicName']."</title><h1>".$row['TopicName']."</h1>");
+	}
 
 	//Create new comment
 	print("<br>"."<br>"."<br>");
@@ -84,9 +87,9 @@ include("includes/header.php");
 	print("<div id='div' style=display:none><form method=POST action=commentHandler.php?TopicNo=".$TopicNo.">");
 	print("<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>");
 	print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Create Comment</strong> </td></tr>");
-	print("<tr><td><strong>Comment Summary</strong><input name='CommentName' type='text' size=50' /><strong> </td></tr>");
+	//print("<tr><td><strong>Comment Summary</strong><input name='CommentName' type='text' size=50' /><strong> </td></tr>");
 	print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='90' rows='20' id='detail'></textarea><br><br><button type='submit' name='commentSubmit' >Add Comment</button> ");
-	print("<input type='file' name='fileToUpload'><br><br><input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
+	print("<input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
 	print("</table></form></div>");
 	?>
 
@@ -94,21 +97,31 @@ include("includes/header.php");
 		<table class="table table-striped">
 			<thead>
 				<tr class="text-success">
-					<th>Comment Summary</th>
 					<th>Comment</th>
+					<th>Date Created</th>
+					<th>Created By</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
-				//Get topics associated with module
+				//Get comments associated with topic
 				$result=mysqli_query($connection,"SELECT * FROM comment WHERE TopicNo='$TopicNo'");
 				while($row=mysqli_fetch_array($result))
 				{
-					//print("<tr><td>".$row['Comment_id']."</td>");
-					print("<tr><td>".$row['commentSummary']."</td>");
-					print("<td>".$row['Comment']."   "."<a href='deleteComment.php?id='" . $row['Comment_id'] . "'>Delete </a>"."</td></tr>");
-					//	echo "<a href='delete.php?id='" . $row['id'] . "'>Delete Song</a>";
-					//print("<td><a href=topic.php?TopicNo=".$row['TopicNo'].">".$row['TopicName']."</a></td></tr>");
+					print("<td>".$row['Comment']."</td>");
+					print('<td>'.$row['DateCreated'].'</td>');
+					$CreatorNo = $row['CreatorNo'];
+					$namesResult=mysqli_query($connection,"SELECT * FROM member WHERE id='$CreatorNo'");
+					while($row2=mysqli_fetch_array($namesResult))
+					{
+						print('<td>'.$row2['first_name'].'<br>'.$row2['last_name'].'</td>');
+						if($id == $CreatorNo)
+						{
+							print('<td><a href=deleteComment.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'>Delete</a></td>');
+						}
+						print('</tr>');
+					}
+
 				}
 				//Close connection
 				mysqli_close($connection);

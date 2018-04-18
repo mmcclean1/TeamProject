@@ -9,23 +9,20 @@
 	$connection = mysqli_connect("localhost","root","");
 	mysqli_select_db($connection,"studentsupport");
 
-	$comment=$_POST['Comment'];
-	if($comment != "")
-	{
-		//Get Details, date, creatorNo
-		//$comment_id = $_POST['CommentID'];
-		$dateCreated=date("Y-m-d");
-		$id = $_SESSION['id'];
-		$TopicNo = $_SESSION['TopicNo']
-		//Insert Into Database
-		$query = mysqli_query($connection, "INSERT INTO comment(comment,DateCreated,CreatorNo,TopicNo) VALUES('$comment', '$dateCreated', '$id', '$TopicNo')");
-	}
+	//Get Details, date, creatorNo
+	$details=$_POST['Details'];
+	$dateCreated=date("Y-m-d");
+	$id = $_SESSION['id'];
+
+	//Insert Into Database
+	$query = mysqli_query($connection, "INSERT INTO comment(TopicNo,Comment,DateCreated,CreatorNo) VALUES('$TopicNo', '$details','$dateCreated', '$id')");
+	print($query);
 
 	mysqli_close($connection);
 	$done = true;
 	if ($done)
 {
-    header("Location: createComment.php?Comment_id=".$Comment_id);
+    header("Location: createComment.php?TopicNo=".$TopicNo);
     exit;
 }
 
