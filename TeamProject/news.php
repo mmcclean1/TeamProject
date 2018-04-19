@@ -55,21 +55,16 @@ include("includes/header.php");
 						Site is currently owned and maintained by five shareholders... Leonardo; Donatello; Michelangelo; Raphael and Master Splinter &nbsp; &nbsp; &nbsp;<a href="https://www.youtube.com/watch?v=rS-qFdw-v_o">Where it all began</a>
 					</p></div>
 
-				
-				
-				<div style="padding:10px;"> 
-					<p class="paragraph">
-						</p>
-
-			</div>
+		
+			<!--CONTACT-->
+				<div id="galleryCon">
 				<p class="c">Phone:(074) 853 6060<br>
 					Fax:(078) 853 6060<br>     
 					Email: <a href="mailto:info@studentsupport.ie"> info@studentsupport.ie</a><br> 
 					Pearse road, Letterkenny<br>
 					Co.Donegal<br>
 					Ireland</p> 
-
-
+					</div>
 			</div>
 		</div>
 		<footer><?php include("includes/footer.php");?>
