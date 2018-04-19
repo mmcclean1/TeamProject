@@ -14,37 +14,6 @@ include("includes/header.php");
 				margin-left: 0px;
 				padding-left: 0px;
 			}
-			table,tr,td {
-				margin-left: 0px;
-				border:solid thin #34495e;
-				width:30%;
-				height: 15%;
-				border-collapse: collapse;
-			}
-			table, th, td {
-				border: 1px solid black;
-			}
-			tr {
-				width: 90%;
-			}
-			/*set color for every even(ever second row) row*/
-			tr:nth-child(even) {
-				/*				background-color: #945460;*/
-				background-color:  #7ebac7;
-				color:black;
-			}
-			hr{
-				height: 1px;
-				/*	color: #123455;*/
-				background-color: #123455;
-				border: none;
-			}
-			th{
-				font-size: 25px;
-				font-family: sans-serif;
-/*				background-color: #35393e;*/
-				color: white; 
-			}
 		</style>
 
 <script type="text/javascript" src="assets/js/newComment.js"></script>
@@ -69,7 +38,7 @@ include("includes/header.php");
 	$TopicNo=$_GET['TopicNo'];
 	
 	//Connect to database
-	$connection = mysqli_connect("localhost","root","");
+	$connection = mysqli_connect("localhost:3307","root","");
 	mysqli_select_db($connection,"studentsupport");
 
 	//Get Topic Name & Details
@@ -84,7 +53,7 @@ include("includes/header.php");
 
 
 	?>
-	<div class="col-md-6 col-md-offset-1" >
+	<div class="col-md-8 col-md-offset-1" >
 		<thead>
 		<tbody>
 			<tr>
@@ -103,11 +72,15 @@ include("includes/header.php");
 					print("<tr>");
 
 					print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Comment </strong> </td></tr>");
-					print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='60' rows='6' id='detail'></textarea><br><br>
+
+					//CommentName
+					print("<tr><td colspan='7'><strong>Comment Summary</strong><input name='CommentName' type='text' size=80' color='black' /><strong> </td></tr>");
+
+					print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols=100' rows='4' id='detail'></textarea><br><br>
 					<button type='submit' name='commentSubmit' class='btn btn-primary's >Add Comment</button> ");
 
 					//					BUTTONS
-					print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button><br><br><button type='submit name='cancel' class='btn btn-primary'>Cancel Operation</button><td></tr>");
+					print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button><button type='submit name='cancel' class='btn btn-primary'>Cancel Operation</button><td></tr>");
 					print("</thead><tbody></table></form></div></div>");
 
 					print("<br>");
@@ -116,7 +89,7 @@ include("includes/header.php");
 	function commentTable($row) // Function to generate table of comments
 	{
 		//Connect to database
-		$connection = mysqli_connect("localhost","root","");
+		$connection = mysqli_connect("localhost:3307","root","");
 		mysqli_select_db($connection,"studentsupport");
 
 		//Get session id
@@ -125,61 +98,71 @@ include("includes/header.php");
 		//Get passed in TopicNo
 		$TopicNo=$_GET['TopicNo'];
 
+		print('<tr><td>'.$row['Likes'].':');
+
+		//Show like or unlike button depending on whether user has liked comment before
 		$CommentNo = $row['CommentNo'];
 
-		print('<tr>');
-		if($row['Deleted']==FALSE)
+		$likesResult = mysqli_query($connection, "SELECT * FROM likes WHERE MemberNo='$id' AND CommentNo='$CommentNo'");
+		if(mysqli_num_rows($likesResult)==0)
 		{
-			print('<td>'.$row['Likes'].':');
-
-			//Show like or unlike button depending on whether user has liked comment before
-			$likesResult = mysqli_query($connection, "SELECT * FROM likes WHERE MemberNo='$id' AND CommentNo='$CommentNo'");
-			if(mysqli_num_rows($likesResult)==0)
-			{
-				//Like button - user has not liked comment before - clicking this will like the comment
-				print('<input type=button value=Like onclick=location.href="like.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'"></input></td>');
-			}
-			else
-			{
-				//UnLike button - user has liked comment before - clicking this will unlike the comment
-				print('<input type=button value=Unlike onclick=location.href="unlike.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'"></input></td>');
-			}
-
-			print("<td>".$row['Comment']."</td>");
-			print('<td>'.$row['DateCreated'].'</td>');
-			$CreatorNo = $row['CreatorNo'];
-			$namesResult=mysqli_query($connection,"SELECT * FROM member WHERE id='$CreatorNo'");
-			while($row2=mysqli_fetch_array($namesResult))
-			{
-				print('<td>'.$row2['first_name']."&nbsp;".$row2['last_name'].'</td></tr>');
-			}
-
-			//Extra actions
-			print('<tr><td><a onclick=replyForm(this) id='.$CommentNo.'>Reply</a></td>');
-			print('<td><a>Report</a></td>');
-			if($id == $CreatorNo)
-			{
-				print('<td><a href=deleteComment.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'>Delete</a></td>');
-			}
-			else {
-				print('<td></td>');
-				print('<td></td></tr>');
-			}
-			//Show this table only when reply is clicked
-			print('<tr style=display:none id=reply'.$CommentNo.'><td>');
-				print("<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>");
-					print('<form method=POST action=replyHandler.php?TopicNo='.$TopicNo.'&ReplyTo='.$CommentNo.' >');
-						print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Reply</strong> </td></tr>");
-						print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='30' rows='20' id='detail'></textarea><br><br><button type='submit' name='commentSubmit' >Add Comment</button> ");
-						print("<input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
-				print("</table></form>");
-			print('</td></tr>');
+			//Like button - user has not liked comment before - clicking this will like the comment
+			print('<input type=button value=Like onclick=location.href="like.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'"></input></td>');
 		}
 		else
 		{
-			print('<td></td><td>[deleted]</td><td></td><td></td>');
-			print('</tr>');
+			//UnLike button - user has liked comment before - clicking this will unlike the comment
+			print('<input type=button value=Unlike onclick=location.href="unlike.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'"></input></td>');
+			
+			
+			
 		}
+
+		print("<td>".$row['Comment']."</td>");
+		print('<td>'.$row['DateCreated'].'</td>');
+		$CreatorNo = $row['CreatorNo'];
+		$namesResult=mysqli_query($connection,"SELECT * FROM member WHERE id='$CreatorNo'");
+		while($row2=mysqli_fetch_array($namesResult))
+		{
+			print('<td>'.$row2['first_name']."&nbsp;".$row2['last_name'].'</td></tr>');
+		}
+
+		//Extra actions
+		print('<tr><td><a onclick=replyForm(this) id='.$CommentNo.'>Reply</a></td>');
+		print('<td><a>Report</a></td>');
+		if($id == $CreatorNo)
+		{
+			print('<td><a href=deleteComment.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'>Delete</a></td>');
+		}
+		else
+		{
+			
+			print('<td></td>');}
+		print('<td></td></tr>');
+
+		?>
+		
+		
+			<div class="col-md-9 col-md-offset-1" >
+		
+		<?php
+		//Show this table only when reply is clicked
+		print('<tr style=display:none id=reply'.$CommentNo.'><td>');
+			print("<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>");
+				print('<form method=POST action=replyHandler.php?TopicNo='.$TopicNo.'&ReplyTo='.$CommentNo.' >');
+					print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Reply</strong> </td></tr>");
+					//print("<tr><td><strong>Comment Summary</strong><input name='CommentName' type='text' size=50' /><strong> </td></tr>");
+					print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='20' rows='20' id='detail'></textarea><br><br><button type='submit' name='commentSubmit' >Add Comment</button> ");
+						print("<input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
+			print("</table></form>");
+		print('</td></tr>');
+
+		
+		?>
+		
+		</div>
+	
+	<?php
 		
 		//Print out any replies to comment
 		$replyResult=mysqli_query($connection,"SELECT * FROM comment WHERE ReplyTo='$CommentNo' ORDER BY Likes AND DateCreated DESC");
@@ -227,6 +210,7 @@ include("includes/header.php");
 				
 				print('</tbody>
 				</table>');
+				
 			}
 			else //Do this if there is nothing in the database for this topic
 			{
@@ -234,6 +218,7 @@ include("includes/header.php");
 			}
 		?>
 	</div>
+
 
 </div>
 <footer><?php include("includes/footer.php");?></footer>
