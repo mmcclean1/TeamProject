@@ -61,7 +61,7 @@ include("includes/header.php");
 					<p class="paragraph">
 						</p>
 
-			
+			</div>
 				<p class="c">Phone:(074) 853 6060<br>
 					Fax:(078) 853 6060<br>     
 					Email: <a href="mailto:info@studentsupport.ie"> info@studentsupport.ie</a><br> 
