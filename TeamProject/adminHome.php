@@ -85,7 +85,7 @@
 								<th>First name</th>
 								<th>Course No</th>
 								<th>Profile Picture</th>
-								<th>Comments</th>
+								<th></th>
 								<th>Action</th>
 								<th></th>
 							</tr>
@@ -132,10 +132,7 @@
 								<td><img src="<?php echo $Image; ?>" width="130px"; height="50px"></td>
 								<td></td>
 								<td>
-									<!--CREATE BUTTONS FOR EDIT AND DELETE POSTS-->
-									<a href="EditPost.php?Edit=<?php echo $Id; ?>">
-
-										<span class="btn btn-warning">Edit</span></a>
+		
 								<!--DELETE MEMBER-->
 								<a href="deleteMember.php?id=<?php echo $Id; ?>">
 									<span class="btn btn-danger">Delete</span>

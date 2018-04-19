@@ -60,22 +60,7 @@
 					<?php echo Message();
 					echo SuccessMessage();
 					?>
-
-				<!--CREATE FORM-->
-				<div>
-					<form action="topics.php" method="post">
-						<fieldset>
-							<div class="form-group">
-								<label for="categoryname"><span class="FieldInfo"></span></label>
-
-								<input class="form-control" type="text" name="Category" id="categoryname" placeholder="Name">
-							</div>
-							<br>
-							<input class="btn btn-success btn-block" type="Submit" name="Submit" value="Add New Category">
-						</fieldset>
-						<br>
-					</form>
-				</div>
+					
 				<!--CREATE TABLE CONTENTS-->
 				<div class ="table-responsive">
 					<table class="table table-striped table-hover">
