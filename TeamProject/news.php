@@ -39,20 +39,24 @@ include("includes/header.php");
 					<p class="paragraph">
 
 						The annual LYIT Student Achievement Awards evening took place last Wednesday the 11th of April in the Radisson Blu Hotel, Letterkenny.  The evening is a symbol of recognition and celebration of the recreational activities carried out by student Clubs & Societies leaders.   
+					</p></div>	
+					<p class="paragraph">
 						An Information Evening will be hosted by LYIT on Thursday, 10 May 2018, from 3 - 7 pm in our Letterkenny campus. This event will provide Leaving Certificate students, parents and mature students with information about LYIT, and the CAO process in general. Attendees can attend talks and meet staff and students. Check back closer to the time for more information.
+					</p>
+					<p class="paragraph">
 						There was a great air of excitement around the AIB branch at Letterkenny Institute of Technology this morning as former Republic of Ireland goalkeeper Shay Given called in.
 
 						Shay, who will be awarded the Donegal Person of the Year award on Saturday night in Dublin, popped in on his old friend Sandra McGettigan, the AIB campus manager.
 
 						AIB opened its new state-of-the-art branch to students and staff of LYIT and Co-Lab last September 
 
-					</p></div>
+					</p>
 
 
 				<div id="color">        
 					<p class="paragraph">
 
-						Site is currently owned and maintained by five shareholders... Leonardo; Donatello; Michelangelo; Raphael and Master Splinter &nbsp; &nbsp; &nbsp;<a href="https://www.youtube.com/watch?v=rS-qFdw-v_o">Where it all began</a>
+						This site is currently owned and maintained by five shareholders... Who have decided to remain anonymous.
 					</p></div>
 
 				
