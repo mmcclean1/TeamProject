@@ -11,7 +11,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Document</title>
+		<title>Comments</title>
 		<!--INCLUDE LIBRATIES FOR STYLING BOOTSTRAP AND JQUERY-->
 		<title>Admin</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -45,4 +45,3 @@
 		<?php include 'adminFooter.php';?>
 	</body>
 </html>
-

@@ -35,7 +35,7 @@ include("includes/header.php");
 
 		<!--MAIN CONTENT COLUMN-->
 		<div class="index_main_column column" >
-			
+
 			<?php
 			//Matthew McClean - L00137316
 			//LYIT Team Project 2018
@@ -85,12 +85,10 @@ include("includes/header.php");
 			print("</select> ");
 
 			//Filter button
-			
-			
-		print("<button type='submit' value=Filter id=filter class='btn btn-primary'>Filter</button>");
-			
-			
-			
+			print("<button type='submit' value=Filter id=filter class='btn btn-primary'>Filter</button>");
+
+
+
 			print("<br>"."<br>"."<br>"."<br>"."<br>");
 
 			//Dummy select for courseNo
@@ -102,7 +100,6 @@ include("includes/header.php");
 
 
 			<!--					<p  align="left">Choose module from table.</p>-->
-
 			<div id='modulesDiv' class="col-md-8 col-md-offset-2">
 				<table class="table table-striped">
 					<thead>
