@@ -60,7 +60,6 @@
 					<?php echo Message();
 					echo SuccessMessage();
 					?>
-					
 				<!--CREATE TABLE CONTENTS-->
 				<div class ="table-responsive">
 					<table class="table table-striped table-hover">
@@ -82,7 +81,13 @@
 							$Id = $DataRows["TopicNo"];
 							$DateTime = $DataRows["DateCreated"];
 							$CategoryName = $DataRows["TopicName"];
-							$CreatorName = $DataRows["CreatorNo"];
+							$CreatorNo = $DataRows["CreatorNo"];
+							$query=mysqli_query($con,"SELECT * FROM member WHERE id='$CreatorNo'");
+							while($row=mysqli_fetch_array($query))
+							{
+								$FirstName = $row['first_name'];
+								$LastName = $row['last_name'];
+							}
 							$No++;//INCREMENT NUMBER FOR EACH MEMBER ADDED
 						?>
 						<tr>
@@ -90,7 +95,7 @@
 							<td><?php echo $No; ?></td>
 							<td><?php echo $DateTime; ?></td>
 							<td><?php echo $CategoryName; ?></td>
-							<td><?php echo $CreatorName; ?></td>
+							<td><?php echo ($FirstName.'<br>'.$LastName); ?></td>
 							<td><a href="DeleteCategory.php?id=<?php echo $Id; ?>">
 							<span class="btn btn-danger">Delete</span>
 							</a>
