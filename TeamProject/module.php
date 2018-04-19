@@ -61,7 +61,7 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 			$moduleNo=$_GET['ModuleNo'];
 
 			//Connect to database
-			$connection = mysqli_connect("localhost:3307","root","");
+			$connection = mysqli_connect("localhost","root","");
 			mysqli_select_db($connection,"studentsupport");
 
 			//Get Module Name
@@ -107,22 +107,24 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 
 
 							<div id='modulesDiv' class="col-md-9 col-md-offset-1">
-								<table class="table table-striped">
-									<thead>
-										<tr class="text-success">
-											<th>Topic Title</th>
-											<th>Details</th>
-											<th>Date Created</th>
-<!--											MAKE THE WORD NOT WRAP IN COLUMN-->
-											<th nowrap="nowrap">Created By</th>										
-
-										</tr>
-									</thead>
-									<tbody>
-										<?php
-
+								<?php
+									$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
+									if(mysqli_num_rows($result)>0)
+									{
+										print('<table class="table table-striped">
+											<thead>
+												<tr class="text-success">
+													<th>Topic Title</th>
+													<th>Details</th>
+													<th>Date Created</th>');
+												//MAKE THE WORD NOT WRAP IN COLUMN-->
+												print('<th nowrap="nowrap">Created By</th>										
+												</tr>
+											</thead>
+											<tbody>');
+										
 										//Get topics associated with module
-										$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
+										
 										while($row=mysqli_fetch_array($result))
 										{
 											print("<tr><td><a href=createComment.php?TopicNo=".$row['TopicNo'].">".$row['TopicName']."</a></td>");
@@ -135,11 +137,17 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 										}
 										//Close connection
 										mysqli_close($connection);
-										?>
+										
 
-									</tbody>
-								</table>
-							</div>
+												print('</tbody>
+											</table>
+										</div>');
+									}
+									else //Do this if there is nothing in the database for this module
+									{
+										print('<p>There`s nothing here! Start the conversation by creating a topic.</p>');
+									}
+							?>
 
 							<!-- EMPTY DIV TO PUT SPACE BETWEEN IMAGE AND TEXT-->
 							<footer><?php include("includes/footer.php");?>

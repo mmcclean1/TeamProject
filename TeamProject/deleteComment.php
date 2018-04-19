@@ -10,8 +10,8 @@
 	$CommentNo = $_GET['CommentNo'];
 	$TopicNo = $_GET['TopicNo'];
 
-	//Delete Comment from database
-	$query = mysqli_query($connection, "DELETE FROM comment WHERE CommentNo='$CommentNo'");
+	//Update comment in database to 'deleted'
+	$query = mysqli_query($connection, "UPDATE comment SET comment='[deleted]', DELETED=TRUE WHERE CommentNo='$CommentNo'");
 
 	mysqli_close($connection);
 	$done = true;

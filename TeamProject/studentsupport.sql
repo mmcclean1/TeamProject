@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2018 at 08:33 PM
+-- Generation Time: Apr 19, 2018 at 05:32 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -55,23 +55,30 @@ CREATE TABLE `comment` (
   `DateCreated` datetime NOT NULL,
   `CreatorNo` int(11) NOT NULL,
   `ReplyTo` int(11) DEFAULT NULL,
-  `Likes` int(11) NOT NULL DEFAULT '0'
+  `Likes` int(11) NOT NULL DEFAULT '0',
+  `Deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`CommentNo`, `TopicNo`, `Comment`, `DateCreated`, `CreatorNo`, `ReplyTo`, `Likes`) VALUES
-(3, 49, 'Hello Andrew', '2018-04-18 00:00:00', 84, NULL, 3),
-(5, 49, 'Hello!', '2018-04-18 00:00:00', 86, NULL, 2),
-(7, 11, 'Test', '2018-04-18 00:00:00', 84, NULL, 0),
-(8, 11, 'Test2', '2018-04-18 00:00:00', 84, NULL, 0),
-(9, 49, 'Test', '2018-04-18 00:00:00', 84, NULL, 0),
-(11, 17, 'Hello Matthew', '2018-04-18 00:00:00', 84, NULL, 5),
-(12, 49, 'Test24', '2018-04-18 16:04:06', 84, NULL, 0),
-(14, 49, 'Test', '2018-04-18 18:04:32', 86, 3, 0),
-(16, 49, 'Test Reply', '2018-04-18 19:04:08', 86, 14, 0);
+INSERT INTO `comment` (`CommentNo`, `TopicNo`, `Comment`, `DateCreated`, `CreatorNo`, `ReplyTo`, `Likes`, `Deleted`) VALUES
+(3, 49, 'Hello Andrew', '2018-04-18 00:00:00', 84, NULL, 3, 0),
+(5, 49, 'Hello!', '2018-04-18 00:00:00', 86, NULL, 2, 0),
+(7, 11, 'Test', '2018-04-18 00:00:00', 84, NULL, 0, 0),
+(8, 11, 'Test2', '2018-04-18 00:00:00', 84, NULL, 0, 0),
+(9, 49, 'Test', '2018-04-18 00:00:00', 84, NULL, 0, 0),
+(11, 17, 'Hello Matthew', '2018-04-18 00:00:00', 84, NULL, 5, 0),
+(12, 49, 'Test24', '2018-04-18 16:04:06', 84, NULL, 0, 0),
+(14, 49, 'Test', '2018-04-18 18:04:32', 86, 3, 0, 0),
+(16, 49, 'Test Reply', '2018-04-18 19:04:08', 86, 14, 0, 0),
+(17, 22, 'Hello Jaime', '2018-04-19 13:04:26', 86, NULL, 1, 0),
+(18, 50, '[deleted]', '2018-04-19 16:04:03', 86, NULL, 0, 1),
+(19, 50, '[deleted]', '2018-04-19 16:04:38', 86, NULL, 0, 1),
+(20, 50, 'Reply', '2018-04-19 16:04:46', 86, 19, 0, 0),
+(21, 50, '[deleted]', '2018-04-19 16:04:30', 86, NULL, 0, 1),
+(22, 50, 'REply2', '2018-04-19 16:04:57', 86, 21, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -141,7 +148,8 @@ INSERT INTO `likes` (`CommentNo`, `MemberNo`) VALUES
 (5, 84),
 (10, 84),
 (11, 84),
-(15, 86);
+(15, 86),
+(17, 86);
 
 -- --------------------------------------------------------
 
@@ -297,7 +305,10 @@ INSERT INTO `topic` (`TopicNo`, `TopicName`, `Details`, `DateCreated`, `CreatorN
 (47, 'Hello World', 'Tester', '2018-04-12 00:00:00', 87, 1),
 (48, 'Test 3Million', 'Testy test', '2018-04-18 00:00:00', 84, 1),
 (49, 'Topic 87', 'A Topic', '2018-04-18 00:00:00', 84, 1),
-(50, '%ladja', 'Hello', '2018-04-18 16:04:10', 84, 1);
+(50, '%ladja', 'Hello', '2018-04-18 16:04:10', 84, 1),
+(51, 'Shane', 'Hello', '2018-04-19 13:04:35', 86, 4),
+(52, '', '', '2018-04-19 15:04:24', 86, 1),
+(53, '', '', '2018-04-19 15:04:34', 86, 1);
 
 --
 -- Indexes for dumped tables
@@ -376,12 +387,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `CommentNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `CommentNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `CourseNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CourseNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `meeting`
 --
@@ -406,7 +417,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `topic`
 --
 ALTER TABLE `topic`
-  MODIFY `TopicNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;COMMIT;
+  MODIFY `TopicNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
