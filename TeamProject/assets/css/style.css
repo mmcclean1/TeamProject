@@ -2,6 +2,7 @@
 /*JOHN LEE HEANEY STYLE CODE FROM LINES 1-403*/
 
 /*STYLING FONTS FOR NAV BAR HEADING*/
+/*
 @font-face {
 	font-family: 'Bellota-LightItalic';
 	src: url('../fonts/Bellota-LightItalic.otf');
@@ -10,7 +11,12 @@
 	font-family: 'Bellota-BoldItalic';
 	src: url('../fonts/Bellota-BoldItalic.otf');
 }
+*/
 
+@font-face {
+	font-family: 'Poppins-Bold';
+	src: url(fontstwo/Poppins-Bold.otf');
+}
 /*BODY BACKGROUND COLOR*/
 /*CLOSE GAP BETWEEN FOOTER AND BOTTOM OF PAGE*/
 html,body {
@@ -77,30 +83,26 @@ height: 100%;
 */
 
 
-/*STYLE ALL TABLES IN THE MAIN WEBSITE*/
+/*STYLE ALL COMMENT BOXES IN THE MAIN WEBSITE*/
 table,tr,td {
 	margin-left: 0px;
 	border:solid thin #34495e;
 	width:25%;
 	border-collapse: collapse;
+	border: 1px solid black;
 }
 
 table, th, td {
 	border: 1px solid black;
-	 white-space: nowrap;
-	
-}
+	white-space: nowrap;
 
-
-tr {
-	width: 100%;
 }
 
 /*set color for every even(ever second row) row*/
 tr:nth-child(even) {
-	/*				background-color: #945460;*/
-	background-color:  #7ebac7;
-	color:black;
+	/*background-color: #945460;*/
+	background-color: lightgrey;
+	width: 100%;
 }
 hr{
 	height: 1px;
@@ -111,17 +113,25 @@ hr{
 
 th{
 	font-size: 25px;
-	font-family: sans-serif;
-/*	background-color: #2C5755;*/
-/*	background-color: #123455;*/
+
+	/*	background-color: #2C5755;*/
+	/*	background-color: #123455;*/
 	background-color: #34495e;
 	color: white; 
 }
 
 
+/*TABLES ON THE WEBSITE*/
+#modulesDiv tr:nth-child(even) {
+	/*background-color: #945460;*/
+	background-color: lightgrey;
+	color:black;
+}
+
+
 /*TEXT SYTLING IN NAV BAR*/
 .logo a{
-	font-family: 'Bellota-BoldItalic', sans-serif;
+	font-family: 'Poppins-Bold', Arial, sans-serif;
 	margin-left: 10px;
 	font-size: 28px;
 	position: relative;
@@ -146,6 +156,7 @@ th{
 */
 #color1{
 	height:auto;
+	font-family: 'Poppins-Bold', Arial, sans-serif;
 	/*	background-color: #c39ed2;*/
 	background-color: lemonchiffon;
 	/*	background-color: mediumslateblue;*/
@@ -307,7 +318,7 @@ select.courseNo{
 	min-width: 250px;
 	float: left;
 	background-color: #111d3e;
-/*	background-color: #2C5755;*/
+	/*	background-color: #2C5755;*/
 	margin-right: 20px;
 	/*	border-bottom-right-radius: 5px;*/
 	height: 100%;
@@ -315,7 +326,7 @@ select.courseNo{
 	z-index: 1;
 	top: 10%;
 	left: 0;
-	/*	background-color: #111;*/
+	background-color: #111;
 	/*	background-color: #2C5755;*/
 	overflow-x: hidden;
 	padding-top: 60px;
@@ -333,7 +344,7 @@ select.courseNo{
 	/*	border-radius: 5px;*/
 	box-shadow: 2px 2px 1px #D3D3D3;
 
-	
+
 
 	width: 85%;
 	z-index: -1;
