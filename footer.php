@@ -28,7 +28,7 @@
 						<ul>
 							<!--                        <li><a href="#">Home</a></li>-->
 							<li><a href="register.php">Register</a></li>
-							
+
 						</ul>
 					</div>
 					<div class="col-sm-2">
@@ -36,14 +36,15 @@
 						<ul>
 							<li><a href="contactUs.php">Contact us</a></li>
 							<li><a href="reviews.php">Reviews</a></li>
+							<li><a href="disclaimer.php">Legal</a></li>
 						</ul>
 					</div>
 					<div class="col-sm-2">
 						<h5>Support</h5>
 						<ul>
 							<li><a href="faq.php">FAQ</a></li>
-							
-							
+
+
 						</ul>
 					</div>
 					<div class="col-sm-1">
@@ -56,8 +57,8 @@
 					</div>
 				</div>
 			</div>
-			
-			
+
+
 			<div class="footer-copyright">
 				<p><?php
 					echo "<p>Copyright &copy; " . date("Y") . " Logos.com</p>";
