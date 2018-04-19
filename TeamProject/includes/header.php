@@ -1,7 +1,20 @@
 <?php  
 require 'config/config.php';
 
+//QUERY TO GET USERLOGGE IN
+if(isset($_SESSION['username'])){
+
+	$userLoggedIn = $_SESSION['username'];
+	$user_details_query = mysqli_query($con, "SELECT * From member WHERE username='$userLoggedIn'");
+	$user = mysqli_fetch_array($user_details_query);
+}
+
+else{
+	header("Location: register.php");
+}
+
 ?>
+
 <!--JOHN LEE HEANEY FULL PAGE-->
 <html>
 	<head>
@@ -34,14 +47,10 @@ require 'config/config.php';
 		<div class="logo">
 			<!--LOGO-->
 
-			<div id="header">
-
-			</div>
-
 			<!--NAVIGATION FOR TOP BAR-->
 			<div class="topnav">
 				<div class="menu">
-				
+
 					<li><a href="includes/handlers/logout.php">Logout
 						<i class="fas fa-sign-out-alt"></i></a></li>
 					<li><a href="news.php">News</a></li>
