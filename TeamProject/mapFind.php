@@ -12,16 +12,15 @@ include("includes/header.php");
 		<meta charset="UTF-8">
 		<!--ADD BOOTSTRAP FOR BETTER STYLING AND LAYOUT-->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<script src="js/jquery-3.2.1.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="css/adminstyles.css">
+		
 
-		<!--SPECIFY CORRECT FOLDER-->
-		<script src="assets/js/weather.js"></script>
+	
 
 		<!--COPY AND PASTE FROM GOOGLE STEP TWO AND INSERT THE KEY THIS WILL ALLOW YOU TO RUN ON LOCALHOST-->
+<!--
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2daH7B0_0N2blOjsRU7z2w4UQpCdkMQA&callback=initMap"
 				  type="text/javascript"></script>
+-->
 
 
 		<!--TITLE-->

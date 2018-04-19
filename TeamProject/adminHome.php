@@ -1,108 +1,156 @@
-<?php include("includes/adminHeader.php") ?>
-<h1>Admin Dashboard</h1>
 
-<div><?php echo Message();
-	echo SuccessMessage();
-?></div>	
+<?php include 'adminHeader.php';?>
+<?php include 'adminSidebar.php';?>
+<?php require 'config/config.php';?>
+<?php include 'session.php';?>
+<?php include("includes/Functions.php");?>
 
-<div class="table-responsive">
-<table class="table table-striped table-hover">
-	<tr>
-							<th>No</th>
-							<th>Post Title</th>
-							<th>Date &Time</th>
-							<th>Author</th>
-							<th>Category</th>
-							<th>Banner</th>
-							<th>Comments</th>
-							<th>Action</th>
-							<th>Details</th>
+<!--John Lee Heaney-->
+<!--Bsc Computing Year 3-->
 
-						</tr>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Admin Homepage</title>
+		<!--INCLUDE LIBRATIES FOR STYLING BOOTSTRAP AND JQUERY-->
+		<title>Admin</title>
+		
+		<!--BOOTSTRAP-->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- MANUAL STYLING FOR ADMIN STYLES-->
+		<link rel="stylesheet" href="css/adminstyles.css">
+		<style>
+			.FieldInfo{
+				color: rgb(251, 174, 44);
+				font-family: Bitter, Georgia, "Times New Roman",Times, serif;
+				font-size: 1.2em;
+			}
+		</style>
+	</head>
 
-						<?php
-						$ConnectingDB;
-						$ViewQuery="SELECT * FROM member ORDER BY id desc;";
-						$Execute=mysqli_query($con,$ViewQuery);
-						$SrNo=0;
+		<?php
+		if(isset($_POST["Submit"])){
+			
+			
+			$Category=mysqli_real_escape_string($con, $_POST["Category"]);
+			date_default_timezone_set("Europe/London");
+			$DateTime=strftime("%B-%d-%Y %H:%M:%S", $CurrentTime);
+			$DateTime;
+			
+			$Admin=$_SESSION["Username"];
+			if(empty($Category)){
+				echo "all";
+				header("Location: adminHome.php");
+				exit;
+			}else if(strlen($Category) > 99){
+				$_SESSION["ErrorMessage"]="Too long name for Topic";
+				Redirect_to("topics.php");
+			}else{
+				global $con;
+				$Query="INSERT INTO topic(DateCreated, TopicName, CreatorNo, ModuleNo) VALUES('2018-02-10','$Category','2','2')";
+				$Execute=mysqli_query($con, $Query);
+				if($Execute){
+					$_SESSION["SuccessMessage"]="Topic added successfully";
+					Redirect_to("topics.php");
+				}else{
+					$_SESSION["ErrorMessage"]="Topic failed to Add";
+					Redirect_to("topics.php");
+				}
+			}
+		}
+		?>
+	<body>
+	
 
-						while($DataRows=mysqli_fetch_array($Execute)){
-							$Id=$DataRows["id"];
-							$DateTime=$DataRows["signup_date"];
-							$Title=$DataRows["username"];
-							$Category=$DataRows["courseNo"];
-							$Admin=$DataRows["first_name"];
-							$Image=$DataRows["profile_pic"];
-							$Post=$DataRows["email"];
-							$SrNo++;
-						?>
-						<tr>
+	<div class="width">
+		<div class="container-fluid">
+			<!--MAIN AREA-->
+			<div class="col-sm-10">
+					<h1>Admin Homepage</h1>
+					
 
-							<td><?php echo $SrNo; ?></td>
-							<td style="color: #5e5eff;"><?php
-							if(strlen($Title)>19){$Title=substr($Title,0,19).'..';}
-							echo $Title;
-								?></td>
-							<td><?php
-							if(strlen($DateTime)>12){$DateTime=substr($DateTime,0,12);}
-							echo $DateTime;
-								?></td>
-							<td><?php
-							if(strlen($Admin)>9){$Admin=substr($Admin,0,9);}
-							echo $Admin; ?></td>
-							<td><?php
-							if(strlen($Category)>10){$Category=substr($Category,0,10);}
-							echo $Category;
-								?></td>
-							<td><img src="Upload/<?php echo $Image; ?>" width="170px"; height="50px"></td>
-							<td>
-								<?php
-							$ConnectingDB;
-							//$QueryApproved="SELECT * FROM posts WHERE post_id='$Id' AND status='ON'";
-							$QueryApproved="SELECT COUNT(*) FROM comment WHERE comment_id='$Id' AND comment_status='ON'";
-							$ExecuteApproved=mysqli_query($con, $QueryApproved);
-							$RowsApproved=mysqli_fetch_array($ExecuteApproved);
-							$TotalApproved=array_shift($RowsApproved);
-							if($TotalApproved>0){
-								?>
-								<span class="label pull-right label-success">
-									<?php echo $TotalApproved;?>
-								</span>
+					<!--PRINT SUCCESS MESSAGE CALL METHODS-->
+					<div><?php echo Message();
+						echo SuccessMessage();
+						?></div>
 
-								<?php } ?>
+					<!--CREATE TABLE CONTENTS-->
+					<div class ="table-responsive">
+						<table class="table table-striped table-hover">
+							<tr>
+								<th>No</th>
+								<th>Post Title</th>
+								<th>Date & Time</th>
+								<th>First name</th>
+								<th>Course No</th>
+								<th>Profile Picture</th>
+								<th></th>
+								<th>Action</th>
+								<th></th>
+							</tr>
+							<!--EXECUTE QUERIES-->
+							<?php
+							$con;
+							$ViewQuery="SELECT * FROM member ORDER BY id desc;";
+							$Execute=mysqli_query($con,$ViewQuery);
+							$no=0;//START NO AT ZERO
 
-								<?php
-							$ConnectingDB;
-							$QueryUnApproved="SELECT COUNT(*) FROM comment WHERE comment_id='$Id' AND comment_status='OFF'";
-							$ExecuteUnApproved=mysqli_query($con,$QueryUnApproved);
-							$RowsUnApproved=mysqli_fetch_array($ExecuteUnApproved);
-							$TotalUnApproved=array_shift($RowsUnApproved);
-							if($TotalUnApproved>0){
-								?>
-								<span class="label  label-danger">
-									<?php echo $TotalUnApproved;?>
-								</span>
+							while($DataRows =mysqli_fetch_array($Execute)){
 
-								<?php } ?>
+								$Id = $DataRows["id"];
+								$DateTime = $DataRows["signup_date"];
+								$Title = $DataRows["username"];
+								$Category = $DataRows["courseNo"];
+								$firstName = $DataRows["first_name"];
+								$Image = $DataRows["profile_pic"];
+								$email = $DataRows["email"];
+								$no++;//INCREMENT NUMBER FOR EACH MEMBER ADDED
+							?>
+							<tr>
+								<!--VALIDATION-->
+								<td><?php echo $no; ?></td>
 
-
-							</td>
-							<td>
-								<a href="EditPost.php?Edit=<?php echo $Id; ?>">
-									<span class="btn btn-warning">Edit</span>
-								</a>
-								<a href="DeletePost.php?Delete=<?php echo $Id; ?>">
+								<!--STYLE POST TITLE COLOR-->
+								<td style="color: #5e5eff;"><?php
+								if(strlen($Title) >19){$Title=substr($Title,0,19).'..';}
+								echo $Title;
+									?></td>
+								<td ><?php
+								if(strlen($DateTime) >12){$DateTime=substr($DateTime,0,12);}
+								echo $DateTime;
+									?></td>
+								<td ><?php
+								if(strlen($firstName) >9){$firstName=substr($firstName,0,9);}
+								echo $firstName;
+									?></td>
+								<td ><?php
+								if(strlen($Category) >10){$Category=substr($Category,0,10);}
+								echo $Category;
+									?></td>
+								<!--PRINT STUDENT IMAGE-->
+								<td><img src="<?php echo $Image; ?>" width="130px"; height="50px"></td>
+								<td></td>
+								<td>
+		
+								<!--DELETE MEMBER-->
+								<a href="deleteMember.php?id=<?php echo $Id; ?>">
 									<span class="btn btn-danger">Delete</span>
-								</a>
-							</td>
-							<td>
-								<!--EXTRA COLUM IF WANT TO ADD BUTTONS TAKE YOU BACAK TO WEBSITE PAGE TO NAVIGATE-->
-								<a href="index.php?id=<?php echo $Id; ?>" target="_blank">
-									<span class="btn btn-primary"> Live Preview</span>
-								</a>
-							</td>
-						</tr>
-						<?php } ?>
-					</table>
+									</a>
+								</td>
+							</tr>
+							<?php }?>
+							<!--END WHILE LOOP-->
+						</table>
+		
 				</div>
-			<?php include("includes/adminFooter.php") ?>
+				<!--END TABLE-->
+			</div>
+			<!--END MAIN AREA-->
+		</div>
+		<!--	END CONTAINER-->
+		</div>
+
+		<?php include 'adminFooter.php';?>
+	</body>
+</html>
