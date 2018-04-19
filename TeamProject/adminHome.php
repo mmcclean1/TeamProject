@@ -12,7 +12,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Document</title>
+		<title>Admin Homepage</title>
 		<!--INCLUDE LIBRATIES FOR STYLING BOOTSTRAP AND JQUERY-->
 		<title>Admin</title>
 		
