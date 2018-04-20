@@ -13,38 +13,7 @@ include("includes/header.php");
 			.wrapper {
 				margin-left: 0px;
 				padding-left: 0px;
-			}
-			table,tr,td {
-				margin-left: 0px;
-				border:solid thin #34495e;
-				width:30%;
-				height: 15%;
-				border-collapse: collapse;
-			}
-			table, th, td {
-				border: 1px solid black;
-			}
-			tr {
-				width: 90%;
-			}
-			/*set color for every even(ever second row) row*/
-			tr:nth-child(even) {
-				/*				background-color: #945460;*/
-				background-color:  #7ebac7;
-				color:black;
-			}
-			hr{
-				height: 1px;
-				/*	color: #123455;*/
-				background-color: #123455;
-				border: none;
-			}
-			th{
-				font-size: 25px;
-				font-family: sans-serif;
-/*				background-color: #35393e;*/
-				color: white; 
-			}
+	}
 		</style>
 
 <script type="text/javascript" src="assets/js/newComment.js"></script>
@@ -84,7 +53,7 @@ include("includes/header.php");
 
 
 	?>
-	<div class="col-md-6 col-md-offset-1" >
+	<div class="col-md-8 col-md-offset-1" >
 		<thead>
 		<tbody>
 			<tr>
@@ -98,20 +67,20 @@ include("includes/header.php");
 					action=commentHandler.php?TopicNo=".$TopicNo.">");
 
 					print("<table class='table table-bordered'>");
-					print("<thead>");
-					print("<tbody>");
-					print("<tr>");
-
-					print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Comment </strong> </td></tr>");
-					print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='60' rows='6' id='detail'></textarea><br><br>
-					<button type='submit' name='commentSubmit' class='btn btn-primary's >Add Comment</button> ");
+						print("<thead>");
+							print("<tbody>");
+								print("<tr>");
+									print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Comment </strong> </td></tr>");
+								print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols=100' rows='4' id='detail'></textarea><br><br>
+									<button type='submit' name='commentSubmit' class='btn btn-primary's >Add Comment</button> ");
 
 					//					BUTTONS
-					print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button><br><br><button type='submit name='cancel' class='btn btn-primary'>Cancel Operation</button><td></tr>");
+					print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button> <button type=reset name='cancel' class='btn btn-primary' onclick=createForm() >Cancel Operation</button><td></tr>");
 					print("</thead><tbody></table></form></div></div>");
 
 					print("<br>");
 					?>
+	
 	<?php
 	function commentTable($row) // Function to generate table of comments
 	{
@@ -136,13 +105,20 @@ include("includes/header.php");
 			$likesResult = mysqli_query($connection, "SELECT * FROM likes WHERE MemberNo='$id' AND CommentNo='$CommentNo'");
 			if(mysqli_num_rows($likesResult)==0)
 			{
-				//Like button - user has not liked comment before - clicking this will like the comment
-				print('<input type=button value=Like onclick=location.href="like.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'"></input></td>');
+				
+				//	like button with image
+				print('<button class="btn-secondary like-review" value=Like onclick=location.href="like.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'">
+    <i class="fas fa-thumbs-up fa-2x" style="color:blue"></i></button>');
+				
+				
 			}
 			else
 			{
-				//UnLike button - user has liked comment before - clicking this will unlike the comment
-				print('<input type=button value=Unlike onclick=location.href="unlike.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'"></input></td>');
+				//UnLike button with image - user has liked comment before - clicking this will unlike the comment
+					print('<button class="btn-secondary like-review" value=Unlike onclick=location.href="unlike.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'">
+    <i class="fas fa-thumbs-down fa-2x" style="color:red"></i></i></button>');
+				
+				
 			}
 
 			print("<td>".$row['Comment']."</td>");
@@ -160,6 +136,7 @@ include("includes/header.php");
 			if($id == $CreatorNo)
 			{
 				print('<td><a href=deleteComment.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'>Delete</a></td>');
+				print('<td></td></tr>');
 			}
 			else {
 				print('<td></td>');
@@ -171,7 +148,7 @@ include("includes/header.php");
 					print('<form method=POST action=replyHandler.php?TopicNo='.$TopicNo.'&ReplyTo='.$CommentNo.' >');
 						print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Reply</strong> </td></tr>");
 						print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='30' rows='20' id='detail'></textarea><br><br><button type='submit' name='commentSubmit' >Add Comment</button> ");
-						print("<input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
+						print("<input type='reset' name='Submit2' value='Clear'/><br><br><button type=reset id='$CommentNo' onclick=replyForm(this) >Cancel Operation</button><td></tr>");
 				print("</table></form>");
 			print('</td></tr>');
 		}

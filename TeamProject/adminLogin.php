@@ -66,7 +66,7 @@ require 'includes/form_handlers/admin_login_handler.php';
 
 						<div class="form-links">
 							<!--ADD IN WEBSITE LINK-->
-							<a href="../index.php">logos wesbite</a>
+							<a href="index.php">logos wesbite</a>
 						</div>
 					</section>  
 				</div>

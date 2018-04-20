@@ -14,7 +14,7 @@
 	//Get Title, Details, date, creatorNo
 	$title=$_POST['TopicName'];
 	$details = $_POST['Details'];
-	$date=date("Y-m-d H:m:s");
+	$date=date("Y-m-d H:i:s");
 	$id = $_SESSION['id'];
 	
 	//Insert Into Database

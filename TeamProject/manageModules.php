@@ -40,7 +40,7 @@
 			/*set color for every even(ever second row) row*/
 			tr:nth-child(even) {
 				background-color: #8dc38d; 
-				color:white
+				color:black;
 			}
 			hr{
 				height: 1px;
@@ -55,6 +55,9 @@
 				background-color: grey;
 				color: white; 
 			}
+					#button{
+				margin-left: 1%;
+			}
 
 		</style>
 
@@ -66,31 +69,46 @@
 		<div class="container-fluid">
 			<!--MAIN AREA-->
 			<div class="col-sm-10">
+				
 					<h1>&nbsp;Manage Modules</h1><br>
-
-					<button id='newModule'>Add New Module</button>
-
+						<div id="button">
+				<button type='submit'  id=newModule class='btn btn-primary'>Add new Module</button>
+				</div>
+				
+					<br><br>
 					<div id='newModuleDiv' style=display:none>
-						<br><br>
-						<form method='POST' action='moduleHandler.php'>
-							<table width='400' border='1' cellpadding='3' cellspacing='1' bgcolor='#FFFFFF'>
+				
+						<!--CREATE TABLE CONTENTS-->	
+						<div class="col-md-4 col-md-offset-0" >
+							<form method='POST' action='moduleHandler.php'>
+								<table class="table table-sm">
+									<thead>
+										
 								<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Create Course</strong> </td></tr>
-								<tr><td><strong>Module Name</strong><input name='ModuleName' type='text' size='20' REQUIRED /><strong> </td></tr>
-								<tr><td><strong>Lecturer</strong><input name='Lecturer' type='text' size='20' REQUIRED /><strong> </td></tr>
-								<tr><td><strong>Year</strong><input name='Year' type='text' size='10' REQUIRED /></td></tr>
-								<tr><td><strong>Semester</strong><input name='Semester' type='text' size='10' REQUIRED /></td></tr>
+								<tr><td><strong>Module Name</strong><input name='ModuleName' type='text' size='25' REQUIRED /><strong> </td></tr>
+								<tr><td><strong>Lecturer</strong><input name='Lecturer' type='text' size='30' REQUIRED /><strong> </td></tr>
+								<tr><td><strong>Year</strong><input name='Year' type='text' size='30' REQUIRED /></td></tr>
+								<tr><td><strong>Semester</strong><input name='Semester' type='text' size='30' REQUIRED /></td></tr>
 								<tr><td><input id='submit' type='submit' name='Submit'></input></td></tr>
-							</table>
-						</form>
+										
+										</thead>
+										
+								</table>
+							</form>
 					</div>
-
-				<div class="col-md-8 col-md-offset-0" >
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				</div>
+					
+						
+	
+				
+				<div class="col-md-11 col-md-offset-0" >
 					<table class="table table-sm">
 					
 					<tr><th>Module No</th><th>Module Name</th><th>Lecturer</th><th>Year</th><th>Semester</th><th>Information</th></tr>
 					<?php
 						//Connect to database
-						$connection = mysqli_connect("localhost:3307","root","");
+						$connection = mysqli_connect("localhost","root","");
 						mysqli_select_db($connection,"studentsupport");
 
 						//Get all module information from database
@@ -99,8 +117,8 @@
 						//Print modules to table
 						while($row=mysqli_fetch_array($moduleResult))
 						{
-							print('<tr><td>'.$row['ModuleNo'].'</td><td>'.$row['ModuleName'].'</td><td>'.$row['Lecturer'].'</td>');
-							print('<td>'.$row['Year'].'</td><td>'.$row['Semester'].'</td><td><a onmouseover=displayInfo(this) value='.$row['ModuleNo'].'>Info</a></td>');
+							print('<tr><td>'.$row['ModuleNo'].'</td><td><a href=moduleEdit.php?ModuleNo='.$row['ModuleNo'].'>'.$row['ModuleName'].'</a></td><td>'.$row['Lecturer'].'</td>');
+							print('<td>'.$row['Year'].'</td><td>'.$row['Semester'].'</td><td><a href=moduleCourse.php?ModuleNo='.$row['ModuleNo'].'>Info</a></td>');
 							print('<td><a href=deleteModule.php?ModuleNo='.$row['ModuleNo'].'>Delete</a></td></tr>');
 						}
 					?>
@@ -115,4 +133,3 @@
 		<?php include 'adminFooter.php';?>
 	</body>
 </html>
-

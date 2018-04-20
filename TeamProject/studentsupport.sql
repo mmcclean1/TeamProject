@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2018 at 05:32 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Apr 20, 2018 at 03:55 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,8 +39,10 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`AdminNo`, `AdminName`, `Password`) VALUES
-(3, 'JimBobo', 'f5d1278e8109edd94e1e4197e04873b9'),
-(4, 'mmcclean', 'f5d1278e8109edd94e1e4197e04873b9');
+(4, 'mmcclean', 'f5d1278e8109edd94e1e4197e04873b9'),
+(5, 'John Lee', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(6, 'dave', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(7, 'andrew', 'd914e3ecf6cc481114a3f534a5faf90b');
 
 -- --------------------------------------------------------
 
@@ -64,21 +66,9 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`CommentNo`, `TopicNo`, `Comment`, `DateCreated`, `CreatorNo`, `ReplyTo`, `Likes`, `Deleted`) VALUES
-(3, 49, 'Hello Andrew', '2018-04-18 00:00:00', 84, NULL, 3, 0),
-(5, 49, 'Hello!', '2018-04-18 00:00:00', 86, NULL, 2, 0),
-(7, 11, 'Test', '2018-04-18 00:00:00', 84, NULL, 0, 0),
-(8, 11, 'Test2', '2018-04-18 00:00:00', 84, NULL, 0, 0),
-(9, 49, 'Test', '2018-04-18 00:00:00', 84, NULL, 0, 0),
-(11, 17, 'Hello Matthew', '2018-04-18 00:00:00', 84, NULL, 5, 0),
-(12, 49, 'Test24', '2018-04-18 16:04:06', 84, NULL, 0, 0),
-(14, 49, 'Test', '2018-04-18 18:04:32', 86, 3, 0, 0),
-(16, 49, 'Test Reply', '2018-04-18 19:04:08', 86, 14, 0, 0),
-(17, 22, 'Hello Jaime', '2018-04-19 13:04:26', 86, NULL, 1, 0),
-(18, 50, '[deleted]', '2018-04-19 16:04:03', 86, NULL, 0, 1),
-(19, 50, '[deleted]', '2018-04-19 16:04:38', 86, NULL, 0, 1),
-(20, 50, 'Reply', '2018-04-19 16:04:46', 86, 19, 0, 0),
-(21, 50, '[deleted]', '2018-04-19 16:04:30', 86, NULL, 0, 1),
-(22, 50, 'REply2', '2018-04-19 16:04:57', 86, 21, 0, 0);
+(1, 2, 'refer to github api.', '2018-04-20 14:50:15', 2, NULL, 1, 0),
+(2, 2, 'your wrong.', '2018-04-20 14:04:00', 3, 1, 2, 0),
+(3, 2, '[deleted]', '2018-04-20 14:52:28', 1, NULL, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -98,9 +88,9 @@ CREATE TABLE `course` (
 
 INSERT INTO `course` (`CourseNo`, `CourseName`, `Length`) VALUES
 (1, 'BSc Computing', 3),
-(2, 'Cloud', 3),
-(3, 'Gaming', 3),
-(5, 'Digital Forensics', 2);
+(2, 'Applied Computing', 4),
+(3, 'Games Development', 3),
+(4, 'Digital Forensics', 3);
 
 -- --------------------------------------------------------
 
@@ -122,10 +112,16 @@ INSERT INTO `coursemodule` (`CourseNo`, `ModuleNo`) VALUES
 (1, 2),
 (1, 3),
 (1, 4),
-(1, 9),
 (2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
 (3, 1),
-(5, 1);
+(3, 2),
+(3, 5),
+(4, 1),
+(4, 2),
+(4, 3);
 
 -- --------------------------------------------------------
 
@@ -143,13 +139,9 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`CommentNo`, `MemberNo`) VALUES
-(3, 84),
-(3, 86),
-(5, 84),
-(10, 84),
-(11, 84),
-(15, 86),
-(17, 86);
+(1, 1),
+(2, 1),
+(2, 3);
 
 -- --------------------------------------------------------
 
@@ -165,14 +157,6 @@ CREATE TABLE `meeting` (
   `room` varchar(255) NOT NULL,
   `details` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `meeting`
---
-
-INSERT INTO `meeting` (`MeetingNo`, `CreatorNo`, `Date`, `time`, `room`, `details`) VALUES
-(1, 84, '2018-04-11', '09:20:00', 'Library Room 4', 'Team Project'),
-(2, 86, '2018-04-19', '20:03:00', 'Library Room 1', 'Test');
 
 -- --------------------------------------------------------
 
@@ -197,19 +181,9 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `signup_date`, `courseNo`, `profile_pic`) VALUES
-(51, 'Matthew', 'Mcclean', 'matthew_mcclean', 'Mmcclean@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', '2018-02-25', 1, ''),
-(61, 'Johnlee', 'Heaney', 'johnlee_heaney', 'L00063777@student.lyit.ie', '5f4dcc3b5aa765d61d8327deb882cf99', '2018-03-01', 1, ''),
-(76, 'Rihana', 'Roo', 'rihana_roo', 'Rooch@hotmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2018-03-02', 1, 'assets/images/profile_pics/defaults/head_emerald.png'),
-(79, 'Marge', 'Simpson', 'marge_simpson', 'Simpson@hotmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2018-03-02', 1, 'assets/images/profile_pics/defaults/head_deep_blue.png'),
-(80, 'John', 'West', 'john_west', 'Pass@hotmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2018-03-02', 1, 'newWave.jpg'),
-(81, 'Jen', 'Jenny', 'jen_jenny', 'Jenny@hotmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2018-03-05', 1, 'assets/images/profile_pics/defaults/head_emerald.png'),
-(82, 'John', 'Doe', 'john_doe', 'Doe@hotmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2018-03-07', 1, 'assets/images/profile_pics/defaults/head_deep_blue.png'),
-(83, 'John', 'Hean', 'john_hean', 'Heaney@hotm.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2018-03-07', 1, 'homer1.jpg'),
-(84, 'Matthew', 'Mcclean', 'matthew_mcclean_1', 'Mmcclean1@gmail.com', 'f5d1278e8109edd94e1e4197e04873b9', '2018-03-30', 3, 'assets/images/profile_pics/defaults/head_emerald.png'),
-(85, 'Matthew', 'Mcclean', 'matthew_mcclean_1_2', 'Mmcclean2@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', '2018-03-30', 2, 'assets/images/profile_pics/defaults/head_deep_blue.png'),
-(86, 'Matthew', 'Mcclean', 'matthew_mcclean_1_2_3', 'Mmcclean6@gmail.com', 'f5d1278e8109edd94e1e4197e04873b9', '2018-04-11', 1, 'assets/images/profile_pics/defaults/head_deep_blue.png'),
-(87, 'Jim', 'Bob', 'jim_bob', 'Jimbob@gmail.com', 'f5d1278e8109edd94e1e4197e04873b9', '2018-04-12', 1, 'assets/images/profile_pics/defaults/head_emerald.png'),
-(88, 'Jimb', 'Ob', 'jimb_ob', 'Jimbob1@gmail.com', 'f5d1278e8109edd94e1e4197e04873b9', '2018-04-12', 1, 'assets/images/profile_pics/defaults/head_emerald.png');
+(1, 'Matthew', 'Mcclean', 'matthew_mcclean', 'Mmcclean@gmail.com', '836ae5a99ed71cc4c1bde8586c0d370c', '2018-04-20', 1, 'assets/images/profile_pics/defaults/head_emerald.png'),
+(2, 'Johnlee', 'Heaney', 'johnlee_heaney', 'L00063777@student.lyit.ie', '5f4dcc3b5aa765d61d8327deb882cf99', '2018-04-20', 3, 'assets/images/profile_pics/defaults/head_emerald.png'),
+(3, 'Andrew', 'Campbell', 'andrew_campbell', 'Andrew@gmail.com', 'd914e3ecf6cc481114a3f534a5faf90b', '2018-04-20', 1, 'assets/images/profile_pics/defaults/head_emerald.png');
 
 -- --------------------------------------------------------
 
@@ -230,14 +204,11 @@ CREATE TABLE `module` (
 --
 
 INSERT INTO `module` (`ModuleNo`, `ModuleName`, `Lecturer`, `Year`, `Semester`) VALUES
-(1, 'Team Project', 'Helen McMahon', 3, 1),
-(2, 'Web Development', 'Edwina Sweeney', 2, 1),
-(3, 'Robots', 'Thomas Devine', 1, 2),
-(4, 'Networks', 'Martina Quinn', 2, 2),
-(5, 'Server Side Application Development', 'Gerard McCloskey', 3, 2),
-(6, 'Client Side Application Development', 'Thomas Devine', 3, 1),
-(7, 'Object Orientated GUI Programming', 'Maria Boyle', 2, 2),
-(9, 'Server Side Application Dev', 'Gerard McCloskey', 3, 2);
+(1, 'Team Project', 'Various', 3, 2),
+(2, 'Academic Writing', 'Martin Robinson', 3, 1),
+(3, 'Project Management', 'Helen McMahon', 3, 2),
+(4, 'Web Development', 'Evelyn Keown', 2, 1),
+(5, 'Unity Development', 'Paul Corey', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -273,42 +244,8 @@ CREATE TABLE `topic` (
 --
 
 INSERT INTO `topic` (`TopicNo`, `TopicName`, `Details`, `DateCreated`, `CreatorNo`, `ModuleNo`) VALUES
-(11, 'Test8', '', '2018-02-28 00:00:00', 0, 1),
-(13, 'Test9', '', '2018-02-28 00:00:00', 0, 1),
-(14, 'Test10', '', '2018-02-28 00:00:00', 0, 1),
-(16, 'tet11', '', '2018-02-28 00:00:00', 0, 1),
-(17, 'test12', '', '2018-02-28 00:00:00', 0, 1),
-(18, 'Test13', '', '2018-02-28 00:00:00', 0, 1),
-(19, 'Test14', '', '2018-02-28 00:00:00', 0, 1),
-(21, 'test15', '', '2018-02-28 00:00:00', 0, 1),
-(22, 'hi guys', '', '2018-03-01 00:00:00', 0, 2),
-(23, 'chant', '', '2018-03-02 00:00:00', 0, 1),
-(27, 'maths', '', '0000-00-00 00:00:00', 0, 0),
-(29, 'trig', '', '0000-00-00 00:00:00', 0, 0),
-(30, 'test', '', '2018-03-14 00:00:00', 0, 1),
-(31, 'test51', '', '2018-03-14 00:00:00', 51, 1),
-(32, 'TestA', 'faafafa', '2018-03-14 00:00:00', 51, 1),
-(33, 'TestA', 'faafafa', '2018-03-14 00:00:00', 51, 1),
-(34, 'TestA', 'faafafa', '2018-03-14 00:00:00', 51, 1),
-(35, 'TestB', 'afjkalfjaj', '2018-03-14 00:00:00', 51, 1),
-(36, 'TestC', 'Hello', '2018-03-14 00:00:00', 51, 1),
-(37, 'test', 'Hello', '2018-03-19 00:00:00', 51, 2),
-(38, 'hello', '', '2018-03-21 00:00:00', 51, 1),
-(39, 'test', '', '2018-03-21 00:00:00', 51, 1),
-(40, 'Hello', '', '2018-03-21 00:00:00', 51, 1),
-(41, 'How to make HTML work?', '', '2018-03-21 00:00:00', 51, 2),
-(42, 'New Topic', 'Afadadad', '2018-04-12 00:00:00', 84, 1),
-(43, 'Maths ', 'Greate job', '2018-04-12 00:00:00', 84, 1),
-(44, 'Test4194092887', '', '2018-04-12 00:00:00', 84, 1),
-(45, 'Test094-81408', '', '2018-04-12 00:00:00', 87, 1),
-(46, 'Test', 'TEs', '2018-04-12 00:00:00', 88, 1),
-(47, 'Hello World', 'Tester', '2018-04-12 00:00:00', 87, 1),
-(48, 'Test 3Million', 'Testy test', '2018-04-18 00:00:00', 84, 1),
-(49, 'Topic 87', 'A Topic', '2018-04-18 00:00:00', 84, 1),
-(50, '%ladja', 'Hello', '2018-04-18 16:04:10', 84, 1),
-(51, 'Shane', 'Hello', '2018-04-19 13:04:35', 86, 4),
-(52, '', '', '2018-04-19 15:04:24', 86, 1),
-(53, '', '', '2018-04-19 15:04:34', 86, 1);
+(2, 'How do I upload to GitHub?', 'How do I create a branch?', '2018-04-20 14:46:22', 1, 1),
+(3, 'CSS', 'How do use divs and classes?', '2018-04-20 14:49:43', 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -382,42 +319,50 @@ ALTER TABLE `topic`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `AdminNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `AdminNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `CommentNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `CommentNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `CourseNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `CourseNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
-  MODIFY `MeetingNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `MeetingNo` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `module`
 --
 ALTER TABLE `module`
-  MODIFY `ModuleNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ModuleNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
   MODIFY `ReportNo` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `topic`
 --
 ALTER TABLE `topic`
-  MODIFY `TopicNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;COMMIT;
+  MODIFY `TopicNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -29,7 +29,6 @@ include("includes/header.php");
 
 	</head>
 	<body>
-
 		<!--INCLUDE SIDEBAR-->
 		<?php include("includes/sidebar.php");?>
 
@@ -44,7 +43,7 @@ include("includes/header.php");
 			$user = $_SESSION['id'];
 
 			//Connect to database
-			$connection = mysqli_connect("localhost:3307","root","");
+			$connection = mysqli_connect("localhost","root","");
 			mysqli_select_db($connection,"studentsupport");
 
 			//Get CourseNo of user
@@ -147,8 +146,6 @@ include("includes/header.php");
 		</div>
 
 		<footer><?php include("includes/footer.php");?>
-
-			<p>	<li class="active" style="list-style-type:none"><a href="adminLogin.php" target="_blank">Admin</a></li></p>
 		</footer>
 
 

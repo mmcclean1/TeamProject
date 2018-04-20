@@ -34,14 +34,14 @@
 					<div class="col-sm-2">
 						<h5>Information</h5>
 						<ul>
-							<li><a href="#">Contact us</a></li>
-							<li><a href="#">Reviews</a></li>
+							<li><a href="contactUs.php">Contact us</a></li>
+							<li><a href="reviews.php">Reviews</a></li>
 						</ul>
 					</div>
 					<div class="col-sm-2">
 						<h5>Support</h5>
 						<ul>
-							<li><a href="#">FAQ</a></li>
+							<li><a href="faq.php">FAQ</a></li>
 							<li><a href="#">Help desk</a></li>
 							<li><a href="#">Forums</a></li>
 						</ul>

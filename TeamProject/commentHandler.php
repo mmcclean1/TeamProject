@@ -11,7 +11,7 @@
 
 	//Get Details, date, creatorNo
 	$details=$_POST['Details'];
-	$dateCreated=date("Y-m-d H:m:s");
+	$dateCreated=date("Y-m-d H:i:s");
 	$id = $_SESSION['id'];
 
 	//Insert Into Database
