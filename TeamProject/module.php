@@ -62,7 +62,7 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 			$moduleNo=$_GET['ModuleNo'];
 
 			//Connect to database
-			$connection = mysqli_connect("localhost:3307","root","");
+			$connection = mysqli_connect("localhost","root","");
 			mysqli_select_db($connection,"studentsupport");
 
 			//Get Module Name
@@ -92,23 +92,18 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 							print("<button type='button' id='newTopic' class='btn btn-primary'>Add new Topic</button>");
 							print("<br>"."<br>");
 							print("<div id='div' style=display:none><form method=POST action=topicHandler.php?ModNo=".$moduleNo.">");
-							print("<table class='table table-bordered'>");
-							print("<thead>");
-							print("<tbody>");
-							print("<tr>");
-							print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Topic</strong> </td></tr>");
-							print("<tr><td colspan='7'><strong>Topic</strong><input name='TopicName' type='text' size=90' color='black' /><strong> </td></tr>");
+								print("<table class='table table-bordered'>");
+									print("<thead>");
+										print("<tbody>");
+											print("<tr>");
+											print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Topic</strong> </td></tr>");
+											print("<tr><td colspan='7'><strong>Topic</strong><input name='TopicName' type='text' size=90' color='black' /><strong> </td></tr>");
+											print("<tr><td valign='bottom'><strong>Detail</strong><textarea name='Details' cols='90' rows='4' id='detail'></textarea><br><br>
+											<button type='submit name='topicSubmit' class='btn btn-primary'>Add Topic</button> ");
+											print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button> <button type=reset onclick=createForm() class='btn btn-primary'>Cancel Operation</button><td></tr>");
+								print("</thead><tbody></table></form></div></div>");
 
-							print("<tr><td valign='bottom'><strong>Detail</strong><textarea name='Details' cols='90' rows='4' id='detail'></textarea><br><br>
-
-									<button type='submit name='topicSubmit' class='btn btn-primary'>Add Topic</button> ");
-							
-							
-							print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button> <button type='submit name='cancel' class='btn btn-primary'>Cancel Operation</button><td></tr>");
-							
-							print("</thead><tbody></table></form></div></div>");
-
-							print("<br>");
+								print("<br>");
 							?>
 
 		
