@@ -1,7 +1,4 @@
 
-
-
-
 <?php
 include("includes/header.php");
 
@@ -44,12 +41,16 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 				margin-left: 0px;
 				padding-left: 0px;
 			}
+	
 		</style>
 
 		<!--Matthew McClean - L00137316-->
 		<!--LYIT Team Project 2018-->
 		<!--BSc 5-->
 		<script type="text/javascript" src="assets/js/newTopic.js"></script>
+		
+			
+	
 		<!--INCLUDE SIDEBAR-->
 		<?php include("includes/sidebar.php");?>
 
@@ -61,7 +62,7 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 			$moduleNo=$_GET['ModuleNo'];
 
 			//Connect to database
-			$connection = mysqli_connect("localhost","root","");
+			$connection = mysqli_connect("localhost:3307","root","");
 			mysqli_select_db($connection,"studentsupport");
 
 			//Get Module Name
@@ -79,46 +80,56 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 				?>
 
 			<!--Create new topic-->
+			<div id="borderComments">
+			
+			
+			
 			<div class="col-md-9 col-md-offset-1" >
 				<thead>
 				<tbody>
 					<tr>
 						<td><?php
-								print("<button type='button' id='newTopic' class='btn btn-primary'>Add new Topic</button>");
-								print("<br>"."<br>");
-									print("<div id='div' style=display:none><form method=POST action=topicHandler.php?ModNo=".$moduleNo.">");
-										print("<table class='table table-bordered'>");
-											print("<thead>");
-												print("<tbody>");
-													print("<tr>");
-														print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Topic</strong> </td></tr>");
-														print("<tr><td colspan='7'><strong>Topic</strong><input name='TopicName' type='text' size=90' color='black' /><strong> </td></tr>");
-														print("<tr><td valign='bottom'><strong>Detail</strong><textarea name='Details' cols='90' rows='4' id='detail'></textarea><br><br>
-															<button type='submit name='topicSubmit' class='btn btn-primary'>Add Topic</button>");
-														print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button><button type=reset onclick=createForm() class='btn btn-primary'>Cancel Operation</button><td></tr>");
-									print("</thead><tbody></table></form></div></div>");
-								print("<br>");
+							print("<button type='button' id='newTopic' class='btn btn-primary'>Add new Topic</button>");
+							print("<br>"."<br>");
+							print("<div id='div' style=display:none><form method=POST action=topicHandler.php?ModNo=".$moduleNo.">");
+							print("<table class='table table-bordered'>");
+							print("<thead>");
+							print("<tbody>");
+							print("<tr>");
+							print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Topic</strong> </td></tr>");
+							print("<tr><td colspan='7'><strong>Topic</strong><input name='TopicName' type='text' size=90' color='black' /><strong> </td></tr>");
+
+							print("<tr><td valign='bottom'><strong>Detail</strong><textarea name='Details' cols='90' rows='4' id='detail'></textarea><br><br>
+
+									<button type='submit name='topicSubmit' class='btn btn-primary'>Add Topic</button> ");
+							
+							
+							print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button> <button type='submit name='cancel' class='btn btn-primary'>Cancel Operation</button><td></tr>");
+							
+							print("</thead><tbody></table></form></div></div>");
+
+							print("<br>");
 							?>
-						
+
+		
+							</div>
 							<div id='modulesDiv' class="col-md-9 col-md-offset-1">
-								<?php
-									$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
-									if(mysqli_num_rows($result)>0)
-									{
-										print('<table class="table table-striped">
-											<thead>
-												<tr class="text-success">
-													<th>Topic Title</th>
-													<th>Details</th>
-													<th>Date Created</th>');
-												//MAKE THE WORD NOT WRAP IN COLUMN-->
-												print('<th nowrap="nowrap">Created By</th>										
-												</tr>
-											</thead>
-											<tbody>');
-										
+								<table class="table table-striped">
+									<thead>
+										<tr class="text-success">
+											<th>Topic Title</th>
+											<th>Details</th>
+											<th>Date Created</th>
+											<!--											MAKE THE WORD NOT WRAP IN COLUMN-->
+											<th nowrap="nowrap">Created By</th>										
+
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+
 										//Get topics associated with module
-										
+										$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
 										while($row=mysqli_fetch_array($result))
 										{
 											print("<tr><td><a href=createComment.php?TopicNo=".$row['TopicNo'].">".$row['TopicName']."</a></td>");
@@ -131,18 +142,13 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 										}
 										//Close connection
 										mysqli_close($connection);
-										
+										?>
 
-												print('</tbody>
-											</table>
-										</div>');
-									}
-									else //Do this if there is nothing in the database for this module
-									{
-										print('<p>There`s nothing here! Start the conversation by creating a topic.</p>');
-									}
-							?>
+									</tbody>
+								</table>
 							</div>
+							
+						
 </div>
 							<!-- EMPTY DIV TO PUT SPACE BETWEEN IMAGE AND TEXT-->
 							<footer><?php include("includes/footer.php");?>
