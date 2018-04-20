@@ -108,7 +108,7 @@
 					<tr><th>Module No</th><th>Module Name</th><th>Lecturer</th><th>Year</th><th>Semester</th><th>Information</th></tr>
 					<?php
 						//Connect to database
-						$connection = mysqli_connect("localhost:3307","root","");
+						$connection = mysqli_connect("localhost","root","");
 						mysqli_select_db($connection,"studentsupport");
 
 						//Get all module information from database
@@ -117,8 +117,8 @@
 						//Print modules to table
 						while($row=mysqli_fetch_array($moduleResult))
 						{
-							print('<tr><td>'.$row['ModuleNo'].'</td><td>'.$row['ModuleName'].'</td><td>'.$row['Lecturer'].'</td>');
-							print('<td>'.$row['Year'].'</td><td>'.$row['Semester'].'</td><td><a onmouseover=displayInfo(this) value='.$row['ModuleNo'].'>Info</a></td>');
+							print('<tr><td>'.$row['ModuleNo'].'</td><td><a href=moduleEdit.php?ModuleNo='.$row['ModuleNo'].'>'.$row['ModuleName'].'</a></td><td>'.$row['Lecturer'].'</td>');
+							print('<td>'.$row['Year'].'</td><td>'.$row['Semester'].'</td><td><a href=moduleCourse.php?ModuleNo='.$row['ModuleNo'].'>Info</a></td>');
 							print('<td><a href=deleteModule.php?ModuleNo='.$row['ModuleNo'].'>Delete</a></td></tr>');
 						}
 					?>

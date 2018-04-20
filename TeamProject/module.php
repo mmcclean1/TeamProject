@@ -109,22 +109,24 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 		
 							</div>
 							<div id='modulesDiv' class="col-md-9 col-md-offset-1">
-								<table class="table table-striped">
-									<thead>
-										<tr class="text-success">
-											<th>Topic Title</th>
-											<th>Details</th>
-											<th>Date Created</th>
-											<!--											MAKE THE WORD NOT WRAP IN COLUMN-->
-											<th nowrap="nowrap">Created By</th>										
+							<?php
+								$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
+								if(mysqli_num_rows($result)>0)
+								{
+									print('<table class="table table-striped">
+											<thead>
+												<tr class="text-success">
+													<th>Topic Title</th>
+													<th>Details</th>
+													<th>Date Created</th>
+													<th nowrap="nowrap">Created By</th>										
 
-										</tr>
-									</thead>
-									<tbody>
-										<?php
+												</tr>
+											</thead>
+										<tbody>');
+										
 
 										//Get topics associated with module
-										$result=mysqli_query($connection,"SELECT * FROM topic WHERE ModuleNo='$moduleNo'");
 										while($row=mysqli_fetch_array($result))
 										{
 											print("<tr><td><a href=createComment.php?TopicNo=".$row['TopicNo'].">".$row['TopicName']."</a></td>");
@@ -137,10 +139,16 @@ http://getbootstrap.com/docs/4.0/getting-started/download/#bootstrapcdn
 										}
 										//Close connection
 										mysqli_close($connection);
-										?>
+										
 
-									</tbody>
-								</table>
+											print('</tbody>
+										</table>');
+								}
+								else
+								{
+									print('There`s nothing here! Create a topic to start the conversation.');
+								}
+							?>
 							</div>
 							
 						

@@ -29,7 +29,6 @@ include("includes/header.php");
 
 	</head>
 	<body>
-
 		<!--INCLUDE SIDEBAR-->
 		<?php include("includes/sidebar.php");?>
 
@@ -147,8 +146,6 @@ include("includes/header.php");
 		</div>
 
 		<footer><?php include("includes/footer.php");?>
-
-			<p>	<li class="active" style="list-style-type:none"><a href="adminLogin.php" target="_blank">Admin</a></li></p>
 		</footer>
 
 
