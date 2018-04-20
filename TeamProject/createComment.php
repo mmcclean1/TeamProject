@@ -38,7 +38,7 @@ include("includes/header.php");
 	$TopicNo=$_GET['TopicNo'];
 	
 	//Connect to database
-	$connection = mysqli_connect("localhost:3307","root","");
+	$connection = mysqli_connect("localhost","root","");
 	mysqli_select_db($connection,"studentsupport");
 
 	//Get Topic Name & Details
@@ -67,20 +67,15 @@ include("includes/header.php");
 					action=commentHandler.php?TopicNo=".$TopicNo.">");
 
 					print("<table class='table table-bordered'>");
-					print("<thead>");
-					print("<tbody>");
-					print("<tr>");
-
-					print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Comment </strong> </td></tr>");
-
-					//CommentName
-					print("<tr><td colspan='7'><strong>Comment Summary</strong><input name='CommentName' type='text' size=80' color='black' /><strong> </td></tr>");
-
-					print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols=100' rows='4' id='detail'></textarea><br><br>
-					<button type='submit' name='commentSubmit' class='btn btn-primary's >Add Comment</button> ");
+						print("<thead>");
+							print("<tbody>");
+								print("<tr>");
+									print("<tr><td  colspan='6' align='left' bgcolor='#CBEAF8'><strong>Create Comment </strong> </td></tr>");
+								print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols=100' rows='4' id='detail'></textarea><br><br>
+									<button type='submit' name='commentSubmit' class='btn btn-primary's >Add Comment</button> ");
 
 					//					BUTTONS
-					print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button> <button type='submit name='cancel' class='btn btn-primary'>Cancel Operation</button><td></tr>");
+					print("<button type='reset' name='Submit2' value='Clear' class='btn btn-primary'>Clear</button> <button type=reset name='cancel' class='btn btn-primary' onclick=createForm() >Cancel Operation</button><td></tr>");
 					print("</thead><tbody></table></form></div></div>");
 
 					print("<br>");
@@ -90,7 +85,7 @@ include("includes/header.php");
 	function commentTable($row) // Function to generate table of comments
 	{
 		//Connect to database
-		$connection = mysqli_connect("localhost:3307","root","");
+		$connection = mysqli_connect("localhost","root","");
 		mysqli_select_db($connection,"studentsupport");
 
 		//Get session id
@@ -141,6 +136,7 @@ include("includes/header.php");
 			if($id == $CreatorNo)
 			{
 				print('<td><a href=deleteComment.php?CommentNo='.$row['CommentNo'].'&TopicNo='.$TopicNo.'>Delete</a></td>');
+				print('<td></td></tr>');
 			}
 			else {
 				print('<td></td>');
@@ -152,7 +148,7 @@ include("includes/header.php");
 					print('<form method=POST action=replyHandler.php?TopicNo='.$TopicNo.'&ReplyTo='.$CommentNo.' >');
 						print("<tr><td colspan='3' align='left' bgcolor='#CBEAF8'><strong>Reply</strong> </td></tr>");
 						print("<tr><td valign='top'><strong>Detail</strong><textarea name='Details' cols='30' rows='20' id='detail'></textarea><br><br><button type='submit' name='commentSubmit' >Add Comment</button> ");
-						print("<input type='reset' name='Submit2' value='Clear'/><br><br><button type='submit' name='cancel' >Cancel Operation</button><td></tr>");
+						print("<input type='reset' name='Submit2' value='Clear'/><br><br><button type=reset id='$CommentNo' onclick=replyForm(this) >Cancel Operation</button><td></tr>");
 				print("</table></form>");
 			print('</td></tr>');
 		}

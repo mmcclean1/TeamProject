@@ -44,7 +44,7 @@ include("includes/header.php");
 			$user = $_SESSION['id'];
 
 			//Connect to database
-			$connection = mysqli_connect("localhost:3307","root","");
+			$connection = mysqli_connect("localhost","root","");
 			mysqli_select_db($connection,"studentsupport");
 
 			//Get CourseNo of user
